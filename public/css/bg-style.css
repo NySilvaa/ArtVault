@@ -1,44 +1,45 @@
-main{background-color: #98c0c2;}
+main{background-color: #98c0c2; position: relative;}
 
-.background{
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.background canvas{
-    width: 100%;
-}
-
-nav{
+nav.navigation{
   width: 100%;
   padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  left: 0; top: 10px;
+  left: 50%; top: 10px;
+  transform: translateX(-50%);
   z-index: 1;
+  max-width: 1300px;
 }
 
-.btn-interactive ul{
+.btn-interactive ul.items-menu-btn-interactive{
     display: flex;
     padding: 18px;
     border-radius: 30px;
     background-color: rgb(255 255 255 / 0.3);
-}
 
-.btn-interactive ul li{
+    & li{
     margin: 0 15px;
     font: 0.9rem;
     color: #212B46;
-}
+    position: relative;
 
-canvas {
-  display: none; /* Remove o espaço extra de elementos inline */
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover; /* Garante que ele preencha tudo, se necessário */
+    &::before{
+      content: "";
+      width: 0;
+      height: 3px;
+      background-color: #D4AF37;
+      display: inline-block;
+      position: absolute;
+      transition: 0.4s;
+      left: 0; bottom: -3px;
+    }
+
+    &:hover::before{width: 80%;}
+
+    &:hover{color: #374772;}
+    }
 }
 
 /* From Uiverse.io by ryota1231 */ 
@@ -55,7 +56,6 @@ canvas {
   font-weight: 600;
   color: #c5e5e4;
   box-shadow: 0 0 0 2px #ffffff;
-  cursor: pointer;
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -129,34 +129,88 @@ canvas {
   opacity: 1;
 }
 
-.content{
-  width: 100%;
-  height: 300px;
-  background-color: #764915;
-  text-align: center;
-  padding: 30px;
-}
-
 #container{width: 104% !important;}
 
-.btn-menu{cursor: pointer;}
+.btn-menu{z-index: 3;}
 
 .btn-visit{
   display: inline-block;
-  width: 120px;
-  height: 120px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
-  line-height: 120px;
-  font-size: 1.7rem;
+  line-height: 165px;
+  font-size: 2.1rem;
   background-color: rgb(255 255 255 / 0.4);
   text-align: center;
   border: 1px solid #fff;
   color: #212B46;
   position: absolute;
-  right: 70px;
-  bottom: 70px;
+  right: 90px;
+  bottom: 90px;
   transition: 0.4s;
   letter-spacing: 1px;
+
+  &:hover{background-color: rgb(255 255 255 / 0.6);}
+
 }
 
-.btn-visit:hover{background-color: rgb(255 255 255 / 0.6);}
+/****** SEÇÃO DO MENU *******/
+
+section.menu{
+  width: 0;
+  height: 100%;
+  transition: 1s;
+  overflow: hidden;
+   opacity: 0; 
+  background-color: #212B46;
+  position: absolute;
+  right: 0; top: 0;
+  z-index: 2;
+  padding: 30px 3%;
+}
+
+ul.items-menu{
+  margin-top: 50px;
+
+  & li{
+    font-size: 5.2rem;
+    margin-bottom: 10px;
+    color: #c5e5e4;
+
+    &:hover{color: #D4AF37;}
+  }
+}
+
+.btn-close{
+  position: absolute;
+  right: 60px; top: 60px;
+  z-index: 999;
+}
+
+.cursor-dot {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* O círculo translúcido que segue com atraso */
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.3); /* Branco translúcido */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  z-index: 9998;
+  pointer-events: none;
+  /* Centraliza o círculo em relação ao ponto */
+  transform: translate(-50%, -50%);
+}
