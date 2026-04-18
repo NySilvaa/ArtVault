@@ -2,10 +2,11 @@
 // import Link from "next/link"
 import Script from "next/script"
 import Image from "next/image"
+import { Suspense } from "react"
 
 // COMPONENTES
 import ScrollVelocity from "@/components/ScrollVelocity"
-import GlobePhotos from "@/components/GlobePhotos"
+import ArtVaultBg from "@/components/ArtVaultBg"
 
 // FONTS
 import { leotaroFree, satoshiLight } from "../layout"
@@ -25,8 +26,9 @@ export const metadata: Metadata = {
 export default function ArtVault_Branding(){
     return (<>
         <main className="artBd">
-            <Script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.81/build/spline-viewer.js"></Script>
-            <spline-viewer url="https://prod.spline.design/UyGofocGb8iYcBW0/scene.splinecode"></spline-viewer>
+            <Suspense fallback={"Carregando..."}>
+                <ArtVaultBg />
+            </Suspense>
 
             <ScrollVelocity
                 texts={['Art That Moves The Gaze -', 'Where The Stroke Comes To Life -']} 
@@ -58,28 +60,15 @@ export default function ArtVault_Branding(){
                     </div>
                 </section>
 
-                <section className="globe-photos">
-                        <div style={{ width: '100%', height: '100vh' }}>
-                        <GlobePhotos
-                                fit={0.8}
-                                minRadius={600}
-                                maxVerticalRotationDeg={0}
-                                segments={34}
-                                dragDampening={2}
-                                grayscale
-                        />
-                        </div>
-                </section>
-
-                <section className="brand-showed">
-                    <Image 
-                        src={"/images/news.png"}
-                        width={1100}
-                        height={700}
-                        alt="Art Vault on the News"
-                        
-                    />
-                </section>
+            <section className="brand-showed">
+                <Image 
+                    src={"/images/news.png"}
+                    width={1100}
+                    height={700}
+                    alt="Art Vault on the News"
+                    loading="eager"
+                />
+            </section>
         </main>
-    </>)
+    </>);
 }
