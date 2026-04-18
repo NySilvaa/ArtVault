@@ -10,7 +10,13 @@ const nextConfig: NextConfig = {
         hostname: "http://localhost:3000/",
         port: "",
         pathname: "public/image/**"
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'assets.codepen.io',
+        port: '',
+        pathname: '/**',
+      },
     ]
   }
 };

@@ -63,7 +63,7 @@ function useElementWidth<T extends HTMLElement>(ref: React.RefObject<T | null>):
   return width;
 }
 
-export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
+export const ScrollLetters: React.FC<ScrollVelocityProps> = ({
   scrollContainerRef,
   texts = [],
   velocity = 100,
@@ -176,4 +176,4 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
   );
 };
 
-export default ScrollVelocity;
+export default ScrollLetters;
