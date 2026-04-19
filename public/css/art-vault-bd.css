@@ -271,7 +271,264 @@ section.scrollImgs{
   color: #d4af37;
 }
 
-.content{margin-top: 60px;}
+
+section.singUpPlatforms .container{
+    margin: 90px auto;
+    h1{
+        font-size: 5rem;
+        text-align: center;
+    }
+}
+
+.singUpPlatforms-wp{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 120px 2% 140px 2%;
+}
+
+/******* FORM SECTION *****/
+.card-sign-up-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  border-radius: 24px;
+  line-height: 1.6;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.mobileAppSection .content{
+    background-color: #2c3c69;
+
+    &::before{background-color: #bdcfff;}
+    &::after{background-color: #d7e1fd;}
+
+    h3{
+        color: #D4AF37;
+    }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 36px;
+  border-radius: 22px;
+  color: #ffffff;
+  overflow: hidden;
+  background: #D4AF37;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+
+  h3{
+    font-size: 2rem;
+    color: #212B46;
+  }
+
+}
+
+.content::before {
+  position: absolute;
+  content: "";
+  top: -4%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%);
+  background: #fbeec5;
+  z-index: -1;
+  transform-origin: bottom;
+
+  border-radius: inherit;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.content::after {
+  position: absolute;
+  content: "";
+  top: -8%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transform: translate(-50%);
+  background: #fef7de;
+  z-index: -2;
+  transform-origin: bottom;
+  border-radius: inherit;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.content .para {
+  z-index: 1;
+  opacity: 1;
+  font-size: 0.9rem;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.content .link {
+  z-index: 1;
+  color: #fea000;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.content .link:hover {
+  text-decoration: underline;
+}
+
+.card-sign-up-section:hover {
+  transform: translate(0px, -16px);
+}
+
+.card-sign-up-section:hover .content::before {
+  rotate: -8deg;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-sign-up-section:hover .content::after {
+  rotate: 8deg;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.button-form-section {
+  width: 35%;  
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #212B46;
+  color: #fff;
+  border-radius: 10rem;
+  padding: 0.75rem 1.5rem;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color 0.3s;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.button__icon-wrapper {
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  color: #212B46;
+  background-color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  margin-right: 5px;
+}
+
+.button-form-section:hover {
+  background-color: #2c3c69;
+}
+
+.button-form-section:hover .button__icon-wrapper {
+  color: #2c3c69;
+}
+
+.button__icon-svg--copy {
+  position: absolute;
+  transform: translate(-150%, 150%);
+}
+
+.button-form-section:hover .button__icon-svg:first-child {
+  transition: transform 0.3s ease-in-out;
+  transform: translate(150%, -150%);
+}
+
+.button-form-section:hover .button__icon-svg--copy {
+  transition: transform 0.3s ease-in-out 0.1s;
+  transform: translate(0);
+}
+
+/******* BUTTONS DA SEÇÃO MOBILE APP *******/
+.buttons-mobileAppSection {
+   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.buttons-mobileAppSection .button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 6px 16px;
+  text-decoration: none;
+}
+
+.buttons-mobileAppSection .button:first-child {
+  box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
+  background-color: #856a10;
+}
+
+.buttons-mobileAppSection .button:last-child {
+  box-shadow: 0 4px 6px -1px #0b162531, 0 2px 4px -1px #0e192b17;
+  background-color: #fff;
+}
+
+.icon {
+  height: 25px;
+  width: 25px;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.icon svg:last-child {
+  fill: #212B46
+}
+
+.button-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+}
+
+.button-text span:first-child {
+  font-size: 12px;
+}
+
+.google span:first-child {
+  color: rgb(236, 229, 254);
+}
+
+.apple span:first-child {
+  color: rgb(81 87 108);
+}
+
+.google span:last-child {
+  color: #fff;
+  font-weight: 800;
+}
+
+.apple span:last-child {
+  color: #212B46;
+  font-weight: 800;
+}
+
 
 /****FOOTER *****/
 footer #button{

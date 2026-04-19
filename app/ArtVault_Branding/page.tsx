@@ -7,6 +7,8 @@ import { Suspense } from "react"
 import ScrollLetters from "@/components/ScrollLetters"
 import ArtVaultBg from "@/components/ArtVaultBg"
 import ScrollImgs from "@/components/ScrollImgs"
+import FormSectionArtBd from "@/components/formSectionArtBd"
+import MobileAppSection from "@/components/MobileAppSection"
 import Footer from "@/components/Footer"
 
 // FONTS
@@ -74,7 +76,21 @@ export default function ArtVault_Branding(){
                 <ScrollImgs />
             </section>
 
-            <section className="content"></section>
+            <section className="singUpPlatforms">
+                <div className="container">
+                    <h1 className={leotaroFree.className}>The Whole Gallery, Just a Tap Away.</h1>
+
+                    <div className="singUpPlatforms-wp">
+                            <div className="form">
+                                <FormSectionArtBd />
+                            </div>
+
+                            <div className="mobileApp">
+                                <MobileAppSection />
+                            </div>
+                    </div>{/* signUpPlatforms-wp */}
+                </div>
+            </section>
         </main>
             <Footer />
     </>);

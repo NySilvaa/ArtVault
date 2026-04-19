@@ -40,7 +40,7 @@ export default function RootLayout({
     <html
       lang="en"
     >
-      <body className={`${satoshiBold.className}`}>{children}</body>
+      <body className={`${satoshiRegular.className}`}>{children}</body>
     </html>
   );
 }
