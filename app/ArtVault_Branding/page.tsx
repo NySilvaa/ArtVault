@@ -4,12 +4,12 @@ import Image from "next/image"
 import { Suspense } from "react"
 
 // COMPONENTES
-import ScrollLetters from "@/components/ScrollLetters"
-import ArtVaultBg from "@/components/ArtVaultBg"
-import ScrollImgs from "@/components/ScrollImgs"
-import FormSectionArtBd from "@/components/formSectionArtBd"
-import MobileAppSection from "@/components/MobileAppSection"
-import Footer from "@/components/Footer"
+import ScrollLetters from "@/components/ArtBdComponents/ScrollLetters"
+import ArtVaultBg from "@/components/ArtBdComponents/ArtVaultBg"
+import ScrollImgs from "@/components/ArtBdComponents/ScrollImgs"
+import FormSectionArtBd from "@/components/ArtBdComponents/formSectionArtBd"
+import MobileAppSection from "@/components/ArtBdComponents/MobileAppSection"
+import Footer from "@/components/ArtBdComponents/Footer"
 
 // FONTS
 import { leotaroFree, satoshiLight } from "../layout"
@@ -28,6 +28,11 @@ export const metadata: Metadata = {
 export default function ArtVault_Branding(){
     return (<>
         <main className="artBd">
+            <div className="btnBackStart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#212b46" strokeWidth="2" 
+                strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-icon lucide-arrow-up"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+            </div>
+
             <Suspense fallback={"Carregando..."}>
                 <ArtVaultBg />
             </Suspense>

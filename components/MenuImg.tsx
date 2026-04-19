@@ -1,6 +1,5 @@
 "use client";
 
-import { leotaroFree } from "@/app/layout";
 import StaggeredMenu from "@/components/MenuConfig";
 import "@/public/css/bg-style.css"
 

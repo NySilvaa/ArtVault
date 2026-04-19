@@ -16,7 +16,7 @@ export default function FormSectionArtBd(){
                 you aren&apos;t just logging in—you&apos;re stepping into a curated world of inspiration and privilege.
                 </p>
 
-                <Link href={"/SignUp"} className="button-form-section">
+                <Link href={"/LogIn"} className="button-form-section">
                     <span className="button__icon-wrapper">
                         <svg
                         viewBox="0 0 14 15"

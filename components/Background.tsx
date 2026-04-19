@@ -33,7 +33,7 @@ export default function Background() {
                   <li><Link href={""}>Products</Link></li>
                   <li><Link href={""}>Painters</Link></li>
                   <li><Link href={""}>Paintings</Link></li>
-                  <li><Link href={""}>About Us</Link></li>
+                  <li><Link href={"/AboutUs"}>About Us</Link></li>
                 </ul>
           </div>
 

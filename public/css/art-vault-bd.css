@@ -1,4 +1,21 @@
-body{background-color: #c3c3c3; overflow-x: hidden;}
+body{overflow-x: hidden;}
+
+.btnBackStart{
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    background-color: #D4AF37;
+    position: fixed;
+    right: 30px; bottom: 30px;
+    z-index: 999;
+    cursor: pointer;
+    text-align: center;
+    line-height: 87px;
+    transition: 0.4s;
+    opacity: 0;
+
+    &:hover{background-color: #e2bf4a;}
+}
 
 #canvas-container {
     position: fixed;
