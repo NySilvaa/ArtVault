@@ -7,7 +7,7 @@ import { Suspense } from "react";
 import { leotaroFree } from "@/app/layout";
 
 // ESTILO CSS
-import "@/public/css/bg-style.css"
+import "@/public/css/bg-style.module.css"
 
 // COMPONENTES
 import MenuImg from "@/components/MenuImg"
@@ -30,9 +30,9 @@ export default function Background() {
 
           <div className="btn-interactive">
                 <ul  className="items-menu-btn-interactive">
-                  <li><Link href={""}>Products</Link></li>
-                  <li><Link href={""}>Painters</Link></li>
-                  <li><Link href={""}>Paintings</Link></li>
+                  <li><Link href={"/Products"}>Products</Link></li>
+                  <li><Link href={"/Painters"}>Painters</Link></li>
+                  <li><Link href={"/Paintings"}>Paintings</Link></li>
                   <li><Link href={"/AboutUs"}>About Us</Link></li>
                 </ul>
           </div>

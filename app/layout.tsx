@@ -36,11 +36,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html
-      lang="en"
+      lang="pt-BR"
     >
-      <body className={`${satoshiRegular.className}`}>{children}</body>
+      <body className={satoshiRegular.className}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,4 +1,3 @@
-import "@/public/css/signUp.css"
 import Script from 'next/script';
 import SingUpComponent from "@/components/SignUpComponent";
 import { Metadata } from "next";

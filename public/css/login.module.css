@@ -1,7 +1,6 @@
-
 :root {
   --color-primary: #ffffff;
-  --color-secondary: #2f2e41;
+  --color-secondary: #324e9b;
 
   --color-gold: #D4AF37;         
   --color-gold-deep: #b08d26;    
@@ -15,26 +14,21 @@
   --side: 10vw;
 }
 
-
 body {
   min-height: 100vh;
   width: 100vw;
-  background: var(--color-gold);
-  color: var(--color-primary);
   overflow-x: hidden;
 }
 
-a {
+.linkLogin {
   color: var(--color-gold-light);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-a:hover, a:focus {
-  color: var(--color-primary);
-}
+.linkLogin:hover, .linkLogin:focus {color: var(--color-primary);}
 
-header {
+.headerLogin {
   width: 100%;
   position: absolute;
   top: 0;
@@ -47,38 +41,31 @@ header {
   z-index: 3;
 }
 
-#logo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--color-gold-light);
-  transition: 0.3s ease-in-out;
+.btnBackPage{
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(255 255 255 / 0.45);
+  position: absolute;
+  left: 50px; top: 50px;
+  border-radius: 50%;
+  z-index: 999;
+  text-align: center;
+  line-height: 68px;
+  border: 1px solid #fff;
+  transition: 0.4s;
+
+  &:hover{background-color: rgba(255, 255, 255, 0.686);}
 }
 
-#logo:hover, #logo:focus {
-  color: var(--color-primary);
-  text-shadow: 0 0 3px var(--color-gold-light);
-}
-
-#logo i {
-  font-size: 2.3em;
-}
-
-#logo span {
-  padding: 0 0.3ch;
-  font-size: 2em;
-  font-weight: bold;
-  letter-spacing: 0.1ch;
-}
-
-.register-wrapper {
+.registerWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 2.2rem;
 }
 
-.register-wrapper .new-user {
+.registerWrapper .newUser {
   position: relative;
   margin-right: 4em;
   margin-left: -4em;
@@ -86,7 +73,7 @@ header {
   white-space: nowrap;
 }
 
-.register-wrapper .new-user::after {
+.registerWrapper .newUser::after {
   position: absolute;
   content: "";
   right: -10%;
@@ -97,20 +84,20 @@ header {
   transform: translate(100%, -50%);
 }
 
-.register-wrapper a.register {
-  font-weight: bold;
-}
+.registerWrapper a.register {font-weight: bold; color: var(--color-secondary);}
 
-main {
+.mainLogin {
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+  position: relative;
+  background-color: var(--color-caution);
 }
 
-.hero-wrapper {
+.mainLogin .heroWrapperLogIn {
   position: relative;
   z-index: 1;
   background: var(--color-gold-deep);
@@ -119,7 +106,7 @@ main {
   height: 100vh;
 }
 
-.hero-wrapper::before {
+.mainLogin .heroWrapperLogIn::before {
   position: absolute;
   content: "";
   top: 0;
@@ -130,14 +117,14 @@ main {
   background: radial-gradient(circle at 60% 80%, var(--color-gold), transparent);
 }
 
-.hero-wrapper img {
+.mainLogin .heroWrapperLogIn .hero {
   position: absolute;
   bottom: -5vh;
   left: 5vw;
   z-index: 2;
 }
 
-.content-wrapper {
+.contentWrapperLogIn {
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -147,32 +134,32 @@ main {
   width: calc(60% - (2 * var(--side)));
 }
 
-.content-wrapper > div {
+.contentWrapperLogIn > div {
   width: 100%;
   margin-bottom: 3em;
 }
 
-.content-wrapper .welcome h1 {
+.contentWrapperLogIn .welcome h1 {
   font-size: 3.4rem;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #2f2e41;
+  color: var(--color-secondary);
 }
 
-.content-wrapper .welcome .subtitle {
+.contentWrapperLogIn .welcome .subtitle {
   font-size: 1.2em;
   font-weight: 300;
   line-height: 1.2;
-  color: #dfdede;
+  color: var(--color-gold-soft);
 }
 
-.log-in-wrapper {
+.logIn_wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.log-in-wrapper .log-in {
+.logIn_wrapper .logIn {
   background: var(--color-gold-soft);
   border: 1px solid var(--color-gold-deep);
   transform-origin: right;
@@ -181,19 +168,19 @@ main {
   margin-bottom: 1rem;
 }
 
-.log-in-wrapper .log-in:hover,
-.log-in-wrapper .log-in:focus-within {
+.logIn_wrapper .logIn:hover,
+.logIn_wrapper .logIn:focus-within {
   background: var(--color-primary);
   box-shadow: 0 3px 15px var(--color-gold-deep);
   transform: scaleX(1.1);
 }
 
-.log-in-wrapper .log-in:hover svg,
-.log-in-wrapper .log-in:focus-within svg {
+.logIn_wrapper .logIn:hover svg,
+.logIn_wrapper .logIn:focus-within svg {
   transform: translate(-25%, -50%);
 }
 
-.log-in-wrapper .log-in svg {
+.logIn_wrapper .logIn svg {
   position: absolute;
   left: 1em;
   top: 50%;
@@ -201,7 +188,7 @@ main {
   transition: 0.5s ease-in-out;
 }
 
-.log-in-wrapper .log-in input {
+.logIn_wrapper .logIn input {
   width: 100%;
   height: 4em;
   padding-left: 3.5em;
@@ -227,7 +214,7 @@ main {
   color: var(--color-gold-soft);
   outline: 0;
   border: 0;
-  box-shadow: 0 3px 10px var(--color-gold-deep);
+  box-shadow: 0 3px 10px var(--color-secondary);
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   font-size: 1rem;
@@ -239,21 +226,4 @@ main {
   color: var(--color-primary);
 }
 
-main{position: relative;}
-
-.btnBackPage{
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  background-color: rgb(255 255 255 / 0.45);
-  position: absolute;
-  left: 50px; top: 50px;
-  border-radius: 50%;
-  z-index: 999;
-  text-align: center;
-  line-height: 68px;
-  border: 1px solid #fff;
-  transition: 0.4s;
-
-  &:hover{background-color: rgba(255, 255, 255, 0.686);}
-}
+a.forgotPassword{color: var(--color-secondary);}

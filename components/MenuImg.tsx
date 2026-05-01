@@ -1,7 +1,7 @@
 "use client";
 
 import StaggeredMenu from "@/components/MenuConfig";
-import "@/public/css/bg-style.css"
+import "@/public/css/bg-style.module.css"
 
 const menuItems = [
   { label: 'The Myth', ariaLabel: 'Go to home page', link: '#' },

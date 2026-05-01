@@ -1,6 +1,6 @@
 #COLOR PALLETE
 #212b46
-rgb(212, 175, 55)
+#d4af37
 #E5E7EB
 #F8F9FA
 
