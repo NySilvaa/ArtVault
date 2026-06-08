@@ -7,13 +7,11 @@ export const ScrollImgConfig = (containerRef: RefObject<HTMLDivElement | null>) 
   useLayoutEffect(() => {
     if (!containerRef.current) return;
 
-    // 1. Lenis para scroll suave
     const lenis = new Lenis();
     lenis.on("scroll", ScrollTrigger.update);
     
-    const updateTicker = (time: number) => {
-      lenis.raf(time * 1000);
-    };
+    const updateTicker = (time: number) => {lenis.raf(time * 1000);};
+    
     gsap.ticker.add(updateTicker);
     gsap.ticker.lagSmoothing(0);
 
@@ -21,7 +19,7 @@ export const ScrollImgConfig = (containerRef: RefObject<HTMLDivElement | null>) 
 
     const ctx = gsap.context(() => {
       const reverseTriggers = gsap.utils.toArray<HTMLElement>(
-        ".col-scroll__box:nth-child(odd) .col-scroll__list"
+        ".colScroll__box:nth-child(odd) .colScroll__list"
       );
 
       reverseTriggers.forEach((element) => {
@@ -34,15 +32,9 @@ export const ScrollImgConfig = (containerRef: RefObject<HTMLDivElement | null>) 
           yPercent: 100,
           ease: "none",
           scrollTrigger: {
-            // O gatilho é o container principal da galeria
             trigger: containerRef.current, 
-            
-            // "top bottom" significa: quando o TOPO do elemento tocar o FUNDO da tela
             start: "top bottom", 
-            
-            // "bottom top" significa: termina quando o FUNDO do elemento sair pelo TOPO da tela
             end: "bottom top", 
-            
             scrub: true,
             invalidateOnRefresh: true,
           },

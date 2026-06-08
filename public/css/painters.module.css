@@ -1,0 +1,81 @@
+.painters{
+    background-color: #212b46;
+    width: 100%;
+    height: 100%;
+    padding: 90px 0 90px 0;
+}
+
+.container{
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+
+.btnBackPage{
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(255 255 255 / 0.45);
+  position: absolute;
+  left: 50px; top: 50px;
+  border-radius: 50%;
+  z-index: 999;
+  text-align: center;
+  line-height: 68px;
+  border: 1px solid #fff;
+  transition: 0.4s;
+
+  &:hover{background-color: rgba(255, 255, 255, 0.686);}
+}
+
+nav.paintersNav .container{
+    display: flex;
+    justify-content: space-between;
+}
+
+h2.paintersTittle{
+    font-size: 2.7rem;
+    color: #d4af37;
+    letter-spacing: 1px;
+}
+
+p.paintersDescriptionTittle{
+    color: #F8F9FA;
+    font-size: 1rem;
+    max-width: 400px;
+}
+
+.paintersSection{
+    margin-top: 70px;
+}
+
+.painters_wp{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.painters_box{
+    width: 25%;
+    
+    figure{
+        margin-bottom: 10px;
+
+        img{object-fit: cover; border-radius: 10px;}
+    }
+}
+
+h3.paintersName a{
+    color: #d4af37;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+span.paintersDescription{
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+

@@ -1,5 +1,6 @@
 import "./globals.css";
 import localFont from "next/font/local"
+import Script from "next/script";
 
 // FONTS CONFIG
 export const satoshiRegular = localFont({
@@ -43,6 +44,13 @@ export default function RootLayout({
     >
       <body className={satoshiRegular.className}>
         {children}
+
+
+        <div className={`cursorDot`}></div>
+        <div className={`cursorOutline`}></div>
+
+            <Script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></Script>
+            <Script src="/js/interactions.js" defer></Script>
       </body>
     </html>
   );

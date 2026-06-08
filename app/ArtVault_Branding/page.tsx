@@ -1,7 +1,7 @@
 // IMPORTAÇÕES DO NEXT
-// import Link from "next/link"
 import Image from "next/image"
 import { Suspense } from "react"
+import Script from "next/script"
 
 // COMPONENTES
 import ScrollLetters from "@/components/ArtBdComponents/ScrollLetters"
@@ -18,7 +18,7 @@ import { leotaroFree, satoshiLight } from "../layout"
 import { Metadata } from "next"
 
 //CSS
-import "@/public/css/art-vault-bd.module.css"
+import styles from "@/public/css/art-vault-bd.module.css"
 
 export const metadata: Metadata = {
   title: "Art Vault - Your Art Gallery",
@@ -27,11 +27,11 @@ export const metadata: Metadata = {
 
 export default function ArtVault_BrandingPage(){
     return (<>
-        <main className="artBd">
-            <div className="btnBackStart">
+        <main className={styles.artBd}>
+            <div className={`${styles.btnBackStart} btnBackStart`}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#212b46" strokeWidth="2" 
                 strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-icon lucide-arrow-up"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
-            </div>
+            </div>{/* btnBackStart */}
 
             <Suspense fallback={"Carregando..."}>
                 <ArtVaultBg />
@@ -43,11 +43,11 @@ export default function ArtVault_BrandingPage(){
                 className={`custom-scroll-text ${leotaroFree.className}`}
                 />
 
-            <section className="inside-gallery"><div className="container"><p className={satoshiLight.className}> (Inside Vault Art Gallery)</p></div></section>
+            <section className={styles.insideGallery}><div className="container"><p className={satoshiLight.className}> (Inside Vault Art Gallery)</p></div></section>
 
-            <section className="description-art-vault">
+            <section className={styles.description_artVault}>
                 <div className="container">
-                    <section className={`desc-text ${satoshiLight.className}`}>
+                    <section className={`${styles.descText} ${satoshiLight.className}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" 
                         strokeLinejoin="round" className="lucide lucide-chevron-left-icon lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
 
@@ -67,9 +67,9 @@ export default function ArtVault_BrandingPage(){
                 </div>
             </section>
 
-            <section className="brand-showed">
+            <section className={styles.brandShowed}>
                 <Image 
-                    src={"/images/news.png"}
+                    src={"/images/news.jpg"}
                     width={1100}
                     height={700}
                     alt="Art Vault on the News"
@@ -77,26 +77,29 @@ export default function ArtVault_BrandingPage(){
                 />
             </section>
 
-            <section className="scrollImgs">
+            <section className={styles.scrollImgs}>
                 <ScrollImgs />
             </section>
 
-            <section className="singUpPlatforms">
+            <section className={styles.singUpPlatforms}>
                 <div className="container">
                     <h1 className={leotaroFree.className}>The Whole Gallery, Just a Tap Away.</h1>
 
-                    <div className="singUpPlatforms-wp">
-                            <div className="form">
+                    <div className={styles.singUpPlatforms_wp}>
+                            <div className={styles.form}>
                                 <FormSectionArtBd />
                             </div>
 
-                            <div className="mobileApp">
+                            <div className={styles.mobileApp}>
                                 <MobileAppSection />
                             </div>
                     </div>{/* signUpPlatforms-wp */}
                 </div>
             </section>
         </main>
-            <Footer />
+        
+        <Footer />
+
+        <Script src="/js/interaction.artVaultBd.js" defer></Script>
     </>);
 }

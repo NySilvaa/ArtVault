@@ -1,0 +1,61 @@
+import Verticalnav from "@/components/AccountComponents/VerticalNav";
+import styles from "@/public/css/dashboard.module.css";
+import  "@/public/css/aboutMe.css";
+import { leotaroFree, satoshiLight } from "@/app/layout";
+
+export default function AboutMePage(){
+    return (<>
+            <main className={styles.dashboardMain}>
+                <section className={styles.dashboard_wp}>
+              <div className={`${styles.dashboard_top} ${leotaroFree.className}`}><h1>About Me</h1></div>
+                    <div className="row">
+                        <div className="containers">
+                        
+                        <div className="pic"></div>
+                        
+                        <div className="box1"></div>
+                        <div className="box2"></div>
+                        
+                        <div className="social1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-drum-icon lucide-drum"><path d="m2 2 8 8"/><path d="m22 2-8 8"/><ellipse cx="12" cy="9" rx="10" ry="5"/><path d="M7 13.4v7.9"/><path d="M12 14v8"/><path d="M17 13.4v7.9"/><path d="M2 9v8a10 5 0 0 0 20 0V9"/></svg>
+                        </div>
+                        <div className="social2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-flame-kindling-icon lucide-flame-kindling"><path d="M12 2c1 3 2.5 3.5 3.5 4.5A5 5 0 0 1 17 10a5 5 0 1 1-10 0c0-.3 0-.6.1-.9a2 2 0 1 0 3.3-2C8 4.5 11 2 12 2Z"/><path d="m5 22 14-4"/><path d="m5 18 14 4"/></svg>
+                        </div>
+                        <div className="social3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-graduation-cap-icon lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+                        </div>
+                        </div>{/* containers */}
+
+                        <div className="content">
+                            <p className={satoshiLight.className}>Hi Folks, <br/><br/>
+                                This is Shaik Maqsood. I&apos;m a Freakin frontend developer, 
+                                jus came up with this concept of having a 45<sup>o</sup> trasformed DIV with a -45<sup>o</sup> background.<br/><br/>
+                                Can&apos;t belive that it worked.
+                                <br/><br/>
+                                Show your L<span>&hearts;</span>VE if you like my pen.
+                                <br/><br/>
+                            </p>
+
+                            <button className="btnUpdateSelfDescription">
+                                <span>
+                                    <svg
+                                    height="24"
+                                    width="24"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"></path>
+                                    </svg>
+                                      Update Self Description
+                                </span>
+                            </button>
+                        </div>{/* content */}
+                        </div>  {/* row */}
+                </section>
+
+                <Verticalnav />
+            </main>
+    </>)
+}

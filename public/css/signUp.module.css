@@ -136,7 +136,7 @@ body {overflow-x: hidden;}
 
 .contentWrapperSignUp > div {
   width: 100%;
-  margin-bottom: 3em;
+  margin-bottom: 1.5em;
 }
 
 .contentWrapperSignUp .welcome h1 {
@@ -180,12 +180,20 @@ body {overflow-x: hidden;}
   transform: translate(-25%, -50%);
 }
 
-.signUp_wrapper .signUp svg {
+.signUp_wrapper .signUp svg:not(.pwEye) {
   position: absolute;
   left: 1em;
   top: 50%;
   transform: translateY(-50%);
   transition: 0.5s ease-in-out;
+}
+
+.password svg.pwEye{
+   position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%); 
+  cursor: pointer;
 }
 
 .signUp_wrapper .signUp input {
@@ -226,5 +234,3 @@ body {overflow-x: hidden;}
   letter-spacing: 2px;
   color: var(--color-primary-signUp);
 }
-
-a.forgotPassword{color: var(--color-blue-light-singUp);}

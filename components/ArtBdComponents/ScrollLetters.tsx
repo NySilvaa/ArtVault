@@ -11,6 +11,9 @@ import {
   useAnimationFrame
 } from 'motion/react';
 
+import styles from "@/public/css/art-vault-bd.module.css";
+
+
 interface VelocityMapping {
   input: [number, number];
   output: [number, number];
@@ -145,7 +148,7 @@ export const ScrollLetters: React.FC<ScrollVelocityProps> = ({
 
     return (
       <div className={parallaxClassName} style={parallaxStyle}>
-        <motion.div className={scrollerClassName} style={{ x, ...scrollerStyle }}>
+        <motion.div className={`${scrollerClassName} ${styles.scroller}`} style={{ x, ...scrollerStyle }}>
           {spans}
         </motion.div>
       </div>
@@ -153,7 +156,7 @@ export const ScrollLetters: React.FC<ScrollVelocityProps> = ({
   }
 
   return (
-    <section className='letters-section'>
+    <section className={styles.lettersSection}>
       {texts.map((text, index) => (
         <VelocityText
           key={index}

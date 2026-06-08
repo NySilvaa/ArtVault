@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest){
 
     const secret = new TextEncoder().encode(secretKey);
 
-    if (request.nextUrl.pathname.startsWith("/Dashboard")) {
+    if (request.nextUrl.pathname.startsWith("/Account")) {
         if (!token)
             return NextResponse.redirect(new URL("/LogIn", request.url));
 
@@ -25,5 +25,5 @@ export async function middleware(request: NextRequest){
 }
 
 export const config = {
-    matcher: ["/Dashboard/:path*", "/LogIn/:path*"]
+    matcher: ["/Account/:path*", "/LogIn/:path*"]
 };

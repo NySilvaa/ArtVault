@@ -1,4 +1,4 @@
-"use server" // Garante que a função rode no servidor
+"use server"
 
 import { SignJWT } from "jose";
 import { cookies } from "next/headers";
@@ -37,5 +37,5 @@ export async function checkUser(prevState: unknown, formData: FormData) {
         return { error: "Falha na autenticação" };
     }
 
-    redirect("/Dashboard");
+    redirect("/Account");
 }

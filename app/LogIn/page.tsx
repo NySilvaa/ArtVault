@@ -9,10 +9,9 @@ export const metadata: Metadata = {
 };
 
 export default function LogInPage(){
-
-  
   return (<>
       <LogInConfig />
+      
       <Script src='/js/login.interactions.js'></Script>
   </>)
 }

@@ -1,4 +1,4 @@
-import Background from "@/components/Background";
+import Background from "@/components/BgHomeComponents/Background";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,5 +9,6 @@ export const metadata: Metadata = {
 export default async function HomePage(){
   return (<>
     <Background />
+
   </>)
 }

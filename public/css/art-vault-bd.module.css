@@ -1,0 +1,667 @@
+:root {
+  --color-black: hsla(0, 0%, 12%, 1);
+  --color-white: hsla(0, 0%, 100%, 1);
+  --color-white-50: hsla(0, 0%, 50%, 1);
+  --color-purple: hsla(278, 100%, 75%, 1);
+}
+
+body{overflow-x: hidden;}
+
+.artBd {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+.cursorDot {
+  width: 10px;
+  height: 10px;
+  background-color: #2c3c69;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.cursorOutline {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(44 60 105 / 0.3); /* Branco translúcido */
+  border: 1px solid rgb(44 60 105 / 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  z-index: 9998;
+  pointer-events: none;
+  /* Centraliza o círculo em relação ao ponto */
+  transform: translate(-50%, -50%);
+}
+
+.btnBackStart{
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    background-color: #D4AF37;
+    position: fixed;
+    right: 30px; bottom: 30px;
+    z-index: 999;
+    cursor: pointer;
+    text-align: center;
+    line-height: 87px;
+    transition: 0.4s;
+    opacity: 0;
+
+    &:hover{background-color: #e2bf4a;}
+}
+
+.canvasContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.uiLayer {
+    position: fixed;
+    top: -60px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+
+    h1{
+        font-size: 4rem;
+        color: #D4AF37;
+        margin: 10px 0;
+    }
+}
+
+.logo {
+    position: fixed;
+    top: 40px;
+    left: 50px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    z-index: 10;
+    color: #D4AF37;
+}
+
+.slideContent {
+    position: absolute;
+    top: 30%; 
+    left: 10%; 
+    width: 400px;
+    max-width: 80vw;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.slideContent:global(.active) {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.slideContent:global(.active) .description {
+    animation: slideUp 1s forwards;
+    animation-delay: 0.4s;
+}
+
+.slideContent:global(.active) .metaGrid {
+    animation: slideUp 1s forwards;
+    animation-delay: 0.6s;
+    opacity: 0; 
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.catalogueNumber {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #999;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.description {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 3rem;
+    text-align: justify;
+}
+
+.metaGrid {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    row-gap: 0.8rem;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1.5rem;
+}
+
+.metaLabel {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #888;
+    align-self: center;
+}
+
+.metaValue {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: rgb(33, 43, 70);
+}
+
+.scrollHint {
+    position: fixed;
+    bottom: 40px;
+    left: 50px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #aaa;
+}
+
+/***** LETRAS ****/
+.lettersSection{
+    margin: 60px 0;
+    color: #212B46;
+    user-select: none;
+}
+
+.parallax {
+  position: relative;
+  overflow: hidden;
+}
+
+.scroller {
+  display: flex;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+.scroller span {flex-shrink: 0;}
+
+section.insideGallery{
+    width: 100%;
+    height: 750px;
+    background: url("../images/entrance-artvault-bd.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    filter: grayscale();
+    position: relative;
+
+    &::before{
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.47);
+        position: absolute;
+        left: 0; top: 0;
+    }
+
+    .container{max-width: 1480px; position: relative;}
+
+    p{
+        font-size: 1.6rem;
+        color: #a2a2a2;
+        letter-spacing: 2px;
+        text-align: right;
+        padding-top: 40px;
+    }
+}
+
+section.description_artVault{
+    padding: 50px 0 20px 0;
+    background-color: #212B46;
+}
+
+section.descText{
+    max-width: 700px;
+    position: relative;
+    margin: 80px auto 80px auto;
+
+    svg{
+        position: absolute;
+        left: -65px; top: -65px;
+        rotate: 45deg;
+    }
+
+    p{
+        text-align: justify;
+        font-size: 1.1rem;
+        color: #a2a2a2;
+
+        &:first-of-type{
+            margin-bottom: 30px;
+        }
+    }
+}
+
+/*  SEÇÃO DE BRAND NEWS */
+
+section.brandShowed{
+    img{
+        width: 100%;
+        height: 750px;
+        max-width: 100%;
+    }
+}
+
+/***** SEÇÃO DAS IMAGENS COM SCROLL ********/
+section.scrollImgs{background-color: #212B46;}
+
+.colScroll {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.colScroll__box {
+  display: flex;
+  flex-direction: column;
+  padding: 5vh 0 15vh;
+}
+
+.colScroll__box:nth-child(odd) {
+  flex-direction: column-reverse;
+  height: 100vh;
+}
+
+.colScroll__list {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.colScroll__box:nth-child(odd) .colScroll__list {flex-direction: column-reverse;}
+
+.colScroll__img {
+  aspect-ratio: 6 / 7;
+  height: auto;
+  object-fit: cover;
+  width: 25vw;
+}
+
+.colScroll__item{margin: 0 50px 30px 50px;}
+
+.colScroll__title {
+  margin: 12px 0 16px;
+  font-size: clamp(1.2rem, 1rem + 2.5vw, 2rem);
+  line-height: 1.2;
+  color: #d4af37;
+}
+
+/*********** SEÇÃO PARA LOGIN OU PARA BAIXAR O APP   *********/
+
+section.singUpPlatforms{
+    margin: 90px auto;
+
+    h1{
+        font-size: 5rem;
+        text-align: center;
+        color: #212B46;
+    }
+}
+
+.singUpPlatforms_wp{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 2% 140px 2%;
+}
+
+/******* FORM SECTION *****/
+.card_signUp_section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  border-radius: 24px;
+  line-height: 1.6;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.contentSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 36px;
+  border-radius: 22px;
+  color: #ffffff;
+  overflow: hidden;
+  background: #D4AF37;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+
+  h3{
+    font-size: 2rem;
+    color: #212B46;
+  }
+
+}
+
+.contentSection::before {
+  position: absolute;
+  content: "";
+  top: -4%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%);
+  background: #fbeec5;
+  z-index: -1;
+  transform-origin: bottom;
+
+  border-radius: inherit;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.contentSection::after {
+  position: absolute;
+  content: "";
+  top: -8%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transform: translate(-50%);
+  background: #fef7de;
+  z-index: -2;
+  transform-origin: bottom;
+  border-radius: inherit;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.contentSection .para {
+  z-index: 1;
+  opacity: 1;
+  font-size: 0.9rem;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.contentSection .link {
+  z-index: 1;
+  color: #fea000;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.contentSection .link:hover {text-decoration: underline;}
+
+.card_signUp_section:hover {transform: translate(0px, -16px);}
+
+.card_signUp_section:hover .content::before {
+  rotate: -8deg;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card_signUp_section:hover .content::after {
+  rotate: 8deg;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.buttonForm_section {
+  width: 35%;  
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #212B46;
+  color: #fff;
+  border-radius: 10rem;
+  padding: 0.75rem 1.5rem;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color 0.3s;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.button__iconWrapper {
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  color: #212B46;
+  background-color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  margin-right: 5px;
+}
+
+.buttonForm_section:hover {background-color: #2c3c69;}
+
+.buttonForm_section:hover .button__iconWrapper {color: #2c3c69;}
+
+.button__iconSvgCopy {
+  position: absolute;
+  transform: translate(-150%, 150%);
+}
+
+.buttonForm_section:hover .button__iconSvg:first-child {
+  transition: transform 0.3s ease-in-out;
+  transform: translate(150%, -150%);
+}
+
+.buttonForm_section:hover .button__iconSvgCopy {
+  transition: transform 0.3s ease-in-out 0.1s;
+  transform: translate(0);
+}
+
+/******* BUTTONS DA SEÇÃO MOBILE APP *******/
+.mobileAppSection .contentSection{
+    background-color: #2c3c69;
+
+    &::before{background-color: #bdcfff;}
+    &::after{background-color: #d7e1fd;}
+
+    h3{
+        color: #D4AF37;
+    }
+}
+
+.buttons_mobileAppSection {
+   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.buttons_mobileAppSection .button_maChildren {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 6px 16px;
+  text-decoration: none;
+}
+
+.buttons_mobileAppSection .button_maChildren:first-child {
+  box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
+  background-color: #856a10;
+}
+
+.buttons_mobileAppSection .button_maChildren:last-child {
+  box-shadow: 0 4px 6px -1px #0b162531, 0 2px 4px -1px #0e192b17;
+  background-color: #fff;
+}
+
+.button_maChildren .icon {
+  height: 25px;
+  width: 25px;
+}
+
+.button_maChildren .icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.icon svg:last-child {fill: #212B46}
+
+.buttonText {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+}
+
+.button-text span:first-child {font-size: 12px;}
+
+.google span:first-child {color: rgb(236, 229, 254);}
+
+.apple span:first-child {color: rgb(81 87 108);}
+
+.google span:last-child {
+  color: #fff;
+  font-weight: 800;
+}
+
+.apple span:last-child {
+  color: #212B46;
+  font-weight: 800;
+}
+
+/****FOOTER*****/
+.footer_artVault .btnFooter{
+	width:35px;
+	height:35px;
+	border: #727172 12px solid;
+	border-radius:35px;
+	margin:0 auto;
+	position:relative;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    background-color: #fff;
+}
+
+.footer_artVault .btnFooter:hover{
+	width:35px;
+	height:35px;
+	border: #3A3A3A 12px solid;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	position:relative;
+}
+
+.footer_artVault {
+	bottom:0;
+	left:0;
+	position:fixed;
+    width: 100%;
+    height: 2em;
+    overflow:hidden;
+    margin:0 auto;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	z-index:999;
+  cursor: none;
+}
+
+.footer_artVault:hover {
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	height: 10em;
+}
+
+.footer_artVault .containerFooter{
+	margin-top:5px;
+	width:100%;
+    height:100%;
+    position:relative;
+    top:0;
+    left:0;
+	background: #D4AF37;
+}
+
+.footer_artVault .contFooter{
+  position:relative;
+  top:-25px;
+  right:190px;
+   width:150px;
+    height:auto;
+    margin:0 auto;
+}
+
+.footer_center{
+	width:500px;
+	float:left;
+  text-align:center;
+}
+
+footer.footer_artVault h3{
+	font-size: 30px;
+	font-weight: 100;
+	margin-top:70px;
+	margin-left:40px;
+}
+
+/***********   MEDIAS QUERIES     **************/
+
+@media (min-width: 768px) {
+  .scroller {
+    font-size: 5rem;
+    line-height: 5rem;
+  }
+}

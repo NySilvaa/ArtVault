@@ -180,12 +180,20 @@ body {
   transform: translate(-25%, -50%);
 }
 
-.logIn_wrapper .logIn svg {
+.logIn_wrapper .logIn svg:not(.pwEye) {
   position: absolute;
   left: 1em;
   top: 50%;
   transform: translateY(-50%);
   transition: 0.5s ease-in-out;
+}
+
+.password svg.pwEye{
+   position: absolute;
+    right: 1em;
+    top: 50%;
+    transform: translateY(-50%); 
+    cursor: pointer;
 }
 
 .logIn_wrapper .logIn input {
