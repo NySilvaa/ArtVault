@@ -98,7 +98,7 @@ main.dashboardMain{
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
-    max-width: 1800px;
+    max-width: 1300px;
 }
 
 .dash_description h2{

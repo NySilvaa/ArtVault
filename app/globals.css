@@ -41,7 +41,7 @@ button, input[type="submit"]{border: 0; outline: 0;}
 .cursorOutline {
   width: 40px;
   height: 40px;
-  background-color: rgba(255, 255, 255, 0.3); /* Branco translúcido */
+  background-color: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.5);
   position: fixed;
   top: 0;
@@ -50,4 +50,8 @@ button, input[type="submit"]{border: 0; outline: 0;}
   z-index: 9998;
   pointer-events: none;
   transform: translate(-50%, -50%);
+}
+
+.d-flex{
+  display: flex;
 }

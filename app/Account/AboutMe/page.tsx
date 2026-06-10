@@ -1,7 +1,19 @@
+// COMPONENTS
 import Verticalnav from "@/components/AccountComponents/VerticalNav";
+
+// FONTS E ESTILOS
 import styles from "@/public/css/dashboard.module.css";
 import  "@/public/css/aboutMe.css";
 import { leotaroFree, satoshiLight } from "@/app/layout";
+
+// NEXT JS
+import { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Art Vault - Art Gallery | About You",
+  description: "See Your Contributions With Us",
+};
 
 export default function AboutMePage(){
     return (<>
@@ -37,7 +49,7 @@ export default function AboutMePage(){
                                 <br/><br/>
                             </p>
 
-                            <button className="btnUpdateSelfDescription">
+                            <Link href={"http://localhost:3000/Account/Configuration"} className="btnUpdateSelfDescription">
                                 <span>
                                     <svg
                                     height="24"
@@ -50,7 +62,7 @@ export default function AboutMePage(){
                                     </svg>
                                       Update Self Description
                                 </span>
-                            </button>
+                            </Link>
                         </div>{/* content */}
                         </div>  {/* row */}
                 </section>

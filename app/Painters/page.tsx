@@ -1,8 +1,19 @@
+// IMPORTAÇÕES DO NEXT JS
 import Link from "next/link";
 import Image from "next/image";
+import { Metadata } from "next";
+
+// IMPORTAÇÕES DE ESTILO E FONTS
 import styles from "@/public/css/painters.module.css"
 import { leotaroFree, satoshiLight } from "../layout";
+
+// COMPONENTES
 import Footer from "@/components/ArtBdComponents/Footer";
+
+export const metadata: Metadata = {
+  title: "Art Vault - Art Gallery | Painters",
+  description: "Those Who Brought the Beauty of Life to the Screens",
+};
 
 export default function PaintersPage(){
     return (
