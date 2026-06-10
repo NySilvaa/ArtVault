@@ -150,11 +150,6 @@
   }
 }
 
-sup{
-  font-style: italic;
-  font-size:smaller;
-}
-
 a.btnUpdateSelfDescription {
   display: inline-block;
   border: 2px solid #d4af37;

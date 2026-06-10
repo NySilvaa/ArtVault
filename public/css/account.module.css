@@ -1,6 +1,3 @@
-
-/*  LETTERS INITIAL */
-
 body{position: relative;}
 
 .lettersInitial{
@@ -37,17 +34,38 @@ main.dashboardMain{
   overflow-x: hidden;
 }
 
-.dashboardMain aside{height: 100%;}
+.btnHomeAccount{
+    position: absolute;
+    left: 60%; top: 50px;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    border: 2px solid #E5E7EB;
+    display: inline-block;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    line-height: 57px;
+    transition: 0.4s;
 
-.asideDash ul{display: flex;}
+    &:hover{background-color: rgba(229, 231, 235, 0.467);}
+}
 
-.asideDash ul li{
-    height: 100vh;
-    writing-mode: vertical-lr;
-    rotate: 180deg;
-    padding: 20px 10px;
+.dashboardMain aside.asideDash{
+    height: 100%;
     position: relative;
-    white-space: pre;
+}
+
+.asideDash ul{
+    display: flex;
+
+     li{
+        height: 100vh;
+        writing-mode: vertical-lr;
+        rotate: 180deg;
+        padding: 20px 10px;
+        position: relative;
+        white-space: pre;
 
     &:first-of-type{
         background:linear-gradient(45deg, #edcd63, #d4af37);
@@ -79,10 +97,11 @@ main.dashboardMain{
 
         &:hover{color: #ffffff;}
     }
+    }
 }
 
 .dashboard_top h1{
-    font-size: 10rem;
+    font-size: 8rem;
     text-align: center;
     letter-spacing: 2px;
     font-weight: bold;
@@ -95,7 +114,7 @@ main.dashboardMain{
 .dashboard_wp{width: 100%;}
 
 .dashboard_content .container_dash{
-    margin-top: 20px;
+    margin-top: 40px;
     display: flex;
     justify-content: space-between;
     max-width: 1300px;
@@ -114,9 +133,7 @@ p.desc{
     text-align: justify;
 }
 
-.dash_description span{
-    font-size: 0.9rem;
-}
+.dash_description span{font-size: 0.9rem;}
 
 .btnChat {
   padding: 1.3em 3em;
@@ -134,17 +151,15 @@ p.desc{
   outline: none;
   display: inline-block;
   margin-top: 30px;
-}
 
-.btnChat:hover {
-  background-color: #2c3c69;
-  box-shadow: 0px 15px 20px rgba(44, 60, 105, 0.4);
-  color: #fff;
-  transform: translateY(-7px);
-}
+  &:hover {
+    background-color: #2c3c69;
+    box-shadow: 0px 15px 20px rgba(44, 60, 105, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+    }
 
-.btnChat:active {
-  transform: translateY(-1px);
+    &:active {transform: translateY(-1px);}
 }
 
 .video{

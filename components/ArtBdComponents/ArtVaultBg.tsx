@@ -5,7 +5,7 @@ import { leotaroFree, satoshiLight } from '@/app/layout';
 import styles from "@/public/css/art-vault-bd.module.css";
 
 
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import * as THREE from 'three';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -34,76 +34,87 @@ export default function ArtVaultBg() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!containerRef.current || !canvasRef.current) return;
+useLayoutEffect(() => {
+  if (!containerRef.current || !canvasRef.current) return;
 
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf7f7f5);
-    scene.fog = new THREE.Fog(0xf7f7f5, 10, 110);
+  window.scrollTo(0, 0);
 
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 0, CONFIG.camZ);
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xf7f7f5);
+  scene.fog = new THREE.Fog(0xf7f7f5, 10, 110);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    canvasRef.current.appendChild(renderer.domElement);
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.set(0, 0, CONFIG.camZ);
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.6);
-    scene.add(ambient);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  canvasRef.current.appendChild(renderer.domElement);
 
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
-    dirLight.position.set(10, 20, 10);
-    scene.add(dirLight);
+  const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambient);
 
-    const galleryGroup = new THREE.Group();
-    scene.add(galleryGroup);
+  const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
+  dirLight.position.set(10, 20, 10);
+  scene.add(dirLight);
 
-    const textureLoader = new THREE.TextureLoader();
-    const planeGeo = new THREE.PlaneGeometry(CONFIG.pWidth, CONFIG.pHeight);
-    const paintingGroups: THREE.Group[] = [];
+  const galleryGroup = new THREE.Group();
+  scene.add(galleryGroup);
+  galleryGroup.rotation.y = CONFIG.wallAngleY;
+  galleryGroup.position.x = 8;
 
-    // Criar as pinturas
-    IMAGES.forEach((url, i) => {
-      const group = new THREE.Group();
-      group.position.set(i * CONFIG.spacingX, 0, 0);
-      
-      const mat = new THREE.MeshBasicMaterial({ map: textureLoader.load(url) });
-      const mesh = new THREE.Mesh(planeGeo, mat);
-      
-      const edges = new THREE.EdgesGeometry(planeGeo);
-      const outline = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x222222 }));
+  const textureLoader = new THREE.TextureLoader();
+  const planeGeo = new THREE.PlaneGeometry(CONFIG.pWidth, CONFIG.pHeight);
 
-      const shadowMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.15 });
-      const shadow = new THREE.Mesh(planeGeo, shadowMat);
-      shadow.position.set(0.8, -0.8, -0.5);
+  const scrollStatus = { current: 0 };
+  const totalDist = (CONFIG.slideCount - 1) * CONFIG.spacingX;
 
-      group.add(shadow, mesh, outline);
-      galleryGroup.add(group);
-      paintingGroups.push(group);
-    });
+  // =========================================================
+  // 1. CARREGAMENTO SÍNCRONO DE TEXTURAS (Sem Promises)
+  // =========================================================
+  IMAGES.forEach((url, i) => {
+    const group = new THREE.Group();
+    group.position.set(i * CONFIG.spacingX, 0, 0);
 
-    galleryGroup.rotation.y = CONFIG.wallAngleY;
-    galleryGroup.position.x = 8;
+    // O Three.js já gerencia o download em background automaticamente
+    const mat = new THREE.MeshBasicMaterial({ map: textureLoader.load(url) });
+    const mesh = new THREE.Mesh(planeGeo, mat);
 
-    const scrollStatus = { current: 0 };
-    const totalDist = (CONFIG.slideCount - 1) * CONFIG.spacingX;
+    const edges = new THREE.EdgesGeometry(planeGeo);
+    const outline = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x222222 }));
 
+    const shadow = new THREE.Mesh(
+      planeGeo,
+      new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.15 })
+    );
+    shadow.position.set(0.8, -0.8, -0.5);
+
+    group.add(shadow, mesh, outline);
+    galleryGroup.add(group);
+  });
+
+  // =========================================================
+  // 2. INICIALIZAÇÃO IMEDIATA DO GSAP
+  // =========================================================
+  const ctx = gsap.context(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: `+=${totalDist * 20}`, // Define a "duração" do scroll preso
-        pin: true,                  // TRAVA a tela aqui
-        scrub: 1,                   // Suaviza o movimento
+        end: `+=${totalDist * 20}`,
+        pin: true,
+        scrub: 1,
         onUpdate: (self) => {
           const activeIndex = Math.round(self.progress * (CONFIG.slideCount - 1));
-          document.querySelectorAll('.slideContent').forEach((el, idx) => {
-            if (idx === activeIndex) el.classList.add('active');
-            else el.classList.remove('active');
-          });
-        }
-      }
+          if (containerRef.current) {
+            const slides = containerRef.current.querySelectorAll(".slideContent");
+            slides.forEach((el, idx) => {
+              if (idx === activeIndex) el.classList.add("active");
+              else el.classList.remove("active");
+            });
+          }
+        },
+      },
     });
 
     tl.to(scrollStatus, {
@@ -111,44 +122,64 @@ export default function ArtVaultBg() {
       ease: "none",
       onUpdate: () => {
         const val = scrollStatus.current;
-        const xMove = val * Math.cos(CONFIG.wallAngleY);
-        const zMove = val * Math.sin(CONFIG.wallAngleY);
-        camera.position.x = xMove;
-        camera.position.z = CONFIG.camZ - zMove;
+        camera.position.x = val * Math.cos(CONFIG.wallAngleY);
+        camera.position.z = CONFIG.camZ - (val * Math.sin(CONFIG.wallAngleY));
+      },
+    });
+  }, containerRef);
+
+  setTimeout(() => ScrollTrigger.refresh(), 100);
+
+  let animationFrameId = 0;
+  const animate = () => {
+    renderer.render(scene, camera);
+    animationFrameId = requestAnimationFrame(animate);
+  };
+  animate();
+
+  const onMouseMove = (e: { clientX: number; clientY: number; }) => {
+    const x = (e.clientX / window.innerWidth) * 2 - 1;
+    const y = -(e.clientY / window.innerHeight) * 2 + 1;
+    gsap.to(camera.rotation, { x: y * 0.05, y: -x * 0.05, duration: 0.5 });
+  };
+  window.addEventListener("mousemove", onMouseMove);
+
+  const handleResize = () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    ScrollTrigger.refresh();
+  };
+  window.addEventListener("resize", handleResize);
+
+  return () => {
+    window.removeEventListener("mousemove", onMouseMove);
+    window.removeEventListener("resize", handleResize);
+    
+    cancelAnimationFrame(animationFrameId);
+    
+    if (ctx) ctx.revert();
+
+    planeGeo.dispose();
+    renderer.dispose();
+
+    galleryGroup.traverse((obj) => {
+      if (obj instanceof THREE.Mesh) {
+        obj.geometry?.dispose();
+        if (Array.isArray(obj.material)) {
+          obj.material.forEach((m) => m.dispose());
+        } else {
+          obj.material?.dispose();
+        }
       }
     });
 
-    const onMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = -(e.clientY / window.innerHeight) * 2 + 1;
-      gsap.to(camera.rotation, {
-        x: y * 0.05,
-        y: -x * 0.05,
-        duration: 0.5
-      });
-    };
-    window.addEventListener('mousemove', onMouseMove);
-
-    const animate = () => {
-      renderer.render(scene, camera);
-      requestAnimationFrame(animate);
-    };
-    animate();
-
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('resize', handleResize);
-      ScrollTrigger.getAll().forEach(t => t.kill());
-      renderer.dispose();
-    };
-  }, []);
+    if (canvasRef.current && canvasRef.current.contains(renderer.domElement)) {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      canvasRef.current.removeChild(renderer.domElement);
+    }
+  };
+}, []);
 
   return (
     <section ref={containerRef} id="gallery-wrapper" style={{ height: '100vh' }}>

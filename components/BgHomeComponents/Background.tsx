@@ -59,7 +59,7 @@ export default function Background() {
                 </ul>
               </aside>
 
-          <Link href={"ArtVault_Branding"} className={`${styles.btnVisit} ${leotaroFree.className}`}>Visit</Link>
+          <Link href={"/ArtVault_Branding"} className={`${styles.btnVisit} ${leotaroFree.className}`}>Visit</Link>
         </section>{/* fim da seção container */}
 
         <section className={`${styles.descriptionImg_first} descriptionImg_first`}>

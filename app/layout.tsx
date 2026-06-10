@@ -43,12 +43,10 @@ export default function RootLayout({
       lang="pt-BR"
     >
       <body className={satoshiRegular.className}>
-        {children}
-
-
         <div className={`cursorDot`}></div>
         <div className={`cursorOutline`}></div>
 
+              {children}
             <Script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></Script>
             <Script src="/js/interactions.js" defer></Script>
       </body>

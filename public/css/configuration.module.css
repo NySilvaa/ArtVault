@@ -5,13 +5,13 @@ main.dashboardMain{overflow-y: hidden;}
   overflow: auto;
 }
 
-.panel-content {
+.panel_content {
   display: grid;
   gap: 20px;
   margin: 30px auto;
 }
 
-.content-card {
+.content_card {
 width: 100%;
   border-radius: 50px;
   background: linear-gradient(145deg, #212b46, #142451);
@@ -24,12 +24,12 @@ width: 100%;
   display: none;
 }
 
-.profile-wp{
+.profile_wp{
   display: flex;
   gap: 20px;
   justify-content: space-between;
 
-  .toggle-item{
+  .toggle_item{
     width: 50%;
   }
 }
@@ -82,20 +82,20 @@ span.warning{
     margin-left: 10px;
 }
 
-.content-card:hover {
+.content_card:hover {
   background: linear-gradient(145deg, #243051, #142962);
   border-color: #173997;
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.card-header {
+.card_header {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 14px;
 }
-.card-icon {
+.card_icon {
   width: 36px;
   height: 36px;
   display: flex;
@@ -108,28 +108,28 @@ span.warning{
   );
   border-radius: 10px;
 }
-.card-icon svg {
+.card_icon svg {
   width: 18px;
   height: 18px;
   stroke: #a78bfa;
 }
-.card-title {
+.card_title {
   color: #fff;
   font-size: 1rem;
   font-weight: 600;
 }
-.card-text {
+.card_text {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.9rem;
   line-height: 1.7;
 }
-.stats-grid {
+.stats_grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 24px;
 }
-.stat-item {
+.stat_item {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 14px;
@@ -137,11 +137,11 @@ span.warning{
   text-align: center;
   transition: all 0.4s ease;
 }
-.stat-item:hover {
+.stat_item:hover {
   border-color: rgba(99, 102, 241, 0.4);
   background: rgba(99, 102, 241, 0.08);
 }
-.stat-value {
+.stat_value {
   color: #fff;
   font-size: 1.75rem;
   font-weight: 800;
@@ -150,27 +150,27 @@ span.warning{
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.stat-label {
+.stat_label {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.8rem;
   margin-top: 4px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
-.feature-list {
+.feature_list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-.feature-list li {
+.feature_list li {
   display: flex;
   align-items: center;
   gap: 12px;
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.95rem;
 }
-.feature-list li::before {
+.feature_list li::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -178,36 +178,36 @@ span.warning{
   border-radius: 50%;
   flex-shrink: 0;
 }
-.progress-bar-container {
+.progress_bar_container {
   margin-top: 20px;
 }
-.progress-label {
+.progress_label {
   display: flex;
   justify-content: space-between;
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.85rem;
   margin-bottom: 8px;
 }
-.progress-bar {
+.progress_bar {
   height: 8px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   overflow: hidden;
 }
-.progress-fill {
+.progress_fill {
   height: 100%;
   background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%);
   border-radius: 10px;
   transition: width 1s ease;
 }
 /* Toggle Switch */
-.toggle-group {
+.toggle_group {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-top: 20px;
 }
-.toggle-item {
+.toggle_item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -216,17 +216,17 @@ span.warning{
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
 }
-.toggle-info h4 {
+.toggle_info h4 {
   color: #fff;
   font-size: 0.95rem;
   font-weight: 600;
 }
-.toggle-info p {
+.toggle_info p {
   color: rgba(255, 255, 255, 0.4);
   font-size: 0.8rem;
   margin-top: 2px;
 }
-.toggle-switch {
+.toggle_switch {
   position: relative;
   width: 52px;
   height: 28px;
@@ -235,10 +235,10 @@ span.warning{
   cursor: pointer;
   transition: all 0.4s ease;
 }
-.toggle-switch.active {
+.toggle_switch.active {
   background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
 }
-.toggle-switch::after {
+.toggle_switch::after {
   content: "";
   position: absolute;
   top: 3px;
@@ -250,7 +250,7 @@ span.warning{
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
-.toggle-switch.active::after {
+.toggle_switch.active::after {
   transform: translateX(24px);
 }
 
@@ -277,7 +277,7 @@ span.warning{
  border-bottom: var(--border-height) solid var(--border-before-color);
 }
 /* styling of animated border */
-.input-border {
+.input_border {
  position: absolute;
  background: var(--border-after-color);
  width: 0%;
@@ -291,9 +291,9 @@ input:hover {background: var(--input-hovered-color);}
 
 input:focus {outline: none;}   
 
-input:focus ~ .input-border {width: 100%;}
+input:focus ~ .input_border {width: 100%;}
 
-.content-card{position: relative;}
+.content_card{position: relative;}
 
 button#changements {
     position: absolute;
@@ -326,11 +326,11 @@ button#changements:active {
 }
 
 @media (max-width: 900px) {
-  .main-container {
+  .main_container {
     flex-direction: column;
     min-height: auto;
   }
-  .tabs-nav {
+  .tabs_nav {
     width: 100%;
     min-width: auto;
     flex-direction: row;
@@ -339,19 +339,19 @@ button#changements:active {
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
-  .tabs-nav::before {
+  .tabs_nav::before {
     display: none;
   }
-  .nav-header {
+  .nav_header {
     display: none;
   }
-  .tab-btn {
+  .tab_btn {
     flex-direction: column;
     min-width: 100px;
     padding: 12px;
     text-align: center;
   }
-  .tab-btn::after {
+  .tab_btn::after {
     top: auto;
     bottom: 0;
     left: 50%;
@@ -360,28 +360,28 @@ button#changements:active {
     height: 3px;
     border-radius: 4px 4px 0 0;
   }
-  .tab-btn.active::after {
+  .tab_btn.active::after {
     transform: translateX(-50%) scaleX(1);
   }
-  .tab-text {
+  .tab_text {
     text-align: center;
   }
-  .tab-subtitle,
-  .tab-arrow {
+  .tab_subtitle,
+  .tab_arrow {
     display: none;
   }
-  .tabs-content {
+  .tabs_content {
     padding: 24px;
   }
-  .tab-panel {
+  .tab_panel {
     position: relative;
     inset: auto;
     display: none;
   }
-  .tab-panel.active {
+  .tab_panel.active {
     display: block;
   }
-  .stats-grid {
+  .stats_grid {
     grid-template-columns: 1fr;
   }
 }
