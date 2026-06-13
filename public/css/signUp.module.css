@@ -14,8 +14,6 @@
   --side: 10vw;
 }
 
-body {overflow-x: hidden;}
-
 .linksSign {
   color: var(--color-blue-light-singUp);
   text-decoration: none;
@@ -25,11 +23,7 @@ body {overflow-x: hidden;}
 .linksSignUp:hover, .linkSignUp:focus {color: var(--color-primary-signUp);}
 
 .headerSignUp {
-  position: absolute;
-  top: 0;
-  left: 0;
   right: 0;
-  display: flex;
   justify-content: end;
   align-items: center;
   padding: var(--top) var(--side);
@@ -37,11 +31,9 @@ body {overflow-x: hidden;}
 }
 
 .btnBackPage{
-  display: inline-block;
   width: 50px;
   height: 50px;
   background-color: rgb(255 255 255 / 0.45);
-  position: absolute;
   left: 50px; top: 50px;
   border-radius: 50%;
   z-index: 999;
@@ -53,15 +45,9 @@ body {overflow-x: hidden;}
   &:hover{background-color: rgba(255, 255, 255, 0.686);}
 }
 
-.registerWrapperSignUp {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 2.2rem;
-}
+.registerWrapperSignUp {height: 2.2rem;}
 
 .registerWrapperSignUp .newUserSignUp {
-  position: relative;
   margin-right: 4.8em;
   margin-left: -4em;
   color: var(--color-blue-light-singUp);
@@ -85,19 +71,12 @@ body {overflow-x: hidden;}
 }
 
 .signUpMain{
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   overflow: hidden;
-  position: relative;
   background: var(--color-warning-signUp) ;
   color: var(--color-primary-signUp);
 }
 
-.signUpMain .heroWrapperSignUp {
-  position: relative;
+.heroWrapperSignUp {
   z-index: 1;
   background: var(--color-blue-deep-singUp);
   width: 40%;
@@ -117,7 +96,6 @@ body {overflow-x: hidden;}
 }
 
 .signUpMain .heroWrapperSignUp .hero {
-  position: absolute;
   bottom: -5vh;
   left: 5vw;
   z-index: 2;
@@ -125,18 +103,12 @@ body {overflow-x: hidden;}
 }
 
 .contentWrapperSignUp {
-  display: flex;
   justify-content: center;
   align-items: stretch;
   flex-direction: column;
   padding: 4em var(--side) 0 0;
   height: calc(100vh - var(--top));
   width: calc(60% - (2 * var(--side)));
-}
-
-.contentWrapperSignUp > div {
-  width: 100%;
-  margin-bottom: 1.5em;
 }
 
 .contentWrapperSignUp .welcome h1 {
@@ -150,21 +122,16 @@ body {overflow-x: hidden;}
   font-size: 1.2em;
   font-weight: 300;
   line-height: 1.2;
-  color: #dfdede;
+  margin-bottom: 1rem;
 }
 
-.signUp_wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
+.signUp_wrapper {flex-direction: column;}
 
 .signUp_wrapper .signUp {
   background: var(--color-blue-soft-singUp);
   border: 1px solid var(--color-blue-deep-singUp);
   transform-origin: right;
   transition: 0.5s ease-in-out;
-  position: relative;
   margin-bottom: 1rem;
 }
 
@@ -197,7 +164,6 @@ body {overflow-x: hidden;}
 }
 
 .signUp_wrapper .signUp input {
-  width: 100%;
   height: 4em;
   padding-left: 3.5em;
   background: transparent;
@@ -208,29 +174,29 @@ body {overflow-x: hidden;}
   color: #3e3d55;
 }
 
-.action {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .action button {
-  position: relative;
-  overflow: hidden;
-  background: var(--color-secondary-signUp);
-  padding: 1.2em 2.5em;
-  color: var(--color-primary-signUp);
-  outline: 0;
-  border: 0;
-  box-shadow: 0 3px 10px var(--color-secondary-signUp);
+  padding: 1.3em 2.7em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
   cursor: pointer;
-  transition: all 0.5s ease-in-out;
-  font-size: 1rem;
-  letter-spacing: 1px;
-}
+  outline: none;
 
-.action button:hover, .action button:focus {
-  background: #b39121;
-  letter-spacing: 2px;
-  color: var(--color-primary-signUp);
+    svg{
+    vertical-align: middle;
+    top: -2px;
+  }
+
+  &:hover {
+    background-color: #9e7e12;
+    box-shadow: 0px 15px 20px rgba(44, 60, 105, 0.4);
+    transform: translateY(-7px);
+    }
+
+    &:active {transform: translateY(-1px);}
 }

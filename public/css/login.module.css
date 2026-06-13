@@ -17,7 +17,6 @@
 body {
   min-height: 100vh;
   width: 100vw;
-  overflow-x: hidden;
 }
 
 .linkLogin {
@@ -29,12 +28,7 @@ body {
 .linkLogin:hover, .linkLogin:focus {color: var(--color-primary);}
 
 .headerLogin {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   right: 0;
-  display: flex;
   justify-content: end;
   align-items: center;
   padding: var(--top) var(--side);
@@ -42,7 +36,6 @@ body {
 }
 
 .btnBackPage{
-  display: inline-block;
   width: 50px;
   height: 50px;
   background-color: rgb(255 255 255 / 0.45);
@@ -58,15 +51,9 @@ body {
   &:hover{background-color: rgba(255, 255, 255, 0.686);}
 }
 
-.registerWrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 2.2rem;
-}
+.registerWrapper {height: 2.2rem;}
 
 .registerWrapper .newUser {
-  position: relative;
   margin-right: 4em;
   margin-left: -4em;
   color: var(--color-gold-light);
@@ -87,18 +74,12 @@ body {
 .registerWrapper a.register {font-weight: bold; color: var(--color-secondary);}
 
 .mainLogin {
-  width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   overflow: hidden;
-  position: relative;
   background-color: var(--color-caution);
 }
 
 .mainLogin .heroWrapperLogIn {
-  position: relative;
   z-index: 1;
   background: var(--color-gold-deep);
   width: 40%;
@@ -118,25 +99,19 @@ body {
 }
 
 .mainLogin .heroWrapperLogIn .hero {
-  position: absolute;
   bottom: -5vh;
   left: 5vw;
   z-index: 2;
 }
 
 .contentWrapperLogIn {
-  display: flex;
+  margin-top: 190px;
   justify-content: center;
   align-items: stretch;
   flex-direction: column;
   padding: 4em var(--side) 0 0;
   height: calc(100vh - var(--top));
   width: calc(60% - (2 * var(--side)));
-}
-
-.contentWrapperLogIn > div {
-  width: 100%;
-  margin-bottom: 3em;
 }
 
 .contentWrapperLogIn .welcome h1 {
@@ -153,18 +128,13 @@ body {
   color: var(--color-gold-soft);
 }
 
-.logIn_wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
+.logIn_wrapper {flex-direction: column; margin-top: 20px;}
 
 .logIn_wrapper .logIn {
   background: var(--color-gold-soft);
   border: 1px solid var(--color-gold-deep);
   transform-origin: right;
   transition: 0.5s ease-in-out;
-  position: relative;
   margin-bottom: 1rem;
 }
 
@@ -181,7 +151,6 @@ body {
 }
 
 .logIn_wrapper .logIn svg:not(.pwEye) {
-  position: absolute;
   left: 1em;
   top: 50%;
   transform: translateY(-50%);
@@ -189,7 +158,6 @@ body {
 }
 
 .password svg.pwEye{
-   position: absolute;
     right: 1em;
     top: 50%;
     transform: translateY(-50%); 
@@ -197,7 +165,6 @@ body {
 }
 
 .logIn_wrapper .logIn input {
-  width: 100%;
   height: 4em;
   padding-left: 3.5em;
   background: transparent;
@@ -208,30 +175,31 @@ body {
   color: #3e3d55;
 }
 
-.action {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .action button {
-  position: relative;
-  overflow: hidden;
-  background: var(--color-secondary);
-  padding: 1.2em 2.5em;
-  color: var(--color-gold-soft);
-  outline: 0;
-  border: 0;
-  box-shadow: 0 3px 10px var(--color-secondary);
+  margin-top: 30px;
+  padding: 1.3em 2.7em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
   cursor: pointer;
-  transition: all 0.5s ease-in-out;
-  font-size: 1rem;
-}
+  outline: none;
 
-.action button:hover, .action button:focus {
-  background: #3e3d55;
-  font-weight: bold;
-  color: var(--color-primary);
-}
+    svg{
+    vertical-align: middle;
+    top: -2px;
+     margin-right: 8px;
+  }
 
-a.forgotPassword{color: var(--color-secondary);}
+  &:hover {
+    background-color: #1d3372;
+    box-shadow: 0px 15px 20px rgba(44, 60, 105, 0.4);
+    transform: translateY(-7px);
+    }
+
+    &:active {transform: translateY(-1px);}
+}

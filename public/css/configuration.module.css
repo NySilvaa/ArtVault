@@ -296,9 +296,9 @@ input:focus ~ .input_border {width: 100%;}
 .content_card{position: relative;}
 
 button#changements {
-    position: absolute;
-    bottom: 40px; right: 40px;
-  padding: 12.5px 30px;
+   position: absolute;
+  bottom: 40px; right: 40px;
+    padding: 1em 2.5em;
   border: 0;
   border-radius: 100px;
   background-color: #d4af37;
@@ -309,20 +309,26 @@ button#changements {
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
-}
 
-button#changements:hover {
-  background-color: #e8c44b;
-  box-shadow: 0 0 20px #d0aa2ec2;
-  transform: scale(1.1);
-}
+    svg{
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+  }
 
-button#changements:active {
-  background-color: #3d94cf;
-  transition: all 0.25s;
-  -webkit-transition: all 0.25s;
-  box-shadow: none;
-  transform: scale(0.98);
+      &:hover {
+      background-color: #e8c44b;
+      box-shadow: 0 0 20px #d0aa2ec2;
+      transform: scale(1.1);
+    }
+
+      &:active {
+      background-color: #3d94cf;
+      transition: all 0.25s;
+      -webkit-transition: all 0.25s;
+      box-shadow: none;
+      transform: scale(0.98);
+    }
 }
 
 @media (max-width: 900px) {

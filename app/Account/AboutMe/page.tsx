@@ -42,14 +42,7 @@ export default function AboutMePage(){
                         <br/><br/>
                     </p>
 
-                    <Link href={"http://localhost:3000/Account/Configuration"} className={styles.btnUpdateSelfDescription}>
-                        <span>
-                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0h24v24H0z" fill="none"></path><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"></path>
-                            </svg>
-                                Update Self Description
-                        </span>
-                    </Link>
+                    <Link href={"/Account/Configuration/"} className={` ${styles.btnUpdateSelfDescription}`}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Update Self Description</Link>
                 </div>{/* content */}
             </div>{/* row */}
     </>);

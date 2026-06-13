@@ -150,24 +150,35 @@
   }
 }
 
-a.btnUpdateSelfDescription {
-  display: inline-block;
-  border: 2px solid #d4af37;
+a.btnUpdateSelfDescription{
+  padding: 1.1em 2.7em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #E5E7EB;
   background-color: #d4af37;
-  border-radius: 0.9em;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
   cursor: pointer;
-  padding: 0.8em 1.2em 0.8em 1em;
-  transition: all ease-in-out 0.2s;
-  font-size: 16px;
-  margin-top: 40px;
-}
+  outline: none;
+  display: inline-block;
+  margin-top: 10px;
 
-a.btnUpdateSelfDescription span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-weight: 600;
-}
+  svg{
+    vertical-align: middle;
+    position: relative;
+    top: -3px;
+  }
 
-a.btnUpdateSelfDescription:hover {background-color: #c19400;}
+  &:hover {
+    background-color: #b38e18;
+    box-shadow: 0px 15px 20px rgba(44, 60, 105, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+    }
+
+    &:active {transform: translateY(-1px);}
+}

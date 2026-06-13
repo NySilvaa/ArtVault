@@ -18,133 +18,129 @@ export const metadata: Metadata = {
 export default function PaintersPage(){
     return (
         <>
-           <main className={styles.painters}>
-                <Link href={"/"} className={`btnBackPage ${styles.btnBackPage}`}>
+           <main className={`${styles.painters} w100 h100 bgBlue`}>
+                <Link href={"/"} className={`btnBackPage d_inlineBlock p_absolute txtCenter ${styles.btnBackPage}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" 
                 strokeLinejoin="round" className="lucide lucide-arrow-left-icon lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
                 </Link>
 
              <nav className={styles.paintersNav}>
-                <div className={styles.container}>
-                    <h2 className={`${styles.paintersTittle} ${leotaroFree.className}`}>Our Painters</h2>
+                <div className={`${styles.container} d_flex mAuto`}>
+                    <h2 className={`${styles.paintersTittle} ${leotaroFree.className} txtGold`}>Our Painters</h2>
 
-                    <p className={`${styles.paintersDescriptionTittle} ${satoshiLight.className}`}>Our painters share a mission to simplify time
-                            management with smart, intuitive solutions.</p>
-                </div>
+                    <p className={`${styles.paintersDescriptionTittle} ${satoshiLight.className} txtWhite`}>
+                        Our painters share a mission to simplify time management with smart, intuitive solutions.</p>
+                </div>{/* container */}
             </nav>
 
             <section className={styles.paintersSection}>
-                <div className={styles.container}>
-                    <div className={styles.painters_wp}>
+                <div className={`${styles.container} mAuto`}>
+                    <div className={`${styles.painters_wp} d_flex w100`}>
                         <div className={styles.painters_box}>
                             <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
                         </div>{/* painters_box */}
 
                         <div className={styles.painters_box}>
                             <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
                         </div>{/* painters_box */}
 
                         <div className={styles.painters_box}>
                             <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
                         </div>{/* painters_box */}
 
                         <div className={styles.painters_box}>
                             <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
-                        </div>{/* painters_box */}
-                    </div>{/* painters_wp */}
-
-                     <div className={styles.painters_wp}>
-
-                        <div className={styles.painters_box}>
-                            <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
-                        </div>{/* painters_box */}
-
-                        <div className={styles.painters_box}>
-                            <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
-                        </div>{/* painters_box */}
-
-                        <div className={styles.painters_box}>
-                            <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
-                        </div>{/* painters_box */}
-
-                        <div className={styles.painters_box}>
-                            <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
                         </div>{/* painters_box */}
                     </div>{/* painters_wp */}
 
-                     <div className={styles.painters_wp}>
-
+                     <div className={`${styles.painters_wp} d_flex w100`}>
                         <div className={styles.painters_box}>
                             <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
                         </div>{/* painters_box */}
 
                         <div className={styles.painters_box}>
                             <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
                         </div>{/* painters_box */}
 
                         <div className={styles.painters_box}>
                             <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
                         </div>{/* painters_box */}
 
                         <div className={styles.painters_box}>
                             <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
+                        </div>{/* painters_box */}
+                    </div>{/* painters_wp */}
+
+                     <div className={`${styles.painters_wp} d_flex w100`}>
+                        <div className={styles.painters_box}>
+                            <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
+                        </div>{/* painters_box */}
+
+                        <div className={styles.painters_box}>
+                            <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
+                        </div>{/* painters_box */}
+
+                        <div className={styles.painters_box}>
+                            <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
+                        </div>{/* painters_box */}
+
+                        <div className={styles.painters_box}>
+                            <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
                         </div>{/* painters_box */}
                     </div>{/* painters_wp */}
 
-                     <div className={styles.painters_wp}>
-
+                     <div className={`${styles.painters_wp} d_flex w100`}>
                         <div className={styles.painters_box}>
                             <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
                         </div>{/* painters_box */}
 
                         <div className={styles.painters_box}>
                             <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
                         </div>{/* painters_box */}
 
                         <div className={styles.painters_box}>
                             <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
                         </div>{/* painters_box */}
 
                         <div className={styles.painters_box}>
                             <figure><Image src={"/images/profile1.jpg"} width={320} height={370} alt="Imagem de Perfil do Pintor"></Image></figure>
-                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""}>Nome do Artista</Link></h3>
-                            <span className={`${styles.paintersDescription} ${satoshiLight.className}`}>Pintou mais de 200 obras</span>
+                            <h3 className={`${styles.paintersName} ${leotaroFree.className}`}><Link href={""} className="txtGold">Nome do Artista</Link></h3>
+                            <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}>Pintou mais de 200 obras</span>
                         </div>{/* painters_box */}
                     </div>{/* painters_wp */}
-                </div>
+                </div>{/* container */}
             </section>
            </main>
-
            <Footer />
         </>
 

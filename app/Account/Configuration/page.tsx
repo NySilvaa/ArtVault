@@ -58,7 +58,7 @@ export default function ConfigurationPage(){
                             </div>
                                 <span className={styles.warning}>* If any field is empty, the old value will be kept.</span>
 
-                            <button id={styles.changements}>Confirm Chagements</button>
+                            <button id={styles.changements}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-pencil-icon lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg> Confirm Chagements</button>
                         </div>{/* content-card */}
 
                             <div className={styles.content_card}>
@@ -178,7 +178,7 @@ export default function ConfigurationPage(){
                             </div>
                                 <span className={styles.warning}>* If any field is empty, the old value will be kept.</span>
 
-                            <button id={styles.changements}>Confirm Chagements</button>
+                            <button id={styles.changements}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-pencil-icon lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg> Confirm Chagements</button>
                         </div>{/* content-card */}
                     </div>{/* panel-content */}
                 </div>{/* containers */}
