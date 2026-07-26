@@ -17,30 +17,12 @@ body{overflow-x: hidden;}
 }
 
 .cursorDot {
-  width: 10px;
-  height: 10px;
-  background-color: #2c3c69;
-  position: fixed;
-  top: 0;
-  left: 0;
-  border-radius: 50%;
-  z-index: 9999;
-  pointer-events: none;
+  background-color: #2c3c69 !important;
 }
 
 .cursorOutline {
-  width: 40px;
-  height: 40px;
   background-color: rgb(44 60 105 / 0.3); /* Branco translúcido */
   border: 1px solid rgb(44 60 105 / 0.5);
-  position: fixed;
-  top: 0;
-  left: 0;
-  border-radius: 50%;
-  z-index: 9998;
-  pointer-events: none;
-  /* Centraliza o círculo em relação ao ponto */
-  transform: translate(-50%, -50%);
 }
 
 .btnBackStart{

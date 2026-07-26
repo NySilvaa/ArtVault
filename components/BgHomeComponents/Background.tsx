@@ -32,7 +32,6 @@ export default function Background() {
 
           <div className={styles.btnInteractive}>
                 <ul  className={styles.itemsMenu_btnInteractive}>
-                  <li><Link href={"/Products"}>Products</Link></li>
                   <li><Link href={"/Painters"}>Painters</Link></li>
                   <li><Link href={"/Paintings"}>Paintings</Link></li>
                   <li><Link href={"/AboutUs"}>About Us</Link></li>

@@ -5,9 +5,11 @@ export const metadata: Metadata = {
   description: "The Best Paintings of the World",
 };
 
-export default function PaintingsPage(){
-    return (
-        <p>Página das Pinturas</p>
+import PaintingsComponent from "@/components/PaintingComponents/PaintingComponent";
 
-    );
+
+export default function PaintingPage(){
+    return (<>
+        <PaintingsComponent />
+    </>)
 }

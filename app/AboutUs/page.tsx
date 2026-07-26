@@ -25,14 +25,13 @@ export default function AboutUsPage(){
 
           <div className={styles.btnInteractive}>
                 <ul  className={styles.itemsMenu_btnInteractive}>
-                  <li><Link href={"/Products"}>Products</Link></li>
                   <li><Link href={"/Painters"}>Painters</Link></li>
                   <li><Link href={"/Paintings"}>Paintings</Link></li>
                   <li><Link href={"/AboutUs"}>About Us</Link></li>
                 </ul>
           </div>{/* btnInteractive */}
 
-           <Link href={"/LogIn"} className={`loginBtn bgGold txtWhite txtCenter`}><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></Link>
+           <Link href={"/LogIn"} className={`loginAcessBtn bgGold txtWhite txtCenter`}><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></Link>
           </nav>
 
           <div className="aboutUsWp d_flex">

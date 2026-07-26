@@ -39,9 +39,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html
-      lang="pt-BR"
-    >
+    <html lang="pt-BR">
       <body className={satoshiRegular.className}>
         <div className={`cursorDot`}></div>
         <div className={`cursorOutline`}></div>

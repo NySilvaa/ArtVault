@@ -15,67 +15,67 @@ export default function ConfigurationPage(){
                 <div className={`${styles.container} container`}>
                     
                     <div className={styles.panel_content}>
-                        <div className={styles.content_card}>
-                            <div className={styles.card_header}>
-                                <div className={styles.card_icon}>
+                        <div className={`${`${styles.content_card} p_relative`} w100`}>
+                            <div className={`${styles.card_header} d_flex`}>
+                                <div className={`${styles.card_icon} d_flex`}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                                 </div>
-                                <h3 className={styles.card_title}>User Config</h3>
+                                <h3 className={`${styles.card_title} txtWhite`}>User Config</h3>
                             </div>
-                            <div className={styles.toggle_group}>
-                                <div className={styles.toggle_item}>
+                            <div className={`${styles.toggle_group} d_flex`}>
+                                <div className={`${styles.toggle_item} d_flexComplet`}>
                                 <div className={styles.toggle_info}>
-                                    <h4>Change UserName</h4>
+                                    <h4 className="txtWhite">Change UserName</h4>
                                     <p>Change Your Username</p>
                                 </div>
                                     <div className={styles.form}>
-                                        <input className={styles.input} placeholder="Type Your New Name" type="text" />
-                                        <span className={styles.input_border}></span>
+                                        <input className={`${styles.input} txtWhite w100`} placeholder="Type Your New Name" type="text" />
+                                        <span className={`${styles.input_border} p_absolute`}></span>
                                         </div>
                                 </div>
 
-                                <div className={styles.toggle_item}>
+                                <div className={`${styles.toggle_item} d_flexComplet`}>
                                 <div className={styles.toggle_info}>
-                                    <h4>Change E-mail</h4>
+                                    <h4 className="txtWhite">Change E-mail</h4>
                                     <p>Change Your E-mail</p>
                                 </div>
                                 <div className={styles.form}>
-                                        <input className={styles.input} placeholder="Type Your New E-mail" type="text" />
-                                        <span className={styles.input_border}></span>
+                                        <input className={`${styles.input} txtWhite w100`} placeholder="Type Your New E-mail" type="text" />
+                                        <span className={`${styles.input_border} p_absolute`}></span>
                                 </div>
                                 </div>
 
-                            <div className={styles.toggle_item}>
+                            <div className={`${styles.toggle_item} d_flexComplet`}>
                                 <div className={styles.toggle_info}>
-                                    <h4>Change Your Bio</h4>
+                                    <h4 className="txtWhite">Change Your Bio</h4>
                                     <p>What&apos;s on Your Mind?</p>
                                 </div>
-                                    <div className={styles.form}>
-                                        <input className={styles.input} placeholder="Type Your New Biography" type="text" />
-                                        <span className={styles.input_border}></span>
+                                    <div className={`${styles.form} p_relative`}>
+                                        <input className={`${styles.input} txtWhite w100`} placeholder="Type Your New Biography" type="text" />
+                                        <span className={`${styles.input_border} p_absolute`}></span>
                                         </div>
                                 </div>
                             </div>
-                                <span className={styles.warning}>* If any field is empty, the old value will be kept.</span>
+                                <span className={`${styles.warning} d_inlineBlock`}>* If any field is empty, the old value will be kept.</span>
 
-                            <button id={styles.changements}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-pencil-icon lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg> Confirm Chagements</button>
+                            <button id={`${styles.changements}`} className="p_absolute txtWhite bgGold"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-pencil-icon lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg> Confirm Chagements</button>
                         </div>{/* content-card */}
 
-                            <div className={styles.content_card}>
-                            <div className={styles.card_header}>
-                                <div className={styles.card_icon}>
+                            <div className={`${styles.content_card} p_relative`}>
+                            <div className={`${styles.card_header} d_flex`}>
+                                <div className={`${styles.card_icon} d_flex`}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                                 </div>
-                                <h3 className={styles.card_title}>User Photos</h3>
+                                <h3 className={`${styles.card_title} txtWhite`}>User Photos</h3>
                             </div>
-                            <div className={styles.toggle_group}>
-                                <div className={styles.toggle_item}>
+                            <div className={`${styles.toggle_group} d_flex`}>
+                                <div className={`${styles.toggle_item} d_flexComplet`}>
                                 <div className={styles.toggle_info}>
-                                    <h4>Change Main Photo</h4>
+                                    <h4 className="txtWhite">Change Main Photo</h4>
                                     <p>Select Your Best Photo</p>
                                 </div>
                                 
-                                        <button className={styles.file}>
+                                        <button className={`${styles.file} d_flex txtWhite txtCenter bgGold`}>
                                                 <svg
                                                     aria-hidden="true"
                                                     stroke="currentColor"
@@ -104,14 +104,14 @@ export default function ConfigurationPage(){
                                     </button>
                                 </div>
 
-                                <div className={styles.profile_wp}>
-                                    <div className={styles.toggle_item}>
+                                <div className={`${styles.profile_wp} d_flex`}>
+                                    <div className={`${`${styles.toggle_item} d_flexComplet`} w50`}>
                                         <div className={styles.toggle_info}>
-                                            <h4>Secondary Photo</h4>
+                                            <h4 className="txtWhite">Secondary Photo</h4>
                                             <p>Select the Second One</p>
                                         </div>
 
-                                            <button className={styles.file}>
+                                            <button className={`${styles.file} d_flex txtWhite txtCenter bgGold`}>
                                                 <svg
                                                     aria-hidden="true"
                                                     stroke="currentColor"
@@ -140,13 +140,13 @@ export default function ConfigurationPage(){
                                             </button>
                                     </div>
 
-                                    <div className={styles.toggle_item}>
+                                    <div className={`${styles.toggle_item} d_flexComplet`}>
                                         <div className={styles.toggle_info}>
-                                            <h4>Select Third Photo</h4>
+                                            <h4 className="txtWhite">Select Third Photo</h4>
                                             <p>Photos Complimentaries</p>
                                         </div>
 
-                                            <button className={styles.file}>
+                                            <button className={`${styles.file} d_flex txtWhite txtCenter bgGold`}>
                                                 <svg
                                                     aria-hidden="true"
                                                     stroke="currentColor"
@@ -176,9 +176,9 @@ export default function ConfigurationPage(){
                                     </div>
                                 </div>{/* profile-wp */}
                             </div>
-                                <span className={styles.warning}>* If any field is empty, the old value will be kept.</span>
+                                <span className={`${styles.warning} d_inlineBlock`}>* If any field is empty, the old value will be kept.</span>
 
-                            <button id={styles.changements}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-pencil-icon lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg> Confirm Chagements</button>
+                            <button id={`${styles.changements}`} className="p_absolute txtWhite bgGold"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-pencil-icon lucide-pencil p_relative"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg> Confirm Chagements</button>
                         </div>{/* content-card */}
                     </div>{/* panel-content */}
                 </div>{/* containers */}

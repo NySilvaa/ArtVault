@@ -8,6 +8,7 @@ export default function NotFound() {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsActive(true);
   }, []);
 

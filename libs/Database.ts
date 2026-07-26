@@ -1,17 +1,16 @@
 import { MongoClient } from "mongodb";
 
-if (!process.env.MONGODB_CONNECT) {
+if (!process.env.MONGODB_URI) {
   throw new Error('Erro ao Conectar-se com o Banco de Dados');
 }
 
-const uri = process.env.MONGODB_CONNECT;
+const uri = process.env.MONGODB_URI;
 const options = {};
 
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
 
 if (process.env.NODE_ENV === "development") {
-  // No desenvolvimento, usa uma variável global para preservar a conexão no Hot Reload
   const globalWithMongo = global as typeof globalThis & {
     _mongoClientPromise?: Promise<MongoClient>;
   };
@@ -23,7 +22,6 @@ if (process.env.NODE_ENV === "development") {
   clientPromise = globalWithMongo._mongoClientPromise;
   
 } else {
-  // Em produção, é melhor não usar variável global
   client = new MongoClient(uri, options);
   clientPromise = client.connect();
 }

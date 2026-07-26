@@ -1,14 +1,16 @@
 import { ObjectType, Field, ID, Resolver, Query, Mutation, Arg } from "type-graphql";
-import mongoose from "mongoose";
-import { MongooseResolver } from "./MongooseResolver";
+import clientPromise from "@/libs/Database";
+import { ObjectId } from "mongodb";
+import { jwtVerify } from "jose";
+import bcrypt from "bcryptjs";
 
 @ObjectType()
 export class User {
     @Field(() => ID)
-    id: number;
+    id: string;
 
     @Field()
-    name: string;
+    username: string;
 
     @Field()
     email: string;
@@ -28,13 +30,13 @@ export class UserResolver {
 
     @Mutation(() => User)
     async CreateUser(
-        @Arg("name") name: string,
+        @Arg("name") username: string,
         @Arg("email") email: string,
         @Arg("password") password: string 
     ): Promise<User> {
         const newUser: User = {
-            id: Math.floor(Math.random() * 1000),
-            name,
+            id: Math.floor(Math.random() * 1000).toString(),
+            username,
             email,
             password
         };
@@ -43,35 +45,66 @@ export class UserResolver {
         return newUser;
     }
 
-    @Mutation(() => User)
-    async GetUser(
-    ){
-        const mongoURL = "https://cloud.mongodb.com/v2/675b014fae7b8b237aeabd9b#/explorer/675b0572c53a27350477e9d4/artVault"
-
-        try {
-        // Conectando ao MongoDB
-        await mongoose.connect(mongoURL);
-        console.log('Conectado ao MongoDB com sucesso!');
-
-        // --- EXEMPLO 1: Buscar TODOS os usuários ativos ---
-        // O TypeScript já sabe que 'usuariosAtivos' é um array de IUser
-        const usuariosAtivos = await MongooseResolver.find({ username: "nycolas" });
-        console.log('Usuários ativos encontrados:', usuariosAtivos);
-
-
-        // // --- EXEMPLO 2: Buscar UM usuário específico pelo e-mail ---
-        // const emailBusca = 'usuario@email.com';
-        // const usuario = await User.findOne({ email: emailBusca });
+    @Query(() => User)
+    async CheckUserLogin(@Arg("email") email: string, @Arg("password") password: string) {
+    try {
+        const client = await clientPromise;
+        const db = client.db("artVault");
         
-        // if (usuario) {
-        // // O autocomplete vai funcionar aqui para 'name', 'email', etc.
-        // console.log(`Usuário encontrado: ${usuario.name}, Idade: ${usuario.age}`);
-        // } else {
-        // console.log('Usuário não encontrado.');
-        // }
+        const user = await db.collection("users").findOne({ email: email });
 
+        if (!user) {throw new Error("E-mail ou Senha Incorretos"); }
+
+        const pwUser = await bcrypt.compare(password, user.password);
+
+        if (!pwUser){throw new Error("E-mail ou Senha Incorretos");}
+
+        console.log("✅ Tudo certo, usuário autenticado!");
+
+        return {
+            id: user._id.toString(),
+            username: user.username,
+            email: user.email
+        };
+        
     } catch (error) {
-        console.error('Erro na operação:', error);
+        console.error("❌ Erro ao validar login:", error);
+        throw new Error(error.message || "Erro interno do servidor"); 
     }
+    }
+
+    @Query(() => User)
+    async getDataUser(@Arg("Id") id: string){
+        try {
+            // JWT E VERIFICAÇÃO DO ID SALVO 
+            const secretKey = process.env.JWT_SECRET; // PEGA A CHAVE DO .ENV
+            const secret = new TextEncoder().encode(secretKey); // CRIPTOGRAFA
+
+            if (!secretKey) { // VERIFICA SE EXISTE
+                console.error("JWT_SECRET não encontrada!");
+                return { error: "Erro de configuração no servidor" };
+            }
+
+            // VERIFICA A CORRETA
+            const { payload } = await jwtVerify(id, secret);
+
+            const userId = payload.id as string
+
+            // CONEXÃO NO BD
+            const client = await clientPromise;
+            const db = client.db("artVault");
+            const user = await db.collection("users").findOne({ _id: new ObjectId(userId) });
+
+            if (!user) {throw new Error("E-mail ou Senha Incorretos"); }
+
+            return {
+                username: user.username,
+                email: user.email,
+            };
+        
+        } catch (error: unknown) {
+            console.error("❌ Erro ao validar login:", error);
+            throw new Error(error.message || "Erro interno do servidor"); 
+        }
     }
 }

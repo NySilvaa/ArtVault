@@ -12,7 +12,6 @@ main.dashboardMain{overflow-y: hidden;}
 }
 
 .content_card {
-width: 100%;
   border-radius: 50px;
   background: linear-gradient(145deg, #212b46, #142451);
   padding: 30px 30px 110px 30px;
@@ -20,30 +19,19 @@ width: 100%;
   margin-bottom: 30px;
 }
 
-#mainImg, #secondImg, #thirdImg{
-  display: none;
-}
+#mainImg, #secondImg, #thirdImg{display: none;}
 
 .profile_wp{
-  display: flex;
   gap: 20px;
   justify-content: space-between;
-
-  .toggle_item{
-    width: 50%;
-  }
 }
 
 button.file {
   border: none;
-  display: flex;
   padding: 0.75rem 1.5rem;
-  background-color: #d4af37;
-  color: #ffffff;
   font-size: 0.75rem;
   line-height: 1rem;
   font-weight: 700;
-  text-align: center;
   cursor: pointer;
   text-transform: uppercase;
   vertical-align: middle;
@@ -55,29 +43,28 @@ button.file {
     0 4px 6px -1px #488aec31,
     0 2px 4px -1px #488aec17;
   transition: all 0.6s ease;
-}
 
-button.file:hover {
+  &:hover {
   box-shadow:
     0 10px 15px -3px #488aec4f,
     0 4px 6px -2px #488aec17;
 }
 
-button.file:focus,
-button.file:active {
-  opacity: 0.85;
-  box-shadow: none;
-}
+    &:focus,
+    &:active {
+      opacity: 0.85;
+      box-shadow: none;
+    }
 
-button.file svg {
+svg {
   width: 1.25rem;
   height: 1.25rem;
 }
 
+}
 
 span.warning{
     color: #bebebe9a;
-    display: inline-block;
     margin-top: 10px;
     margin-left: 10px;
 }
@@ -90,15 +77,14 @@ span.warning{
 }
 
 .card_header {
-  display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 14px;
 }
+
 .card_icon {
   width: 36px;
   height: 36px;
-  display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(
@@ -108,177 +94,69 @@ span.warning{
   );
   border-radius: 10px;
 }
+
 .card_icon svg {
   width: 18px;
   height: 18px;
   stroke: #a78bfa;
 }
+
 .card_title {
-  color: #fff;
   font-size: 1rem;
   font-weight: 600;
 }
+
 .card_text {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.9rem;
   line-height: 1.7;
 }
-.stats_grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 24px;
-}
-.stat_item {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
-  padding: 20px;
-  text-align: center;
-  transition: all 0.4s ease;
-}
-.stat_item:hover {
-  border-color: rgba(99, 102, 241, 0.4);
-  background: rgba(99, 102, 241, 0.08);
-}
-.stat_value {
-  color: #fff;
-  font-size: 1.75rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.stat_label {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.8rem;
-  margin-top: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.feature_list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.feature_list li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.95rem;
-}
-.feature_list li::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.progress_bar_container {
-  margin-top: 20px;
-}
-.progress_label {
-  display: flex;
-  justify-content: space-between;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.85rem;
-  margin-bottom: 8px;
-}
-.progress_bar {
-  height: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
-}
-.progress_fill {
-  height: 100%;
-  background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%);
-  border-radius: 10px;
-  transition: width 1s ease;
-}
-/* Toggle Switch */
+
 .toggle_group {
-  display: flex;
   flex-direction: column;
   gap: 16px;
   margin-top: 20px;
 }
+
 .toggle_item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 16px 20px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
 }
+
 .toggle_info h4 {
-  color: #fff;
   font-size: 0.95rem;
   font-weight: 600;
 }
+
 .toggle_info p {
   color: rgba(255, 255, 255, 0.4);
   font-size: 0.8rem;
   margin-top: 2px;
 }
-.toggle_switch {
-  position: relative;
-  width: 52px;
-  height: 28px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
-.toggle_switch.active {
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-}
-.toggle_switch::after {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 22px;
-  height: 22px;
-  background: #fff;
-  border-radius: 50%;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-.toggle_switch.active::after {
-  transform: translateX(24px);
-}
 
-/* From Uiverse.io by satyamchaudharydev */ 
+
 .form {
  --width-of-input: 400px;
  --border-height: 1px;
  --border-before-color: rgba(221, 221, 221, 0.39);
  --border-after-color: #5891ff;
  --input-hovered-color: #4985e01f;
- position: relative;
  width: var(--width-of-input);
 }
-/* styling of Input */
+
 .input {
- color: #fff;
  font-size: 0.9rem;
  background-color: transparent;
- width: 100%;
  box-sizing: border-box;
  padding-inline: 0.5em;
  padding-block: 0.7em;
  border: none;
  border-bottom: var(--border-height) solid var(--border-before-color);
 }
-/* styling of animated border */
+
 .input_border {
- position: absolute;
  background: var(--border-after-color);
  width: 0%;
  height: 2px;
@@ -286,23 +164,20 @@ span.warning{
  left: 0;
  transition: 0.3s;
 }
-/* Hover on Input */
-input:hover {background: var(--input-hovered-color);}
 
-input:focus {outline: none;}   
+input.input{
+  &:hover {background: var(--input-hovered-color);}
 
-input:focus ~ .input_border {width: 100%;}
+  &:focus {outline: none;}   
 
-.content_card{position: relative;}
+  &:focus ~ .input_border {width: 100%;}
+}
 
 button#changements {
-   position: absolute;
   bottom: 40px; right: 40px;
-    padding: 1em 2.5em;
+  padding: 1em 2.5em;
   border: 0;
   border-radius: 100px;
-  background-color: #d4af37;
-  color: #ffffff;
   font-weight: Bold;
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
@@ -312,7 +187,6 @@ button#changements {
 
     svg{
     vertical-align: middle;
-    position: relative;
     top: -2px;
   }
 

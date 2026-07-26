@@ -1,21 +1,23 @@
 "use server"
 
 import { redirect } from "next/navigation";
-import clientPromise from "@/libs/Database";
 import bcrypt from "bcryptjs";
 import z from "zod";
 import { cookies } from "next/headers";
+import clientPromise from "@/libs/Database";
 
 export async function CreateUser(prevState: any, formData: FormData) {
     const data = Object.fromEntries(formData.entries());
     const createUserSchema = z.object({
-        user: z.string().min(3),
-        email: z.string().email(),
-        password: z.string().min(6)
+        user: z.string().min(3, "Usuário Inválido. Tente Novamente"),
+        email: z.email("Email Incorreto. Tente Novamente"),
+        password: z.string().min(6, "Senha muito curta. Mínimo 6 caracteres")
     });
 
     const result = createUserSchema.safeParse(data);
-    if (!result.success) return { errors: result.error.flatten().fieldErrors };
+    if (!result.success){
+        return z.treeifyError(result.error).properties
+    }
 
     let success = false;
 
@@ -30,6 +32,9 @@ export async function CreateUser(prevState: any, formData: FormData) {
             email: result.data.email,
             password: hashedPassword,
             createdAt: new Date(),
+            artists_following: [],
+            complementary_imgs: [],
+            profile_photo: ""
         });
 
         success = true;
@@ -39,7 +44,7 @@ export async function CreateUser(prevState: any, formData: FormData) {
     }
 
     if (success) {
-        const cookie = await cookies()
+        const cookie = await cookies();
 
         cookie.set("emailSignUp", result.data.email, {
             httpOnly: true,

@@ -3,35 +3,30 @@ import { ApolloServer } from "@apollo/server";
 import { startServerAndCreateNextHandler } from "@as-integrations/next";
 import { buildSchema } from "type-graphql";
 import { NextRequest } from "next/server";
-import path from "path";
 
 import { UserResolver } from "@/app/api/graphql/Resolvers/UserResolver";
-import { MongooseResolver } from "./Resolvers/MongooseResolver";
+import path from "path";
 
-let schema: any;
-
-const getHandler = async () => {
-  if (!schema) {
-    schema = await buildSchema({
-      resolvers: [UserResolver, MongooseResolver],
-      emitSchemaFile: path.resolve(__dirname, "graphql/schemas/schemaGraph.gql"),
-      validate: false,
-    });
-  }
-
-  const server = new ApolloServer({
-    schema,
+const serverPromise = (async () => {
+  const schema = await buildSchema({
+    resolvers: [UserResolver],
+    validate: false,
+    emitSchemaFile: path.resolve(__dirname, "schemas/SchemaGraphQl.gql")
   });
 
-  return startServerAndCreateNextHandler<NextRequest>(server);
-};
+  return new ApolloServer({ schema, });
+})();
+
+const handlerPromise = serverPromise.then((server) => 
+  startServerAndCreateNextHandler<NextRequest>(server)
+);
 
 export async function GET(request: NextRequest) {
-  const handler = await getHandler();
+  const handler = await handlerPromise;
   return handler(request);
 }
 
 export async function POST(request: NextRequest) {
-  const handler = await getHandler();
+  const handler = await handlerPromise;
   return handler(request);
 }

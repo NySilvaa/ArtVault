@@ -1,0 +1,209 @@
+nav.navigation{
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  left: 50%; top: 10px;
+  transform: translateX(-50%);
+  z-index: 1;
+  max-width: 1300px;
+}
+
+.btnInteractive ul.itemsMenu_btnInteractive{
+    display: flex;
+    padding: 18px;
+    border-radius: 30px;
+    background-color: rgb(255 255 255 / 0.3);
+}
+
+.btnInteractive ul.itemsMenu_btnInteractive li a{
+    display: inline-block;
+    margin: 0 20px;
+    font: 0.9rem;
+    color: #c8c8c9d8;
+    position: relative;
+
+    &::before{
+      content: "";
+      width: 0;
+      height: 3px;
+      background-color: #D4AF37;
+      display: inline-block;
+      position: absolute;
+      transition: 0.4s;
+      left: 0; bottom: -3px;
+    }
+
+    &:hover::before{width: 80%;}
+
+    &:hover{color: #ffffff;}
+}
+
+.bgMainPainting{
+    width: 100%;
+    height: 115vh;
+    background-color: #0a142e;
+    padding: 50px;
+    position: relative;
+}
+
+.txtPainting1{
+    margin-top: 100px;
+}
+
+.txtPainting1, .txtPainting2{
+    max-width: 400px;
+    font-size: 0.9rem;
+}
+
+h3.titleTopPainting{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 2.6rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+h1.tittleTopMain{
+    text-align: center;
+    font-size: 7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    span{
+        color: #e5e7ebb0;
+    }
+}
+
+.lines{
+    text-align: center;
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+}
+
+.line1, .line2, .line3, .line4, .line5{
+    width: 2px;
+    height: 150px;
+    background-color: #eeeeee69;
+    margin-right: 10px;
+    display: inline-block;
+    position: absolute;
+    top: -25px;
+}
+
+.line1{
+    left: -40px;
+    rotate: 50deg;
+    top: -60px;
+    height: 200px;
+}
+
+.line2{
+    left: 90px;
+    rotate: 30deg;
+}
+
+.line3{left: 187px;}
+
+.line4{
+    left: 290px;
+    rotate: -30deg;
+}
+
+.line5{
+    left: 430px;
+    rotate: -50deg;
+    top: -60px;
+    height: 220px;
+}
+
+.wordsComplementaries{
+    margin: 170px auto 0 auto;
+    position: relative;
+    max-width: 800px;
+    font-size: 1.2rem;
+    
+    .word1{left: 0px;}
+
+    .word2{left: 200px;}
+
+    .word3{left: 380px;}
+
+    .word4{left: 540px;}
+
+    .word5{left: 720px;}
+}
+
+.word1, .word2, .word3, .word4, .word5{
+    position: absolute;
+    bottom: 0;
+    color: aliceblue;
+}
+
+.txtPainting2{
+    margin: 50px 0;
+    float: right;
+}
+
+.img1, .img2, .img3, .img4{position: absolute;}
+
+.img1{right: 100px; top: 120px;}
+
+.img2{left: 90px; bottom: 100px;}
+
+.img3{
+    left: 50%; bottom: 90px;
+    transform: translateX(-50%);
+    object-fit: cover;
+}
+
+.img4{
+    right: 100px; bottom: 90px;
+}
+
+.descriptionArt{
+    margin-top: 400px;
+    padding-bottom: 40px;
+
+    .container{
+        justify-content: space-between;
+    }
+}
+
+.descArt1{
+    .artworkName{
+        font-size: 3rem;
+    }
+
+    p.creatorName{
+        font-size: 0.9rem;
+        color: #787878;
+        margin-top: 30px;
+    }
+}
+
+.descArt2{
+    max-width: 400px;
+}
+
+h1.textReveal{
+    font-size: 5rem;
+    color: #0a142e;
+    text-transform: uppercase; 
+}
+
+.scrollTextSection{
+    margin-top: 80px;
+}
+
+.galleryTransitionSection{
+    position: relative;
+    height: 85vh;
+}
+
+.boxGallery{
+    overflow: hidden;
+}

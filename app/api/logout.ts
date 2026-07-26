@@ -6,6 +6,6 @@ import { redirect } from "next/navigation";
 export default async function logout(){
     const cookie = await cookies();
 
-    cookie.delete("user");
+    cookie.delete("token");
     redirect("/LogIn");
 }

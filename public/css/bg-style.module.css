@@ -1,4 +1,9 @@
-.homeBg{background-color: #98c0c2; position: relative; cursor: pointer;}
+.homeBg{
+  background-color: #98c0c2; 
+  position: relative; 
+  cursor: pointer;
+  height: 100vh;
+}
 
 nav.navigation{
   width: 100%;

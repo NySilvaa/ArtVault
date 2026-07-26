@@ -5,12 +5,17 @@ import styles from "@/public/css/account.module.css";
 import { satoshiLight } from "@/app/layout";
 import Link from "next/link";
 
-export default function AccountConfig() {
+interface User{
+  username: string
+  email: string
+}
+
+export default function AccountConfig({ user }: {user: User}){
   return (
         <section className={styles.dashboard_content}>
           <div className={`container ${styles.container_dash}`}>
             <div className={styles.dash_description}>
-            <h2>Productions Partners</h2>
+            <h2>Welcome, {user.username}</h2>
 
             <p className={`${styles.desc} ${satoshiLight.className}`}>Full sorvicc croativc açonoy that provides a one stop sñcp fcr all social media content needs.</p>
 
