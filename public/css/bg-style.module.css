@@ -81,7 +81,6 @@ nav.navigation{
   height: 2.5em;
   transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  z-index: 4;
 }
 
 .line {
@@ -113,6 +112,7 @@ aside.menu{
   transition: 0.67s;
   overflow: hidden;
   opacity: 0;
+  z-index: 4;
 
   ul{
     margin-top: 130px;

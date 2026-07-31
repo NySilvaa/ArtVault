@@ -5,13 +5,14 @@ import bcrypt from "bcryptjs";
 import z from "zod";
 import { cookies } from "next/headers";
 import clientPromise from "@/libs/Database";
+import { NextRequest } from "next/server";
 
-export async function CreateUser(prevState: any, formData: FormData) {
+export async function CreateUser(prevState: any, formData: FormData, req: NextRequest) {
     const data = Object.fromEntries(formData.entries());
     const createUserSchema = z.object({
         user: z.string().min(3, "Usuário Inválido. Tente Novamente"),
         email: z.email("Email Incorreto. Tente Novamente"),
-        password: z.string().min(6, "Senha muito curta. Mínimo 6 caracteres")
+        password: z.string().min(8, "Senha muito curta. Mínimo 8 caracteres")
     });
 
     const result = createUserSchema.safeParse(data);
@@ -26,6 +27,11 @@ export async function CreateUser(prevState: any, formData: FormData) {
         const db = client.db("artVault");
 
         const hashedPassword = await bcrypt.hash(result.data.password, 10);
+
+        const emailPost = result.data.email
+
+       const emailExists = await db.collection("users").findOne({ email: emailPost});
+        if (emailExists) return {error: "E-mail Já Cadastrado"};
 
         await db.collection("users").insertOne({
             username: result.data.user,

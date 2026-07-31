@@ -2,17 +2,28 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 
 // FONTS E ESTILOS
 import { leotaroFree } from '@/app/layout';
 import styles from "@/public/css/signUp.module.css";
 
 //ACTIONS
-import { CreateUser }  from "@/app/actions/CreateUser"
+import { CreateUser } from "@/app/actions/CreateUser"
 
 const SingUpComponent: React.FC = () => {
   const [status, formStatus] = useActionState(CreateUser, null)
+  const [showModal, setShowModal] = useState(false);
+  
+  // Estado para rastrear o valor da senha em tempo real
+  const [password, setPassword] = useState("");
+
+  // Validação geral de todos os requisitos
+  const isPasswordValid = 
+    password.length >= 8 && 
+    /[A-Z]/.test(password) && 
+    /[a-z]/.test(password) && 
+    /[^A-Za-z0-9]/.test(password);
   
   return (
     <>
@@ -185,12 +196,73 @@ const SingUpComponent: React.FC = () => {
             </div>
 
             <div className={`${styles.signUp} ${styles.password} p_relative`}>
+            {showModal && (
+              <div className={styles.modalPw} id='modalPw' style={{ opacity: 1, transition: "1s" }}>
+                {/* O container principal (error_alert) muda a cor de borda/fundo sutilmente se válido */}
+                <div 
+                  className={styles.error_alert} 
+                  style={{ borderColor: isPasswordValid ? "#10B981" : undefined }}
+                >
+                  <div className={styles.flex}>
+                    <div className={styles.flex_shrink_0}>
+                      <svg 
+                        aria-hidden="true" 
+                        fill="currentColor" 
+                        viewBox="0 0 20 20" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        className={styles.error_svg}
+                        style={{ color: isPasswordValid ? "#10B981" : undefined }}
+                      >
+                        <path clipRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" fillRule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <div className={styles.error_prompt_container}>
+                      {/* Título com cor dinâmica */}
+                      <p 
+                        className={styles.error_prompt_heading} 
+                        style={{ color: isPasswordValid ? "#10B981" : undefined }}
+                      >
+                        {isPasswordValid
+                          ? "Your password is strong enough!"
+                          : "Your password isn't strong enough"}
+                      </p>
+                      <div className={styles.error_prompt_wrap}>
+                        <ul className={styles.error_prompt_list} role="list">
+                          
+                          <li style={{ color: password.length >= 8 ? "#10B981" : "#EF4444" }}>
+                            {password.length >= 8 ? "✓" : "✕"} At least 8 characters
+                          </li>
+
+                          <li style={{ color: /[^A-Za-z0-9]/.test(password) ? "#10B981" : "#EF4444" }}>
+                            {/[^A-Za-z0-9]/.test(password) ? "✓" : "✕"} At Least One Special Character (Ex.: @#$)
+                          </li>
+
+                          <li style={{ color: /[A-Z]/.test(password) ? "#10B981" : "#EF4444" }}>
+                            {/[A-Z]/.test(password) ? "✓" : "✕"} At Least One Capital Letter
+                          </li>
+
+                          <li style={{ color: /[a-z]/.test(password) ? "#10B981" : "#EF4444" }}>
+                            {/[a-z]/.test(password) ? "✓" : "✕"} At Least One Lowercase Letter
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
               <input
                 id="password"
                 type="password"
                 placeholder="Password"
                 name='password'
                 className='w100'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                onFocus={() => setShowModal(true)}
+                onBlur={() => setTimeout(() => setShowModal(false), 200)}
               />
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
               stroke="#212b46" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock-icon lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -199,6 +271,7 @@ const SingUpComponent: React.FC = () => {
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#212b46" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`lucide lucide-eye-icon lucide-eye  pwEye ${styles.pwEye}`}>
               <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
             </div>
+                 
           </div>
 
           <div className={`${styles.action} d_flexComplet`}>
@@ -212,4 +285,4 @@ const SingUpComponent: React.FC = () => {
   );
 }
 
-export default SingUpComponent
+export default SingUpComponent;

@@ -9,12 +9,13 @@ import "@/public/css/painting.css";
 import { leotaroFree, satoshiBold, satoshiLight } from "@/app/layout";
 import ScrollRevealText from "./ScrollRevealComponent";
 import GalleryTransition from "./GalleryTransitionComponent";
+import SlidePaintingComponent from "./SlidePaintingComponent";
 
 
 export default function PaintingsComponent(){
     const { scrollY } = useScroll()
 
-    const y = useTransform(scrollY, [240, 800], [-60, 400]);
+    const y = useTransform(scrollY, [240, 800], [40, 500]);
     const rotateY = useTransform(scrollY, [240, 800], [0, 180]);
     const grayscale = useTransform(scrollY, [240, 800], ['100%', '0%']);
 
@@ -105,20 +106,20 @@ export default function PaintingsComponent(){
                 <div className="container">
                     <section style={{ height: "60vh" }} />
                     <ScrollRevealText
-                        className="text-7xl font-bold max-w-7xl"
+                        className="text-7xl font-bold max-w-6xl"
                         text={`Every stroke remembers what words forget.`}
                     />
                     <section style={{ height: "75vh" }} />
 
                     <ScrollRevealText
-                        className="text-6xl font-bold max-w-4xl"
+                        className="text-7xl font-bold max-w-7xl"
                         text={`Art begins where certainty ends.`}
                     />
                     <section style={{ height: "75vh" }} />
 
                     <ScrollRevealText
-                        className="text-6xl font-bold max-w-4xl"
-                        text={`Some colors speak louder than voices,leaving emotions where words could never reach.`}
+                        className="text-8xl font-bold  max-w-7xl"
+                        text={`Some colors speak louder   than voices, leaving                 emotions where words         could never reach.`}
                     />
                     <section style={{ height: "70vh" }} />
                 </div>
@@ -126,7 +127,9 @@ export default function PaintingsComponent(){
 
                 <GalleryTransition />
 
-                    <section style={{ height: "70vh" }} />
+                <section style={{ height: "60vh" }} />
+
+                <SlidePaintingComponent />
        </main>
     </>);
 }

@@ -197,6 +197,10 @@ h1.textReveal{
 
 .scrollTextSection{
     margin-top: 80px;
+
+    .container{
+        max-width: 1500px;
+    }
 }
 
 .galleryTransitionSection{
@@ -206,4 +210,129 @@ h1.textReveal{
 
 .boxGallery{
     overflow: hidden;
+}
+
+.category{
+    padding: 4px 6px; 
+    margin-bottom: 7px;
+}
+
+.titleArtWork{
+    margin-bottom: 4rem;
+    font-size: 3rem;
+}
+
+.slideBox{
+    margin-top: 50px;
+}
+
+.slideComponent{
+    margin-bottom: 60px;
+}
+
+.btnSlide{
+    margin-top: 70px;
+}
+
+.infoAutorTop{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.autorName{
+    font-size: 1.3rem;
+    color: #787878;
+}
+
+.autorPicture{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.nameTittle1{
+    position: absolute;
+    left: -20%; top: 12%;
+    
+    .titleArtWork{
+        max-width: 500px;
+        font-size: 9rem;
+        word-break: break-all;
+        line-height: 120px;
+    }
+}
+
+.nameTittle2{
+    position: absolute;
+    right: -5%; bottom: 10%;
+
+    .titleArtWork{
+        max-width: 520px;
+        font-size: 7rem;
+        word-break: break-all;
+        line-height: 120px;
+    }
+}
+
+.nameTittle3{
+    position: absolute;
+    right: -15%; bottom: -7%;
+
+    .titleArtWork{
+        max-width: 520px;
+        font-size: 9rem;
+        word-break: break-all;
+        line-height: 120px;
+    }
+}
+
+.changeArtWorker button{
+    padding: 12px 23px;
+    position: absolute;
+    left: -15%; bottom: 10%;
+    background: linear-gradient(45deg, #D4AF37 30%, #d4a611);
+    display: flex;
+    box-shadow: 2px 3px 5px rgba(142, 142, 142, 0.747);
+}
+
+.modalBoxPainting{
+    min-height: 500px;
+    min-width: 700px;
+    padding: 3rem;
+}
+
+.tittleBoxPainting{
+    border-bottom: 2px solid #bfbfbfc0;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
+    h2{
+        letter-spacing: 1px;
+    }
+}
+
+.paintingBox{
+    margin-bottom: 30px;
+
+    input[type=text]{
+        margin-top: 4px;
+        height: 44px;
+        padding-left: 8px;
+    }
+}
+
+.tittleResultsPaintings{
+    margin-bottom: 10px;
+    color: #0f2457;
+}
+
+.resultsPainting{
+    margin-bottom: 20px;
+}
+
+.initialsPainting{
+    margin-right: 10px;
 }

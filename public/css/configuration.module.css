@@ -136,7 +136,6 @@ span.warning{
   margin-top: 2px;
 }
 
-
 .form {
  --width-of-input: 400px;
  --border-height: 1px;
@@ -184,9 +183,11 @@ button#changements {
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-size: 0.8rem;
 
     svg{
     vertical-align: middle;
+    display: inline-block;
     top: -2px;
   }
 

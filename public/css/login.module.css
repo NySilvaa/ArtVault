@@ -178,7 +178,7 @@ body {
 .mainLogin .heroWrapperLogIn .hero {
   top: 50%;
   transform: translateY(-50%);
-  left: 5vw;
+  left: 8vw;
   z-index: 2;
 }
 

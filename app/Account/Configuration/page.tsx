@@ -140,7 +140,7 @@ export default function ConfigurationPage(){
                                             </button>
                                     </div>
 
-                                    <div className={`${styles.toggle_item} d_flexComplet`}>
+                                    <div className={`${styles.toggle_item} d_flexComplet w50`}>
                                         <div className={styles.toggle_info}>
                                             <h4 className="txtWhite">Select Third Photo</h4>
                                             <p>Photos Complimentaries</p>

@@ -143,6 +143,65 @@
   transform: translate(100%, -50%);
 }
 
+.modalPw{
+  width: 320px;
+  height: auto;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: absolute;
+  left: -50%; top: -315%;
+  transition: 0.5s;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex_shrink_0 {
+  flex-shrink: 0;
+}
+
+.error_alert {
+  border-radius: 0.375rem;
+  padding: 1rem;
+  background-color: rgb(254 242 242);
+}
+
+.error_svg {
+  color: #F87171;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.error_prompt_heading {
+  color: #991B1B;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: bold;
+}
+
+.error_prompt_container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.25rem;
+}
+
+.error_prompt_wrap {
+  margin-top: 0.5rem;
+  color: #B91C1C;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.error_prompt_list {
+  padding-left: 1.25rem;
+  margin-top: 0.25rem;
+  list-style-type: disc;
+}
+
 .registerWrapperSignUp a.register {
   font-weight: bold;
   color: var(--color-blue-light-singUp);
