@@ -29,18 +29,3 @@ if(pageCurrent == "LogIn")
 }
 
 changeFeaturesLoginAndSignUp();
-
-// ALTERAR DE PW PARA TEXT NO INPUT
-const btnEye = document.querySelector(".pwEye");
-const pwField = document.getElementById("password")
-let controlLogin = true
-
-btnEye.addEventListener("click", ()=>{
-  if(controlLogin){
-    pwField.setAttribute("type", "text")
-    controlLogin = false
-  }else{
-    pwField.setAttribute("type", "password")
-    controlLogin = true
-  }
-})

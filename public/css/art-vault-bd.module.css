@@ -38,7 +38,6 @@ body{overflow-x: hidden;}
     justify-content: center;
     align-items: center;
     transition: 0.4s;
-    opacity: 0;
 
     &:hover{background-color: #e2bf4a;}
 }
@@ -583,7 +582,7 @@ section.singUpPlatforms{
 }
 
 .footer_artVault {
-	bottom:0;
+	bottom: -5px;
 	left:0;
 	position:fixed;
     width: 100%;

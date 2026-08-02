@@ -48,8 +48,8 @@ export default function ModalChatComponent({ isOpen, onClose }: ModalChatProps) 
                 <p className={styles.text_secondary}>to help us serve you better</p>
             </div>
 
-            <div className={styles.rating_stars_container}>
-                <input value="star_5" name="star" id={styles.star_5} type="radio" />
+            <div className={`${styles.rating_stars_container}`}>
+               <input value="star_5" name="star" id="star_5" type="radio" />
                 <label htmlFor="star_5" className={styles.star_label}>
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -58,7 +58,8 @@ export default function ModalChatComponent({ isOpen, onClose }: ModalChatProps) 
                     ></path>
                 </svg>
                 </label>
-                <input value="star_4" name="star" id={styles.star_4} type="radio" />
+
+               <input value="star_4" name="star" id="star_4" type="radio" />
                 <label htmlFor="star_4" className={styles.star_label}>
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -67,7 +68,8 @@ export default function ModalChatComponent({ isOpen, onClose }: ModalChatProps) 
                     ></path>
                 </svg>
                 </label>
-                <input value="star_3" name="star" id={styles.star_3} type="radio" />
+
+                <input value="star_3" name="star" id="star_3" type="radio" />
                 <label htmlFor="star_3" className={styles.star_label}>
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -76,7 +78,8 @@ export default function ModalChatComponent({ isOpen, onClose }: ModalChatProps) 
                     ></path>
                 </svg>
                 </label>
-                <input value="star_2" name="star" id={styles.star_2} type="radio" />
+
+                <input value="star_2" name="star" id="star_2" type="radio" />
                 <label htmlFor="star_2" className={styles.star_label}>
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -85,7 +88,8 @@ export default function ModalChatComponent({ isOpen, onClose }: ModalChatProps) 
                     ></path>
                 </svg>
                 </label>
-                <input value="star_1" name="star" id={styles.star_1} type="radio" />
+
+                <input value="star_1" name="star" id="star_1" type="radio" />
                 <label htmlFor="star_1" className={styles.star_label}>
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path

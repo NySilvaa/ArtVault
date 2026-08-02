@@ -1,3 +1,4 @@
+import CursorComponent from "@/components/CursorComponent";
 import "./globals.css";
 import localFont from "next/font/local"
 import Script from "next/script";
@@ -41,8 +42,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={satoshiRegular.className}>
-        <div className={`cursorDot`}></div>
-        <div className={`cursorOutline`}></div>
+          <CursorComponent />
 
               {children}
             <Script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></Script>

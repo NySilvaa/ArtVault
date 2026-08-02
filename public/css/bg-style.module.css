@@ -64,7 +64,6 @@ nav.navigation{
   top: 550px;
   transition: 0.4s;
   letter-spacing: 1px;
-  z-index: 3;
 
   &:hover{background-color: rgb(255 255 255 / 0.6);}
 
@@ -72,7 +71,14 @@ nav.navigation{
 
 /******* ESTILIZAÇÃO DO MENU ********/
 .hamburger {
-  cursor: pointer;   
+  cursor: pointer;
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    z-index: 100000;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .hamburger input {display: none;}
@@ -102,20 +108,24 @@ nav.navigation{
   stroke-dashoffset: -32.42;
 }
 
-aside.menu{
-  position: absolute;
-  right: 0; top: 0;
-  width: 0;
+.menu {
+  position: fixed;
+  top: -10px;
+  right: 0;
+  width: min(900px, 100vw);
   height: 100vh;
-  background-color: #E5E7EB;
-  padding: 20px;
-  transition: 0.67s;
-  overflow: hidden;
+  background: linear-gradient(155deg, #212B46, #374772);
+  z-index: 99999;
+  transform: translateX(100%);
   opacity: 0;
-  z-index: 4;
+  padding: 0 20px;
+
+  transition:
+    transform .67s ease,
+    opacity .67s ease;
 
   ul{
-    margin-top: 130px;
+    margin-top: 60px;
 
     li a{
       display: block;
@@ -123,16 +133,25 @@ aside.menu{
       font-style: italic;
       font-size: 5rem;
       margin-bottom: 30px;
-      color: #212B46;
+      color: #D4AF37;
       letter-spacing: 2px;
       font-weight: bold;
       transition: 0.4s;
 
       &:hover{
-        color: #374772;
+        color: #ffd754;
       }
     }
   }
+}
+
+.hamburger.open svg {
+  transform: rotate(-45deg);
+}
+
+.hamburger.open .line_top_bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
 }
 
 /******* SEÇÃO DAS DESCRIÇÕES DA IMG ********/
@@ -148,7 +167,7 @@ section.descriptionImg_first, section.descriptionImg_second{
 
 section.descriptionImg_first{left: 50px; bottom: 90px;}
 
-section.descriptionImg_second{right: 50px; top: 45%;}
+section.descriptionImg_second{right: 50px; top: 40%;}
 
 .notification {
   padding: 6px 4px 20px 4px;

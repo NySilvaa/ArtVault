@@ -118,7 +118,7 @@ export default function SlidePaintingComponent() {
   const { leftTittle, topTittle, rightTittle } = formatarTituloObra(nomeCompleto);
 
   return (
-    <section className="slideComponent ">
+    <section className="slideComponent light-section">
         <div className="container  ">
                 <div className="infoAutorTop">
                     <Image src={"/images/profile1.jpg"} width={100} height={100} alt='Picture Profile' className='autorPicture'></Image>

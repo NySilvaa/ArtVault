@@ -15,6 +15,7 @@ import Footer from "@/components/ArtBdComponents/Footer"
 // FONTS E ESTILOS
 import { leotaroFree, satoshiLight } from "../layout"
 import styles from "@/public/css/art-vault-bd.module.css"
+import BtnBackToStart from "@/components/ArtBdComponents/BtnBackToStartComponent"
 
 export const metadata: Metadata = {
   title: "Art Vault - Your Art Gallery",
@@ -22,26 +23,25 @@ export const metadata: Metadata = {
 };
 
 export default function ArtVault_BrandingPage(){
+
     return (<>
         <main className={styles.artBd}>
-            <div className={`${styles.btnBackStart} btnBackStart`}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#212b46" strokeWidth="2" 
-                strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-icon lucide-arrow-up"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
-            </div>{/* btnBackStart */}
 
             <Suspense fallback={"Carregando..."}>
                 <ArtVaultBg />
             </Suspense>
 
+            <BtnBackToStart />
+            
             <ScrollLetters
                 texts={['Art That Moves The Gaze -', 'Where The Stroke Comes To Life -']} 
                 velocity={100}
                 className={`custom-scroll-text ${leotaroFree.className}`}
                 />
 
-            <section className={styles.insideGallery}><div className="container"><p className={satoshiLight.className}> (Inside Vault Art Gallery)</p></div></section>
+            <section className={`${styles.insideGallery}`}><div className="container"><p className={satoshiLight.className}> (Inside Vault Art Gallery)</p></div></section>
 
-            <section className={styles.description_artVault}>
+            <section className={`${styles.description_artVault}`}>
                 <div className="container">
                     <section className={`${styles.descText} ${satoshiLight.className}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" 
@@ -73,11 +73,11 @@ export default function ArtVault_BrandingPage(){
                 />
             </section>
 
-            <section className={styles.scrollImgs}>
+            <section className={`${styles.scrollImgs}`}>
                 <ScrollImgs />
             </section>
 
-            <section className={styles.singUpPlatforms}>
+            <section className={`${styles.singUpPlatforms} light-section`}>
                 <div className="container">
                     <h1 className={leotaroFree.className}>The Whole Gallery, Just a Tap Away.</h1>
 

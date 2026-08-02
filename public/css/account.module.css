@@ -261,18 +261,19 @@ span.content_color_desc{
   fill: rgb(210, 210, 210);
   width: 50px;
   height: auto;
+  transition: fill 0.2s ease;
 }
 
 .rating_stars_container input {
-  appearance: unset;
+  display: none;
 }
 
-.rating_stars_container input:hover ~ .star_label svg {
-  fill: #fde080
+.rating_stars_container input:hover ~ .star_label svg,
+.rating_stars_container input:checked ~ .star_label svg {
+  fill: #d4af37;
 }
 
 .rating_stars_container input:checked ~ .star_label svg {
-  fill: #d4af37;
   animation: slide-in-fwd-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 

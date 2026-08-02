@@ -26,7 +26,7 @@ export default function RotatingDeck() {
   return (
     <div 
       ref={containerRef} 
-      className="relative w-full" 
+      className="relative w-full light-section" 
       // Altura total dinâmica garante que o scroll demore o tempo exato para todas as transições
       style={{ height: `${galleryItems.length * 100}vh` }}
     >

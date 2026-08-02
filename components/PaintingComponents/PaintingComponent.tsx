@@ -84,7 +84,7 @@ export default function PaintingsComponent(){
                     </div>
             </section>
 
-            <section className="descriptionArt">
+            <section className="descriptionArt light-section">
                 <div className="container d_flex">
                     <div className="descArt1">
                         <h3 className={`artworkName txtGold ${satoshiBold.className}`}>Lorem Ipsum</h3>
@@ -102,11 +102,11 @@ export default function PaintingsComponent(){
                 </div>
             </section>
 
-            <section className="scrollTextSection">
-                <div className="container">
+            <section className="scrollTextSection light-section">
+                <div className="container light-section">
                     <section style={{ height: "60vh" }} />
                     <ScrollRevealText
-                        className="text-7xl font-bold max-w-6xl"
+                        className="text-7xl font-bold max-w-6xl "
                         text={`Every stroke remembers what words forget.`}
                     />
                     <section style={{ height: "75vh" }} />

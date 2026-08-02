@@ -152,8 +152,9 @@
   flex-direction: column;
   gap: 1rem;
   position: absolute;
-  left: -50%; top: -315%;
+  left: -55%; top: -315%;
   transition: 0.5s;
+  z-index: 999;
 }
 
 .flex {
@@ -214,7 +215,6 @@
 }
 
 .heroWrapperSignUp {
-  z-index: 1;
   background: var(--color-blue-deep-singUp);
   width: 40%;
   min-width: 400px;
@@ -293,7 +293,6 @@
 }
 
 .password svg.pwEye{
-   position: absolute;
   right: 1em;
   top: 50%;
   transform: translateY(-50%); 

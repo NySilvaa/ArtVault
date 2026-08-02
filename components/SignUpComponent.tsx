@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useActionState, useState } from "react";
+import Script from 'next/script';
 
 // FONTS E ESTILOS
 import { leotaroFree } from '@/app/layout';
@@ -10,6 +11,7 @@ import styles from "@/public/css/signUp.module.css";
 
 //ACTIONS
 import { CreateUser } from "@/app/actions/CreateUser"
+import BtnEyePwComponent from './BtnEyePwComponent';
 
 const SingUpComponent: React.FC = () => {
   const [status, formStatus] = useActionState(CreateUser, null)
@@ -198,7 +200,6 @@ const SingUpComponent: React.FC = () => {
             <div className={`${styles.signUp} ${styles.password} p_relative`}>
             {showModal && (
               <div className={styles.modalPw} id='modalPw' style={{ opacity: 1, transition: "1s" }}>
-                {/* O container principal (error_alert) muda a cor de borda/fundo sutilmente se válido */}
                 <div 
                   className={styles.error_alert} 
                   style={{ borderColor: isPasswordValid ? "#10B981" : undefined }}
@@ -213,11 +214,11 @@ const SingUpComponent: React.FC = () => {
                         className={styles.error_svg}
                         style={{ color: isPasswordValid ? "#10B981" : undefined }}
                       >
-                        <path clipRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" fillRule="evenodd"></path>
+                        {isPasswordValid ? <path clipRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fillRule="evenodd"></path> :
+                         <path clipRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" fillRule="evenodd"></path>}
                       </svg>
                     </div>
                     <div className={styles.error_prompt_container}>
-                      {/* Título com cor dinâmica */}
                       <p 
                         className={styles.error_prompt_heading} 
                         style={{ color: isPasswordValid ? "#10B981" : undefined }}
@@ -253,23 +254,11 @@ const SingUpComponent: React.FC = () => {
               </div>
             )}
 
-              <input
-                id="password"
-                type="password"
-                placeholder="Password"
-                name='password'
-                className='w100'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                onFocus={() => setShowModal(true)}
-                onBlur={() => setTimeout(() => setShowModal(false), 200)}
-              />
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-              stroke="#212b46" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock-icon lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              <label htmlFor="password"></label>
-
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#212b46" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`lucide lucide-eye-icon lucide-eye  pwEye ${styles.pwEye}`}>
-              <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+            <BtnEyePwComponent pageStyle={styles.pwEye}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onFocus={() => setShowModal(true)}
+                  onBlur={() => setTimeout(() => setShowModal(false), 200)} />
             </div>
                  
           </div>
@@ -281,6 +270,8 @@ const SingUpComponent: React.FC = () => {
           </div>
         </form>
       </main>
+
+      <Script src='/js/login.interactions.js'></Script>
     </>
   );
 }

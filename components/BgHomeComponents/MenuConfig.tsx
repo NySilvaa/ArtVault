@@ -1,15 +1,40 @@
 "use client";
 
-import styles from "@/public/css/bg-style.module.css";
+import { useState, useRef, useEffect, useCallback } from "react";
 
-export default function MenuConfig(){
-  return (<>
-    <label className={`${styles.hamburger} hamburguer`}>
-      <input type="checkbox" />
-      <svg viewBox="0 0 32 32">
-        <path className={`${styles.line} line ${styles.line_top_bottom} line_top_bottom`} d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
-        <path className={`${styles.line} line`} d="M7 16 27 16"></path>
-      </svg>
-    </label>
-  </>)
+export function useMenuConfig() {
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef(null);
+
+  const toggle = useCallback(() => setIsOpen((prev) => !prev), []);
+  const close = useCallback(() => setIsOpen(false), []);
+
+  useEffect(() => {
+    function handleInteraction(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        close();
+      }
+    }
+
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        close();
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleInteraction);
+      document.addEventListener("touchstart", handleInteraction);
+      
+      document.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleInteraction);
+      document.removeEventListener("touchstart", handleInteraction);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, close]);
+
+  return { isOpen, toggle, close, ref };
 }

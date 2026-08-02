@@ -19,7 +19,7 @@ export default function ScrollImgs() {
 
   return (
     <section 
-      className={`${styles.colScroll} ${leotaroFree.className}`} 
+      className={`${styles.colScroll} ${leotaroFree.className} bg`} 
       ref={containerRef} 
       style={{ overflow: 'hidden' }}
     >
