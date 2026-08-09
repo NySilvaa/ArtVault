@@ -1,3 +1,58 @@
+.contemplation-active{display: none;}
+
+.closeCM{
+  position: fixed;
+  top: 40px; right: 100px;
+}
+
+.btnCloseContemplationMode{
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+    cursor: pointer;
+  transition: 0.5s;
+
+  &:hover svg{
+    stroke: #f00;
+  }
+}
+
+.tooltipCloseContemplationMode {
+  width: 200px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  background: #D4AF37;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  transition: opacity 0.3s, visibility 0.3s, top 0.3s, background 0.3s;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tooltipCloseContemplationMode::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent #374772 transparent;
+  transform: translateX(-50%);
+}
+
+.btnCloseContemplationMode:hover .tooltipCloseContemplationMode {
+  top: 140%;
+  opacity: 1;
+  visibility: visible;
+  background: #212B46;
+  transform: translate(-50%, -5px);
+}
+
 .homeBg{
   background-color: #98c0c2; 
   position: relative; 
@@ -23,6 +78,7 @@ nav.navigation{
     padding: 18px;
     border-radius: 30px;
     background-color: rgb(255 255 255 / 0.3);
+    box-shadow: 3px 5px 6px rgba(115, 115, 115, 0.267);
 }
 
 .btnInteractive ul.itemsMenu_btnInteractive li a{

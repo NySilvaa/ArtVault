@@ -28,18 +28,17 @@ export default function LettersInitial({ textControls, imageControls }: LettersI
     }
   };
 
-  // Variants para o efeito de "Empurrar"
   const imageVariants = {
     hidden: { 
       opacity: 0,
-      width: 0,      // Começa com largura zero para o texto estar colado
+      width: 0,   
       marginLeft: 0,
       marginRight: 0
     },
     visible: { 
       opacity: 1, 
-      width: 170,    // Expande para a largura da imagem, empurrando o texto
-      marginLeft: 15, // Adiciona o gap dinamicamente
+      width: 170,
+      marginLeft: 15, 
       marginRight: 15,
       transition: { 
         width: { duration: 0.8, ease: [0.33, 1, 0.68, 1] },

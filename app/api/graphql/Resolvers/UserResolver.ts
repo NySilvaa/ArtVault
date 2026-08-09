@@ -1,8 +1,9 @@
 import { ObjectType, Field, ID, Resolver, Query, Mutation, Arg } from "type-graphql";
-import clientPromise from "@/libs/Database";
+import {getMongoClient} from "@/libs/Database";
 import { ObjectId } from "mongodb";
 import { jwtVerify } from "jose";
 import bcrypt from "bcryptjs";
+import { checkLoginRateLimit, clearLoginRateLimit } from "../../rateLimitingLogin";
 
 @ObjectType()
 export class User {
@@ -47,30 +48,41 @@ export class UserResolver {
 
     @Query(() => User)
     async CheckUserLogin(@Arg("email") email: string, @Arg("password") password: string) {
-    try {
-        const client = await clientPromise;
-        const db = client.db("artVault");
-        
-        const user = await db.collection("users").findOne({ email: email });
+        try {
+            // 1. Chama a nossa função externa. 
+            // Se o usuário estiver bloqueado, a função lança o erro e o código cai direto no "catch" abaixo.
+            const remaining = await checkLoginRateLimit(email);
 
-        if (!user) {throw new Error("E-mail ou Senha Incorretos"); }
+            // 2. Se o código chegou aqui, o usuário está liberado para tentar logar
+            const client = await getMongoClient();
+            const db = client.db("artVault");
+            
+            const user = await db.collection("users").findOne({ email: email });
 
-        const pwUser = await bcrypt.compare(password, user.password);
+            if (!user) { 
+                throw new Error(`E-mail ou Senha Incorretos. Tentativas restantes: ${remaining}`); 
+            }
 
-        if (!pwUser){throw new Error("E-mail ou Senha Incorretos");}
+            const pwUser = await bcrypt.compare(password, user.password);
 
-        console.log("✅ Tudo certo, usuário autenticado!");
+            if (!pwUser) { 
+                throw new Error(`E-mail ou Senha Incorretos. Tentativas restantes: ${remaining}`); 
+            }
 
-        return {
-            id: user._id.toString(),
-            username: user.username,
-            email: user.email
-        };
-        
-    } catch (error) {
-        console.error("❌ Erro ao validar login:", error);
-        throw new Error(error.message || "Erro interno do servidor"); 
-    }
+            await clearLoginRateLimit(email);
+
+            console.log("✅ Tudo certo, usuário autenticado!");
+
+            return {
+                id: user._id.toString(),
+                username: user.username,
+                email: user.email
+            };
+            
+        } catch (error) {
+            console.error("Erro ao validar login:", error);
+            throw new Error(error.message || "Erro interno do servidor"); 
+        }
     }
 
     @Query(() => User)
@@ -91,7 +103,7 @@ export class UserResolver {
             const userId = payload.id as string
 
             // CONEXÃO NO BD
-            const client = await clientPromise;
+            const client = await getMongoClient();
             const db = client.db("artVault");
             const user = await db.collection("users").findOne({ _id: new ObjectId(userId) });
 

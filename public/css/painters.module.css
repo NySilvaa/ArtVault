@@ -40,6 +40,7 @@ p.paintersDescriptionTittle{
 .paintersSection{margin-top: 70px;}
 
 .painters_wp{
+    flex-wrap: wrap;
     justify-content: space-around;
     gap: 30px;
     margin-bottom: var(--pixel50);
@@ -47,11 +48,16 @@ p.paintersDescriptionTittle{
 
 .painters_box{
     width: 25%;
+    margin-bottom: 20px;
     
     figure{
         margin-bottom: 10px;
 
-        img{object-fit: cover; border-radius: 10px;}
+        img{
+            object-fit: cover; 
+            border-radius: 10px; 
+            height: 340px;
+        }
     }
 }
 

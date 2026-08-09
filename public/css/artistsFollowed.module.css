@@ -26,118 +26,82 @@ main.dashboardMain{overflow-y: hidden;}
 .artists_wp{
     width: 100%;
     margin: 40px 0;
+}
+
+.container_artists{
     display: flex;
-    gap: 20px;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
-.artists_box{
-    padding: 7px;
-    width: 25%;
-    height: 370px;
-    border: 2px solid #797979;
-    border-radius: 30px;
-    position: relative;
+.border{
+  height: 310px;
+  width: 240px;
+  background: transparent;
+  border-radius: 10px;
+  transition: border 1s;
+  position: relative;
+
+    &:hover{border: 1px solid white}
+  
+}
+
+.cardArtists{
+    height: 320px;
+    width: 250px;
+    background: grey;
+    border-radius: 10px;
+    transition: background 0.8s;
     overflow: hidden;
-    background-color: #212b46;
-
-    &:hover {
-        figure img{height: 150px;}
-        .data_artist{background: transparent;}
-        h3,  span.user_followed > svg, span.count_pieces > svg{color: #d4af37;}
-         span.user_followed, span.count_pieces, span.artist_desc{color: #929292;}
-    }
-
-    figure img{
-        max-width: 100%;
-        object-fit: cover;
-        z-index: 1;
-        border-radius: 20px;
-    }
-}
-
-.data_artist h3, .data_artist span.artist-desc, span.user_followed, span.count_pieces,
- span.user_followed > svg, span.count_pieces > svg, .artists_box figure img{
-    transition: 0.5s;
- }
-
-.data_artist{
-    width: calc(100% - 14px);
-    border-radius: 20px;
-    position: absolute;
-    left: 50%; bottom: 7px;
-    transform: translateX(-50%);
-    padding: 15px;
-    background: linear-gradient(to top, #ccc, transparent);
-
-    h3{
-        color: #212b46;
-        font-size: 1.5rem;
-        margin-bottom: 6px;
-        transition: 0.5s;
-    }
-
-    span.artist_desc{
-        font-size: 0.9rem;
-        color: #474747;
-        display: inline-block;
-    }
-
-    span.user_followed, span.count_pieces{
-        font-size: 0.9rem;
-        color: #474747;
-        display: inline-block;
-        margin-top: 10px;
-        margin-right: 8px;
-    }
-
-     span.user_followed > svg, span.count_pieces > svg{
-        color: #212b46;
-        position: relative;
-        top: 4px;
-        margin-right: 3px;
-    }
-}
-
-button.btnInteractionArtist {
-  padding: 9.5px 27px;
-  border: 0;
-  border-radius: 100px;
-  background-color: #d4af37;
-  color: #ffffff;
-  font-weight: Bold;
-  transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 15px;
-  width: 100%;
-  display: flex;
+    background: black;
+    box-shadow: 0 70px 63px -60px #434448;
+    display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
-
-    &:active {
-    background-color: #3d94cf;
-    transition: all 0.25s;
-    -webkit-transition: all 0.25s;
-    box-shadow: none;
-    transform: scale(0.98);
-    }
-
-    &:hover {
-    background-color: #e8c44b;
-    box-shadow: 0 0 20px #d0aa2ec2;
-    transform: scale(1.1);
-    }
+    position: relative;
 }
 
-button.removeFollow{
-    background-color: rgb(224, 13, 13);
-
+.cardIndividual{
+    background-size: 250px;
+  
     &:hover{
-        background-color: rgb(167, 0, 0);
-        box-shadow: 0 0 20px rgb(167, 0, 0);
-
+        background-position: left center;
+        background-repeat:  no-repeat;
+        background-size: 350px;
+    
+        .nameAuthor, .fa{opacity: 1}
     }
 }
+
+.nameAuthor{
+  color: white;
+  margin: 20px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.fa{
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.icons{
+  position: absolute;
+  fill: #fff;
+  color: #fff;
+  top: 140px;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+
+  li{
+    font-size: 0.8rem;
+  }
+}
+

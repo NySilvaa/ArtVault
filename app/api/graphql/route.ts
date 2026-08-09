@@ -6,10 +6,11 @@ import { NextRequest } from "next/server";
 
 import { UserResolver } from "@/app/api/graphql/Resolvers/UserResolver";
 import path from "path";
+import PaintersResolver from "./Resolvers/PaintersResolver";
 
 const serverPromise = (async () => {
   const schema = await buildSchema({
-    resolvers: [UserResolver],
+    resolvers: [UserResolver, PaintersResolver,],
     validate: false,
     emitSchemaFile: path.resolve(__dirname, "schemas/SchemaGraphQl.gql")
   });

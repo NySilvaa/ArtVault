@@ -12,21 +12,42 @@ import { leotaroFree } from "@/app/layout";
 import styles from "@/public/css/bg-style.module.css"
 
 import { useMenuConfig } from "./MenuConfig";
+import { ContemplationMode } from "./ContemplationMode";
 import { useBoxInfo } from "./BoxInfo";
+import Spline from "@splinetool/react-spline";
 
 export default function Background() {
   const {isOpen, ref, toggle} = useMenuConfig();
   const { activeSection, showSection,} = useBoxInfo();
 
+  const { isActive, toggleContemplation} = ContemplationMode()
+
   return (<>
     <main className={styles.homeBg}>
+          <div className={styles.closeCM}   
+          style={{
+            display: !isActive ? "none" : "block"
+          }}>
+          <button 
+          className={`${styles.btnCloseContemplationMode}`}
+          onClick={()=>{
+              toggleContemplation();
+            }}
+          ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"
+          strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+            <span className={styles.tooltipCloseContemplationMode}>Leaving From Contemplation Mode</span>
+          </button>
+          </div>
+
       <Suspense fallback={"Carregando..."}>
-        <Script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.81/build/spline-viewer.js"  id="jsBg"></Script>
-          <spline-viewer url="https://prod.spline.design/MmMvgXlWGNhOu7RV/scene.splinecode"></spline-viewer>
+            <Spline scene="https://prod.spline.design/MmMvgXlWGNhOu7RV/scene.splinecode"  />
       </Suspense>
 
         <section className="container">
-          <nav className={styles.navigation}>
+          <nav className={`${styles.navigation} ${isActive ? "contemplation-active" : ""}`} style={{
+            opacity: isActive ? "0" : "1",
+            transition: "0.6s"
+          }}>
             <Link href={"/"} className="logo"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4AF37"
             strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-palette-icon lucide-palette">
             <path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/>
@@ -82,7 +103,7 @@ export default function Background() {
                         }}>Symbolism</Link>
                     </li>
                     <li>
-                      <Link href={"#"} data-index="3" onClick={toggle}>Contemplation Mode</Link>
+                      <Link href={"#"} data-index="3" onClick={()=>{toggle(); toggleContemplation()}}>Contemplation Mode</Link>
                     </li>
                     <li>
                       <Link href={""} data-index="4" onClick={toggle}>History</Link>
@@ -92,11 +113,14 @@ export default function Background() {
             </div>{/* menuContainer */}
           </nav>
 
-          <Link href={"/ArtVault_Branding"} className={`${styles.btnVisit} ${leotaroFree.className}`}>Visit</Link>
+          <Link href={"/ArtVault_Branding"} className={`${styles.btnVisit} ${leotaroFree.className}  ${isActive ? "contemplation-active" : ""}`} style={{
+            opacity: isActive ? "0" : "1",
+            transition: "0.6s"
+          }}>Visit</Link>
         </section>{/* fim da seção container */}
 
         <section className={`${styles.descriptionImg_first} descriptionImg_first`} style={{
-              width: activeSection === "1" ? "auto" : "0",
+              width: (activeSection === "1" && !isActive) ? "auto" : "0",
               opacity: activeSection === "1" ? 1 : 0,
               overflow: "hidden",
               transition: "opacity .4s ease",
@@ -111,7 +135,7 @@ export default function Background() {
         </section>{/* description-img-first */}
 
         <section className={`${styles.descriptionImg_second} descriptionImg_second`} style={{
-              width: activeSection === "2" ? "auto" : "0",
+              width: (activeSection === "2" && !isActive) ? "auto" : "0",
               opacity: activeSection === "2" ? 1 : 0,
               overflow: "hidden",
               transition: "opacity .4s ease",

@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import bcrypt from "bcryptjs";
 import z from "zod";
 import { cookies } from "next/headers";
-import clientPromise from "@/libs/Database";
+import {getMongoClient} from "@/libs/Database";
 import { NextRequest } from "next/server";
 
 export async function CreateUser(prevState: any, formData: FormData, req: NextRequest) {
@@ -23,7 +23,7 @@ export async function CreateUser(prevState: any, formData: FormData, req: NextRe
     let success = false;
 
     try {
-        const client = await clientPromise;
+        const client = await getMongoClient();
         const db = client.db("artVault");
 
         const hashedPassword = await bcrypt.hash(result.data.password, 10);

@@ -20,7 +20,7 @@
 
     h2.presentationCreator{
         font-size: 2.5rem;
-        margin: 40px 0;
+        margin: 20px 0;
         max-width: 480px;
         font-weight: normal;
     }
@@ -28,7 +28,7 @@
   h2.presentationCreator ,p.descriptionCreator{float: right;}
 
     p.descriptionCreator{
-        font-size: 1.1rem;
+        font-size: 1rem;
         color: #a9aaac;
         max-width: 300px;
         text-align: justify;

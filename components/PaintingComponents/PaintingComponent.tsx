@@ -13,9 +13,9 @@ import SlidePaintingComponent from "./SlidePaintingComponent";
 
 
 export default function PaintingsComponent(){
-    const { scrollY } = useScroll()
+    const { scrollY } = useScroll();
 
-    const y = useTransform(scrollY, [240, 800], [40, 500]);
+    const y = useTransform(scrollY, [240, 800], [40, 380]);
     const rotateY = useTransform(scrollY, [240, 800], [0, 180]);
     const grayscale = useTransform(scrollY, [240, 800], ['100%', '0%']);
 

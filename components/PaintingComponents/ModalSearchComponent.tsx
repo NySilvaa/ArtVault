@@ -129,7 +129,6 @@ export default function ArtSearchModal({ isOpen, onClose }: ArtSearchModalProps)
               </div>
             </div>
 
-            {/* Lista Dinâmica com os Resultados */}
             <div>
               <h3 className="text-sm mb-3 ml-1 font-medium tittleResultsPaintings">Available Artworks</h3>
               <div className="max-h-64 overflow-y-auto space-y-1 pr-2 custom-scrollbar">
