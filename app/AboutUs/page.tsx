@@ -41,22 +41,17 @@ export default function AboutUsPage(){
                 <div className="aboutUsDescBox mAuto">
                                 <h3 className={`${satoshiLight.className} nameCreator txtWhite`}>I&apos;m Nycolas</h3>
 
-              <h2 className={`presentationCreator txtWhite`}>CREATIVE DESIGNER,
-                    MARKETING DIRECTOR,
-                    TEACHER & AWWWARDS
-                    YOUNG JURY.</h2>
+              <h2 className={`presentationCreator txtWhite`}>
+                   Passionate about technology and focused on building scalable applications.</h2>
                   <div style={{clear: "both"}}></div>
 
                   <p className={`${satoshiLight.className} descriptionCreator`}>
-                  As a Creative Director & Consultant,
-                  I have accumulated experience
-                  crafting visually stunning and
-                  engaging digital experiences. With a
-                  passion for design and a keen eye
-                  for detail, I specialize in translating
-                  complex ideas into simple, elegant
-                  solutions that capture the essence
-                  of a brand.
+                        I&apos;m a full-stack programmer passionate about technology 
+                        and focused on building scalable, efficient, and modern applications. 
+                        I enjoy working across the entire development stack, from designing 
+                        intuitive user interfaces to developing robust back-end systems and APIs.
+                         Always curious and eager to learn, 
+                         I&apos;m constantly exploring new technologies and improving my skills to turn ideas into impactful digital experiences.
                   </p>
                   <div style={{clear: "both"}}></div>
 

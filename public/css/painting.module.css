@@ -126,15 +126,15 @@ h1.tittleTopMain{
     max-width: 800px;
     font-size: 1.2rem;
     
-    .word1{left: 0px;}
+    .word1{left: 20px;}
 
     .word2{left: 200px;}
 
-    .word3{left: 380px;}
+    .word3{left: 350px;}
 
-    .word4{left: 540px;}
+    .word4{left: 520px;}
 
-    .word5{left: 720px;}
+    .word5{left: 700px;}
 }
 
 .word1, .word2, .word3, .word4, .word5{
@@ -165,7 +165,7 @@ h1.tittleTopMain{
 }
 
 .descriptionArt{
-    margin-top: 400px;
+    margin-top: 360px;
     padding-bottom: 40px;
 
     .container{
@@ -181,7 +181,7 @@ h1.tittleTopMain{
     p.creatorName{
         font-size: 0.9rem;
         color: #787878;
-        margin-top: 30px;
+        margin-top: 20px;
     }
 }
 

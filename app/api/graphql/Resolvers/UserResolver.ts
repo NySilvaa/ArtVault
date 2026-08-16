@@ -4,6 +4,7 @@ import { ObjectId } from "mongodb";
 import { jwtVerify } from "jose";
 import bcrypt from "bcryptjs";
 import { checkLoginRateLimit, clearLoginRateLimit } from "../../rateLimitingLogin";
+import { cookies } from "next/headers";
 
 @ObjectType()
 export class User {
@@ -23,6 +24,24 @@ export class User {
 @Resolver()
 export class UserResolver {
     private data: User[] = [];
+
+    private async getCookie(): Promise<string> {
+            const cookie = await cookies();
+            const idUser = cookie.get("token")?.value;
+    
+            if (!idUser) return "";
+    
+            const secretKey = process.env.JWT_SECRET;
+            if (!secretKey) return "";
+    
+            try {
+                const secret = new TextEncoder().encode(secretKey);
+                const { payload } = await jwtVerify(idUser, secret);
+                return payload.id as string;
+            } catch {
+                return "";
+            }
+    }
 
     @Query(() => [User])
     async users(): Promise<User[]> {
@@ -118,5 +137,27 @@ export class UserResolver {
             console.error("❌ Erro ao validar login:", error);
             throw new Error(error.message || "Erro interno do servidor"); 
         }
+    }
+
+    @Query(() => User)
+    async updateUser( formData: FormData,){
+        try {
+            const id = await this.getCookie();
+    
+            // Se o usuário não estiver autenticado
+            if (!id) return false;
+
+            const client = await getMongoClient();
+            const db = client.db("artVault");
+            
+            const data = Object.fromEntries(formData.entries());
+
+            console.log(data)
+            
+        } catch (error) {
+            
+        }
+
+
     }
 }

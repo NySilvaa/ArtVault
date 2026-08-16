@@ -93,7 +93,7 @@ export default function Background() {
                           showSection("1");
                           toggle();
                         }}>
-                      The Myth</Link>
+                      The Composition</Link>
                     </li>
                     <li>
                       <Link href={"#"} data-index="2" onClick={(e) => {
@@ -128,9 +128,8 @@ export default function Background() {
           <div className={styles.notification}>
               <div className={styles.notiglow}></div>
             <div className={styles.notiborderglow}></div>
-            <div className={styles.notititle}>The Myth</div>
-            <div className={styles.notibody}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugit, nemo iste dolorem explicabo fugiat officia 
-                adipisci tempora delectus temporibus soluta quia obcaecati impedit odit, recusandae pariatur saepe ipsam dolorum!</div>
+            <div className={styles.notititle}>The Composition</div>
+            <div className={styles.notibody}>A fascinating detail in this piece is the striking contrast of emotions. While the handmaidens on the shore are left in a state of dramatic panic, Europa is guided gracefully across the sea by a small Cupid, who leads the mighty bull with nothing but a delicate floral garland.</div>
           </div>
         </section>{/* description-img-first */}
 
@@ -143,9 +142,8 @@ export default function Background() {
           <div className={styles.notification}>
             <div className={styles.notiglow}></div>
             <div className={styles.notiborderglow}></div>
-            <div className={styles.notititle}>Symbolism</div>
-            <div className={styles.notibody}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugit, nemo iste dolorem explicabo fugiat officia 
-                adipisci tempora delectus temporibus soluta quia obcaecati impedit odit, recusandae pariatur saepe ipsam dolorum!</div>
+            <div className={styles.notititle}>The Symbolism of the Garland and Cupid</div>
+            <div className={styles.notibody}>In this masterpiece, the small Cupid leading the massive bull with a delicate floral garland is a powerful symbol. It visually represents how love and desire have the strength to tame even the fiercest and most powerful of gods, guiding them effortlessly.</div>
           </div>
         </section>{/* description-img-second */}
     </main>

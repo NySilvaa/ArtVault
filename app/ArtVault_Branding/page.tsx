@@ -47,18 +47,15 @@ export default function ArtVault_BrandingPage(){
                         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="2" strokeLinecap="round" 
                         strokeLinejoin="round" className="lucide lucide-chevron-left-icon lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
 
-                        <p>Vault Art Gallery is a leading art space in Ahmedabad, India, known for
-                        promoting Indian modern and contemporary art. Founded in 1978 by Anil
-                        Relia, it began as a small studio and has grown into a respected gallery
-                        and serigraph studio recognized across the country.</p>
+          <p>ArtVault is a modern digital art space dedicated to showcasing 
+            vibrant illustrations and character art inspired by the energy of Japanese anime. 
+            Born from a deep passion for drawing, it began as a personal collection of sketches
+             and has evolved into a dynamic, interactive gallery designed to bring creative visions to life.</p>
 
-                <p>As part of the Branding and Brand Communication&apos;s course, this project
-                        explored 3600 branding for Archer Art Gallery. We worked across
-                        campaigns, packaging, UI/UX, social media, ad films and publication,
-                        developing a cohesive visual language that reflects the gallery&apos;s identity.
-                        The project also aimed to raise awareness about the serigraphy process,
-                        creating an integrated brand experience that connects every touchpoint
-                        from physical spaces to digital platforms.</p>
+<p>Developed as a comprehensive digital experience, this project explores a modern virtual environment built with Next.js.
+     The focus spans across intuitive UI/UX design, fluid web animations, and seamless front-end architecture, 
+     developing a cohesive visual language that reflects the gallery&apos;s creative identity. The project aims 
+     to elevate the presentation of digital artwork, creating an integrated user experience that beautifully connects the viewer with the digital canvas.</p>
                     </section>
                 </div>
             </section>

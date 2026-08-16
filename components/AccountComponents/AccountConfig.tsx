@@ -23,9 +23,7 @@ export default function AccountConfig({ user }: {user: User}){
             <div className={styles.dash_description}>
             <h2>Welcome, {user.username}</h2>
 
-            <p className={`${styles.desc} ${satoshiLight.className}`}>Full sorvicc croativc açonoy that provides a one stop sñcp fcr all social media content needs.</p>
-
-            <span className={satoshiLight.className}>Feeding a hungry audience?</span>
+            <p className={`${styles.desc} ${satoshiLight.className}`}>We would love to hear your thoughts! Click the button below to share your review based on your experience so far. Let us know what you enjoyed and if there is anything you would like to see added or improved on the site.</p>
                 <br />
             <Link href={""} className={`${styles.btnChat}`} onClick={() => setIsModalOpen(true)}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" 
                   className="lucide lucide-message-circle-icon lucide-message-circle">
@@ -37,9 +35,9 @@ export default function AccountConfig({ user }: {user: User}){
             <div className={styles.video}><video src="/images/video-account.mp4" loop autoPlay muted></video></div>
 
           <div className={styles.desc_videoWp}>
-            <p className={`${styles.desc_video} ${satoshiLight.className}`}><b>LOREM IPSUM:</b> Lorem ipsum dolor sit amet  consectetur<span className={styles.content_color_desc}></span> adipisicing elit. consequuntur qui nulla.</p>
+            <p className={`${styles.desc_video} ${satoshiLight.className}`}>Like nature blooming in vibrant colors, creativity flourishes at ArtVault. <span className={styles.content_color_desc}></span> Every stroke brings inspiration to life, transforming ideas into energetic visual universes.</p>
 
-              <p className={`${styles.desc_video} ${satoshiLight.className}`}><b>LOREM IPSUM:</b> Lorem ipsum nesciunt <span className={styles.content_color_desc}></span> cum  praesentium consequuntur qui nulla.</p>
+              <p className={`${styles.desc_video} ${satoshiLight.className}`}>Inspired by nature&apos;s fluidity, ArtVault is a space where digital art breathes. Experience a gallery where technology and organic artistic <span className={styles.content_color_desc}></span> expression seamlessly meet.</p>
           </div>
           </div>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { leotaroFree, satoshiBold } from "@/app/layout";
+import styles from "@/public/css/painting.module.css";
 import {
     motion,
     MotionValue,
@@ -31,7 +31,7 @@ export default function ScrollRevealText({
     return (
         <h1
             ref={ref}
-            className={`${className} textReveal`}
+            className={`${className} ${styles.textReveal}`}
             style={{
                 display: "flex",
                 flexWrap: "wrap",

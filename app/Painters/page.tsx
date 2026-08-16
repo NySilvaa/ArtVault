@@ -92,7 +92,7 @@ export default async function PaintersPage(){
             <span
                 className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}
             >
-                Pintou mais de {painter.artworks} obras
+                Painted over {painter.artworks} artworks
             </span>
         </div>
     ))}

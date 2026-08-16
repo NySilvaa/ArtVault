@@ -170,12 +170,11 @@ main.dashboardMain{
 }
 
 p.desc{
-    margin: 30px 0 20px 0;
+    margin-top: 30px;
     max-width: 300px;
     text-align: justify;
+    font-size: 0.9rem;
 }
-
-.dash_description span{font-size: 0.9rem;}
 
 .btnChat {
   padding: 1.3em 3em;
@@ -192,7 +191,7 @@ p.desc{
   cursor: pointer;
   outline: none;
   display: inline-block;
-  margin-top: 30px;
+  margin-top: 10px;
 
     svg{
     vertical-align: middle;
@@ -276,7 +275,6 @@ span.content_color_desc{
   font-size: 2rem;
   max-width: 400px;
   font-weight: 600;
-  margin-bottom: 10px;
   letter-spacing: 1px;
 }
 

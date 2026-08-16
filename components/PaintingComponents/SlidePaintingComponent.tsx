@@ -7,6 +7,8 @@ import Image from 'next/image'
 import { leotaroFree, satoshiLight } from '@/app/layout'
 
 import ArtSearchModal from './ModalSearchComponent';
+import styles from "@/public/css/painting.module.css";
+
 
 const ASSETS = [
   {
@@ -118,14 +120,14 @@ export default function SlidePaintingComponent() {
   const { leftTittle, topTittle, rightTittle } = formatarTituloObra(nomeCompleto);
 
   return (
-    <section className="slideComponent light-section">
-        <div className="container  ">
-                <div className="infoAutorTop">
-                    <Image src={"/images/profile1.jpg"} width={100} height={100} alt='Picture Profile' className='autorPicture'></Image>
-                    <p className={`autorName ${satoshiLight.className}`}>{ASSETS[activeIndex].nameAutor}</p>
+    <section className={`${styles.slideComponent} light-section`}>
+        <div className={`${styles.container} container`}>
+                <div className={styles.infoAutorTop}>
+                    <Image src={"/images/profile1.jpg"} width={100} height={100} alt='Picture Profile' className={styles.autorPicture}></Image>
+                    <p className={`${styles.autorName} ${satoshiLight.className}`}>{ASSETS[activeIndex].nameAutor}</p>
                 </div>
 
-            <div className="slidePaintingWp relative w-full min-h-[750px] flex flex-col items-center justify-center py-12  text-white select-none">
+            <div className={`${styles.slidePaintingWp} relative w-full min-h-[750px] flex flex-col items-center justify-center py-12  text-white select-none`}>
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
                 <AnimatePresence mode="wait">
@@ -135,9 +137,9 @@ export default function SlidePaintingComponent() {
                         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                         exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
                         transition={{ duration: 0.3 }}
-                        className="flex flex-col items-center nameTittle1"
+                        className={`flex flex-col items-center ${styles.nameTittle1}`}
                     >
-                        <h3 className={`titleArtWork tracking-tight txtGold ${leotaroFree.className}`}>
+                        <h3 className={`${styles.titleArtWork} tracking-tight txtGold ${leotaroFree.className}`}>
                         {leftTittle}
                         </h3>
                     </motion.div>
@@ -151,9 +153,9 @@ export default function SlidePaintingComponent() {
                         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                         exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
                         transition={{ duration: 0.3 }}
-                        className="flex flex-col items-center nameTittle2"
+                        className={`flex flex-col items-center ${styles.nameTittle2}`}
                     >
-                        <h3 className={`titleArtWork text-xs uppercase tracking-widest opacity-75 font-normal txtGold ${leotaroFree.className}`}>
+                        <h3 className={`${styles.titleArtWork} text-xs uppercase tracking-widest opacity-75 font-normal txtGold ${leotaroFree.className}`}>
                         {topTittle}
                         </h3>
                     </motion.div>
@@ -167,9 +169,9 @@ export default function SlidePaintingComponent() {
                         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                         exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
                         transition={{ duration: 0.3 }}
-                        className="flex flex-col items-center nameTittle3"
+                        className={`flex flex-col items-center ${styles.nameTittle3}`}
                     >
-                        <h3 className={`titleArtWork font-bold tracking-tight txtGold ${leotaroFree.className}`}>
+                        <h3 className={`${styles.titleArtWork} font-bold tracking-tight txtGold ${leotaroFree.className}`}>
                         {rightTittle}
                         </h3>
                     </motion.div>
@@ -185,19 +187,18 @@ export default function SlidePaintingComponent() {
                         transition={{ duration: 0.3 }}
                         className="flex flex-col items-center"
                     >
-                        <span className={`category text-xs uppercase tracking-widest text-indigo-400 font-semibold px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-2`}>
+                        <span className={`${styles.category} text-xs uppercase tracking-widest text-indigo-400 font-semibold px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-2`}>
                         {ASSETS[activeIndex].category}
                         </span>
                     </motion.div>
                     </AnimatePresence>
                 </div>
 
-                <div className="changeArtWorker">
+                <div className={styles.changeArtWorker}>
                     <button
                     onClick={() => setIsModalOpen(true)}
-                    className="cursor-pointer py-3 rounded-xl border-[1px] border-slate-500 text-white font-medium group btnChangeArtworker"
-                    >
-                    <div className="relative overflow-hidden elementsButton">
+                    className={`cursor-pointer py-3 rounded-xl border-[1px] border-slate-500 text-white font-medium group ${styles.btnChangeArtworker}`}>
+                    <div className={`relative overflow-hidden ${styles.elementsButton}`}>
                         <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)] flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" 
                         strokeLinecap="round" strokeLinejoin="round" 
@@ -220,7 +221,7 @@ export default function SlidePaintingComponent() {
 
                 </div>
 
-                <div className="slideBox relative w-full max-w-4xl h-[360px] flex items-center justify-center [perspective:1000px]">
+                <div className={`${styles.slideBox} relative w-full max-w-4xl h-[360px] flex items-center justify-center [perspective:1000px]`}>
                     {ASSETS.map((item, index) => {
                     const offset = index - activeIndex
                     const isActive = index === activeIndex
@@ -276,7 +277,7 @@ export default function SlidePaintingComponent() {
                     })}
                 </div>
 
-                <div className="btnSlide flex items-center gap-6 mt-10 z-10">
+                <div className={`${styles.btnSlide} flex items-center gap-6 mt-10 z-10`}>
                     <button
                     onClick={handlePrev}
                     className="p-3 rounded-full bgGold border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-700 hover:bg-neutral-800 transition-all shadow-lg active:scale-95 cursor-pointer"
@@ -302,7 +303,8 @@ export default function SlidePaintingComponent() {
 
                     <button
                     onClick={handleNext}
-                    className="p-3 rounded-full bgGold border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-700 hover:bg-neutral-800 transition-all shadow-lg active:scale-95 cursor-pointer"
+                    className="p-3 rounded-full bgGold border border-neutral-800 text-neutral-300 hover:text-white 
+                    hover:border-neutral-700 hover:bg-neutral-800 transition-all shadow-lg active:scale-95 cursor-pointer"
                     aria-label="Próximo slide"
                     >
                     <ChevronRight size={20} />

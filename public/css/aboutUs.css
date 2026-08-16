@@ -19,18 +19,19 @@
     }
 
     h2.presentationCreator{
-        font-size: 2.5rem;
-        margin: 20px 0;
+        font-size: 2.4rem;
+        margin: 20px 0 40px 0;
         max-width: 480px;
         font-weight: normal;
+        text-transform: uppercase;
     }
 
   h2.presentationCreator ,p.descriptionCreator{float: right;}
 
     p.descriptionCreator{
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: #a9aaac;
-        max-width: 300px;
+        max-width: 400px;
         text-align: justify;
     }
 }
@@ -41,7 +42,7 @@
     margin-top: 40px;
     
     span.descriptionProjects{
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: #a9aaac;
     }
 }

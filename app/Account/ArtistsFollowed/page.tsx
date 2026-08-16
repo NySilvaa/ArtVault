@@ -27,12 +27,12 @@ export default async function ArtistsFollowedPage() {
             <h1>Artist Followed</h1>
 
             <div className={`${styles.artist_tittle_desc} ${satoshiLight.className}`}>
-              We&apos;ve distilled complexity into three core Pillars. Experience the next generation of workspace engineering.
+              Watch your favorite creators bloom. Your personal collection of vibrant art and inspiration.
             </div>
           </div>
 
           <section className={styles.artists_wp}>
-            {/* VERIFICAÇÃO: Se não tiver artistas seguidos, mostra a mensagem. Se tiver, faz o map() */}
+            {/* Se não tiver artistas seguidos, mostra a mensagem. Se tiver, faz o map() */}
             {paintersFollowed.length === 0 ? (
               <div style={{ textAlign: "center", padding: "3rem 1rem" }}>
                 <h3 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>
@@ -82,7 +82,7 @@ export default async function ArtistsFollowedPage() {
             <h1>Suggested Artists</h1>
 
             <div className={`${styles.artist_tittle_desc} ${satoshiLight.className}`}>
-              We&apos;ve distilled complexity into three core Pillars. Experience the next generation of workspace engineering.
+              Uncover fresh inspiration. Discover new artists and expanding universes waiting to be explored.
             </div>
           </div>
 
