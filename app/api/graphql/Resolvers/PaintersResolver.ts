@@ -1,11 +1,11 @@
 import { getMongoClient } from "@/libs/Database";
-import { cookies } from "next/headers";
-import { jwtVerify } from "jose";
 import { ObjectId, Db } from "mongodb";
 import { ObjectType, Field, ID, Resolver, Query, Int, Mutation, Arg } from "type-graphql";
+import { getOptionalUserId, getRequiredUserId } from "../auth";
+import { graphqlError } from "../errors";
 
 @ObjectType()
-export class PaintersProps {
+export class Painter {
     @Field(() => ID)
     id: string;
 
@@ -22,35 +22,81 @@ export class PaintersProps {
     artworks: number;
 
     @Field(() => Int)
-    followers: number
+    followers: number;
+}
+
+@ObjectType()
+export class FollowResult {
+    @Field()
+    following: boolean; // true = passou a seguir, false = deixou de seguir
+}
+
+@ObjectType()
+export class Artwork {
+    @Field(() => ID)
+    id: string;
+
+    @Field()
+    title: string;
+
+    @Field()
+    image: string;
+
+    @Field(() => ID)
+    id_artist: string;
+
+    @Field()
+    artist_name: string;
+}
+
+@ObjectType()
+export class ArtistWithArtworks {
+    @Field(() => ID)
+    id: string;
+
+    @Field()
+    stage_name: string;
+
+    @Field()
+    bio: string;
+
+    @Field()
+    cover_photo: string;
+
+    @Field(() => [Artwork])
+    artworks: Artwork[];
+}
+
+const PAINTER_PROJECTION = {
+    stage_name: 1,
+    bio: 1,
+    cover_photo: 1,
+    artworks: 1,
+    followers: 1,
+} as const;
+
+function mapPainter(doc: any): Painter {
+    return {
+        id: doc._id.toString(),
+        stage_name: doc.stage_name ?? "",
+        bio: doc.bio ?? "",
+        cover_photo: doc.cover_photo ?? "",
+        artworks: doc.artworks ?? 0,
+        followers: doc.followers ?? 0,
+    };
+}
+
+function escapeRegex(value: string): string {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 @Resolver()
-export default class PaintersResolver {
-    private async connectDb() {
+export class PaintersResolver {
+    private async connectDb(): Promise<Db> {
         const client = await getMongoClient();
         return client.db("artVault");
     }
 
-    private async getCookie(): Promise<string> {
-        const cookie = await cookies();
-        const idUser = cookie.get("token")?.value;
-
-        if (!idUser) return "";
-
-        const secretKey = process.env.JWT_SECRET;
-        if (!secretKey) return "";
-
-        try {
-            const secret = new TextEncoder().encode(secretKey);
-            const { payload } = await jwtVerify(idUser, secret);
-            return payload.id as string;
-        } catch {
-            return "";
-        }
-    }
-
-    // Busca e converte os IDs dos artistas que o usuário segue
     private async getFollowedArtistIds(db: Db, userId: string): Promise<ObjectId[]> {
         const followedRecords = await db
             .collection("followed_artists")
@@ -64,133 +110,199 @@ export default class PaintersResolver {
             .map((artistId) => new ObjectId(artistId));
     }
 
-    //  Artistas que o usuário SEGUE (Usando $in)
-    @Query(() => [PaintersProps])
-    async getArtistFollowed(): Promise<PaintersProps[]> {
+    @Query(() => [Painter])
+    async getArtistFollowed(
+        @Arg("limit", { defaultValue: 50 }) limit: number
+    ): Promise<Painter[]> {
+        const userId = await getOptionalUserId();
+        if (!userId) return []; 
+
         try {
-            const id = await this.getCookie();
-
-            // Se o usuário não estiver autenticado, encerra a busca
-            if (!id) return [];
-
             const db = await this.connectDb();
-            
-            // Reaproveita a função para pegar os IDs
-            const artistObjectIds = await this.getFollowedArtistIds(db, id);
+            const artistObjectIds = await this.getFollowedArtistIds(db, userId);
 
             if (artistObjectIds.length === 0) return [];
 
             const paintersData = await db
                 .collection("artists")
                 .find({ _id: { $in: artistObjectIds } })
-                .project({
-                    stage_name: 1,
-                    bio: 1,
-                    cover_photo: 1,
-                    artworks: 1,
-                    followers: 1
-                })
+                .project(PAINTER_PROJECTION)
+                .limit(Math.min(limit, 100))
                 .toArray();
 
-            return paintersData.map((painter) => ({
-                id: painter._id.toString(),
-                stage_name: painter.stage_name ?? "",
-                bio: painter.bio ?? "",
-                cover_photo: painter.cover_photo ?? "",
-                artworks: painter.artworks ?? 0,
-                followers: painter.followers ?? 0
-            }));
-
+            return paintersData.map(mapPainter);
         } catch (error) {
             console.error("Erro ao buscar artistas seguidos:", error);
-            return [];
+            throw graphqlError("Erro ao buscar artistas seguidos.", "INTERNAL_SERVER_ERROR", 500);
         }
     }
 
+    @Mutation(() => FollowResult)
+    async toggleFollowArtist(@Arg("idArtist") idArtist: string): Promise<FollowResult> {
+        const userId = await getRequiredUserId();
 
-    @Mutation(() => Boolean)
-    async InsertArtist(@Arg("idArtist") idArtist: string): Promise<boolean>{
-    try {
-        const id = await this.getCookie();
-
-        // Se o usuário não estiver autenticado
-        if (!id) return false;
+        if (!ObjectId.isValid(idArtist)) {
+            throw graphqlError("ID de artista inválido.", "BAD_USER_INPUT", 400);
+        }
 
         const db = await this.connectDb();
-        const collection = db.collection("followed_artists");
 
-        // 1. Verifica se o usuário JÁ SEGUE o artista
-        const existingFollow = await collection.findOne({
-            user_id: id,
-            artist_id: idArtist
-        });
+        try {
+            // Garante que o artista existe antes de permitir seguir
+            const artistExists = await db
+                .collection("artists")
+                .findOne({ _id: new ObjectId(idArtist) }, { projection: { _id: 1 } });
 
-        if (existingFollow) {
-            // 2. Se já segue, DELETA o registro (Unfollow)
-            await collection.deleteOne({ _id: existingFollow._id });
-        } else {
-            // 3. Se não segue, CRIA o registro (Follow)
-            await collection.insertOne({
-                user_id: id,
+            if (!artistExists) {
+                throw graphqlError("Artista não encontrado.", "NOT_FOUND", 404);
+            }
+
+            const collection = db.collection("followed_artists");
+            const existingFollow = await collection.findOne({
+                user_id: userId,
                 artist_id: idArtist,
-                savedAt: new Date()
             });
+
+            if (existingFollow) {
+                await collection.deleteOne({ _id: existingFollow._id });
+                return { following: false };
+            }
+
+            await collection.insertOne({
+                user_id: userId,
+                artist_id: idArtist,
+                savedAt: new Date(),
+            });
+            return { following: true };
+        } catch (error) {
+            if (error instanceof Error && "extensions" in error) throw error; // já é GraphQLError
+
+            // Índice único (user_id + artist_id) rejeita inserção duplicada em corrida
+            if ((error as any)?.code === 11000) {
+                throw graphqlError("Ação já processada, tente novamente.", "CONFLICT", 409);
+            }
+
+            console.error(`Erro ao processar follow/unfollow [Artista: ${idArtist}]:`, error);
+            throw graphqlError("Erro ao processar sua solicitação.", "INTERNAL_SERVER_ERROR", 500);
         }
-
-        // Retorna true indicando que a ação (follow ou unfollow) foi concluída sem erros
-        return true; 
-        
-    } catch (error) {
-        console.error(`Erro ao processar Follow/Unfollow [Artista: ${idArtist}]:`, error);
-        return false;
-    }
     }
 
-    // TODOS os artistas, EXCLUINDO os que o usuário já segue (Usando $nin)
-    @Query(() => [PaintersProps])
-    async getPaintersData(): Promise<PaintersProps[]> {
+    @Query(() => [Painter])
+    async getPaintersData(
+        @Arg("limit", { defaultValue: 50 }) limit: number
+    ): Promise<Painter[]> {
         try {
             const db = await this.connectDb();
-            const userId = await this.getCookie();
+            const userId = await getOptionalUserId();
 
-            // Inicializamos um filtro vazio (traz todos os artistas por padrão)
-            let filter: any = {};
+            let filter: Record<string, unknown> = {};
 
-            // Se o usuário estiver logado, vamos verificar quem ele já segue
             if (userId) {
                 const followedArtistIds = await this.getFollowedArtistIds(db, userId);
-
-                // Se ele já segue algum artista, aplicamos o filtro $nin (Not In)
                 if (followedArtistIds.length > 0) {
                     filter = { _id: { $nin: followedArtistIds } };
                 }
             }
 
-            // O filtro será aplicado dinamicamente aqui no find()
             const paintersData = await db
                 .collection("artists")
                 .find(filter)
-                .project({
-                    stage_name: 1,
-                    bio: 1,
-                    cover_photo: 1,
-                    artworks: 1,
-                    followers: 1
-                })
+                .project(PAINTER_PROJECTION)
+                .limit(Math.min(limit, 100))
                 .toArray();
 
-            return paintersData.map((painter) => ({
-                id: painter._id.toString(),
-                stage_name: painter.stage_name ?? "",
-                bio: painter.bio ?? "",
-                cover_photo: painter.cover_photo ?? "",
-                artworks: painter.artworks ?? 0,
-                followers: painter.followers ?? 0
-            }));
-
+            return paintersData.map(mapPainter);
         } catch (error) {
             console.error("Erro ao buscar todos os artistas:", error);
-            return [];
+            throw graphqlError("Erro ao buscar artistas.", "INTERNAL_SERVER_ERROR", 500);
+        }
+    }
+
+    @Query(() => [Artwork])
+    async searchArtworks(
+        @Arg("authorSearch", { nullable: true, defaultValue: "" }) authorSearch: string,
+        @Arg("artSearch", { nullable: true, defaultValue: "" }) artSearch: string
+    ): Promise<Artwork[]> {
+        try {
+            const db = await this.connectDb();
+
+            const pipeline: any[] = [
+                {
+                    $lookup: {
+                        from: "artists",
+                        localField: "artist_id",
+                        foreignField: "_id",
+                        as: "artist",
+                    },
+                },
+                { $unwind: "$artist" },
+            ];
+
+            const matchConditions: any[] = [];
+            if (artSearch?.trim()) {
+                matchConditions.push({ title: { $regex: escapeRegex(artSearch.trim()), $options: "i" } });
+            }
+            if (authorSearch?.trim()) {
+                matchConditions.push({ "artist.stage_name": { $regex: escapeRegex(authorSearch.trim()), $options: "i" } });
+            }
+
+            if (matchConditions.length > 0) {
+                pipeline.push({ $match: { $and: matchConditions } });
+            }
+
+            pipeline.push({ $limit: 20 });
+
+            const results = await db.collection("artworks").aggregate(pipeline).toArray();
+
+            return results.map((doc) => ({
+                id: doc._id.toString(),
+                title: doc.title,
+                image: doc.image,
+                artist_id: doc.artist._id.toString(),
+                artist_name: doc.artist.stage_name,
+            }));
+        } catch (error) {
+            console.error("Erro ao buscar obras:", error);
+            throw graphqlError("Erro ao buscar obras.", "INTERNAL_SERVER_ERROR", 500);
+        }
+    }
+
+    @Query(() => ArtistWithArtworks)
+    async getArtistWithArtworks(@Arg("artistId") artistId: string): Promise<ArtistWithArtworks> {
+        if (!ObjectId.isValid(artistId)) {
+            throw graphqlError("ID de artista inválido.", "BAD_USER_INPUT", 400);
+        }
+
+        try {
+            const db = await this.connectDb();
+            const artist = await db.collection("artists").findOne({ _id: new ObjectId(artistId) });
+
+            if (!artist) {
+                throw graphqlError("Artista não encontrado.", "NOT_FOUND", 404);
+            }
+
+            const artworks = await db
+                .collection("artworks")
+                .find({ artist_id: new ObjectId(artistId) })
+                .toArray();
+
+            return {
+                id: artist._id.toString(),
+                stage_name: artist.stage_name ?? "",
+                bio: artist.bio ?? "",
+                cover_photo: artist.cover_photo ?? "",
+                artworks: artworks.map((art) => ({
+                    id: art._id.toString(),
+                    title: art.title,
+                    image: art.image,
+                    artist_id: artistId,
+                    artist_name: artist.stage_name,
+                })),
+            };
+        } catch (error) {
+            if (error instanceof GraphQLError) throw error;
+            console.error("Erro ao buscar artista com obras:", error);
+            throw graphqlError("Erro ao buscar dados do artista.", "INTERNAL_SERVER_ERROR", 500);
         }
     }
 }

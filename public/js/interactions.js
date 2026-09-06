@@ -1,4 +1,4 @@
-// 1. FUNÇÃO DO MOUSE (Seu código original)
+// 1. FUNÇÃO DO MOUSE 
 window.addEventListener("mousemove", (e) => {
   gsap.set(".cursorDot", {
     x: e.clientX,

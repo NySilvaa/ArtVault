@@ -16,8 +16,8 @@ import { getPaintersFollowed, getPaintersAll } from "@/app/actions/followingArti
 
 export default async function ArtistsFollowedPage() {
   
-  const painters = await getPaintersAll() || [];
-  const paintersFollowed = await getPaintersFollowed() || [];
+  const { data: painters = [] } = (await getPaintersAll()) || {};
+  const { data: paintersFollowed = [] } = (await getPaintersFollowed()) || {};
 
   return (
     <>

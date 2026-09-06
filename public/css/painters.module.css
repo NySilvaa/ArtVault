@@ -69,3 +69,111 @@ h3.paintersName a{
 span.paintersDescription{font-size: 0.9rem;}
 
 
+@media (max-width: 1200px) {
+  .painters{padding: 70px 0;}
+
+  h2.paintersTittle{
+    font-size: 2.3rem;
+  }
+
+  .painters_box{
+    width: 30%;
+
+    figure img{
+        height: 300px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  nav.paintersNav .container{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  p.paintersDescriptionTittle{
+    max-width: 100%;
+  }
+
+  .painters_box{
+    width: 45%;
+
+    figure img{
+        height: 280px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  :root{
+    --pixel50: 40px;
+  }
+
+  .painters{padding: 50px 0;}
+
+  h2.paintersTittle{
+    font-size: 1.9rem;
+  }
+
+  p.paintersDescriptionTittle{
+    font-size: 0.9rem;
+  }
+
+  .paintersSection{margin-top: 45px;}
+
+  .painters_wp{
+    gap: 20px;
+  }
+
+  .painters_box{
+    width: 100%;
+
+    figure img{
+        height: 320px;
+        width: 100%;
+    }
+  }
+
+  h3.paintersName a{
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root{
+    --pixel50: 34px;
+  }
+
+  .painters{padding: 35px 0;}
+
+  h2.paintersTittle{
+    font-size: 1.6rem;
+  }
+
+  .paintersSection{margin-top: 30px;}
+
+  .painters_box{
+    figure img{
+        height: 260px;
+    }
+  }
+
+  h3.paintersName a{
+    font-size: 1.15rem;
+  }
+
+  span.paintersDescription{font-size: 0.8rem;}
+}
+
+@media (max-width: 360px) {
+  .painters_box{
+    figure img{
+        height: 220px;
+    }
+  }
+
+  h2.paintersTittle{
+    font-size: 1.4rem;
+  }
+}

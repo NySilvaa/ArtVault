@@ -11,7 +11,6 @@ import { useState } from "react";
 
 interface User{
   username: string
-  email: string
 }
 
 export default function AccountConfig({ user }: {user: User}){

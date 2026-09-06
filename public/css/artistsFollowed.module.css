@@ -105,3 +105,157 @@ main.dashboardMain{overflow-y: hidden;}
   }
 }
 
+
+@media (max-width: 1200px) {
+  .artist_tittle{
+    h1{ font-size: 3.5rem; }
+  }
+}
+
+@media (max-width: 1024px) {
+  .artist_tittle{
+    h1{ font-size: 3rem; }
+  }
+
+  .artist_tittle_desc{
+    max-width: 100%;
+  }
+
+  .container_artists{
+    gap: 20px;
+  }
+
+  .border{
+    height: 280px;
+    width: 220px;
+  }
+
+  .cardArtists{
+    height: 290px;
+    width: 230px;
+  }
+
+  .cardIndividual{
+    background-size: 230px;
+
+    &:hover{
+        background-size: 320px;
+    }
+  }
+
+  .icons{
+    top: 125px;
+  }
+}
+
+@media (max-width: 768px) {
+  .artist_tittle{
+    h1{ font-size: 2.4rem; }
+  }
+
+  .artist_tittle_desc{
+    font-size: 0.9rem;
+    padding: 5px 12px;
+  }
+
+  .artists_wp{
+    margin: 25px 0;
+  }
+
+  .container_artists{
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .border{
+    height: 260px;
+    width: 200px;
+  }
+
+  .cardArtists{
+    height: 270px;
+    width: 210px;
+  }
+
+  .cardIndividual{
+    background-size: 210px;
+
+    .nameAuthor, .fa{ opacity: 1; }
+
+    &:hover{
+        background-size: 300px;
+    }
+  }
+
+  .icons{
+    top: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container{
+    max-height: none;
+  }
+
+  .artist_tittle{
+    h1{ font-size: 1.9rem; }
+  }
+
+  .container_artists{
+    gap: 14px;
+  }
+
+  .border{
+    height: 230px;
+    width: 165px;
+  }
+
+  .cardArtists{
+    height: 240px;
+    width: 175px;
+  }
+
+  .cardIndividual{
+    background-size: 175px;
+
+    &:hover{
+        background-size: 240px;
+    }
+  }
+
+  .icons{
+    top: 95px;
+    width: 40px;
+
+    li{ font-size: 0.7rem; }
+  }
+
+  .nameAuthor{
+    margin: 12px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .border{
+    height: 210px;
+    width: 145px;
+  }
+
+  .cardArtists{
+    height: 220px;
+    width: 155px;
+  }
+
+  .cardIndividual{
+    background-size: 155px;
+
+    &:hover{
+        background-size: 210px;
+    }
+  }
+
+  .icons{
+    top: 85px;
+  }
+}

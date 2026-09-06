@@ -1,25 +1,27 @@
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import AccountConfig from "@/components/AccountComponents/AccountConfig";
+import { graphqlRequest } from "../api/graphql/client";
 
 export const metadata: Metadata = {
   title: "Art Vault - Art Gallery | Account Page",
   description: "You're Welcome!",
 };
 
+interface GetDataUserResult {
+  getDataUser: {
+    id: string;
+    username: string;
+    biography?: string;
+    profile_photo?: string;
+    complementary_img?: string[];
+  };
+}
+
 export default async function AccountPage() {
-  const cookie = await cookies();
-
-  const GRAPHQL_QUERY = `
-    query LoginUsuario($id: String!) {
-      getDataUser(Id: $id) {
-        username
-        email
-      }
-    }
-  `;
-
+  
   try {
+    const cookie = await cookies();
     const idUser = cookie.get("token")?.value;
 
     if (!idUser) {
@@ -29,30 +31,25 @@ export default async function AccountPage() {
         </div>
       );
     }
-
-    const response = await fetch('http://localhost:3000/api/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: GRAPHQL_QUERY,
-        variables: { id: idUser },
-      }),
-      cache: 'no-store',
-    });
-
-    const result = await response.json();
-
-    if (result.errors && result.errors.length > 0) {
-      return (
-        <div className="p-4 text-red-500">
-          <p>Erro na API: {result.errors[0].message}</p>
-        </div>
+  
+      const response = await graphqlRequest<GetDataUserResult>(
+        `
+        query getDataUser{
+          getDataUser {
+            username
+          }
+        }
+        `,
+        {},
+        { requireAuth: true }
       );
-    }
+    
+      if (!response.success) {
+        console.error("Erro ao buscar dados do usuário:", response.error);
+        return null;
+      }
 
-    const userData = result.data?.getDataUser;
+    const userData = response.data?.getDataUser;
 
     if (!userData) {
       return (

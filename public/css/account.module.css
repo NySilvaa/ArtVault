@@ -374,3 +374,287 @@ span.content_color_desc{
     cursor: pointer;
     color: #d4af37;
 }
+
+@media (max-width: 1400px) {
+  .lettersInitial h1{
+    font-size: 9rem;
+    letter-spacing: -6px;
+  }
+
+  .dashboard_top h1{
+    font-size: 6.5rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .lettersInitial h1{
+    font-size: 7rem;
+    letter-spacing: -4px;
+  }
+
+  .dashboard_top h1{
+    font-size: 5.5rem;
+  }
+
+  .dash_description h2{
+    font-size: 3rem;
+  }
+
+  .video{
+    width: 320px;
+    height: 240px;
+  }
+
+  .asideDash ul li a{
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard_content .container_dash{
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .dash_description h2{
+    line-height: 1.2;
+  }
+
+  p.desc{
+    max-width: 100%;
+  }
+
+  .video{
+    width: 100%;
+    max-width: 400px;
+    height: 260px;
+    margin: 0 auto 10px auto;
+  }
+
+  p.desc_video{
+    max-width: 100%;
+    flex: 1 1 200px;
+  }
+
+  .btnHomeAccount{
+    left: 50%;
+  }
+
+  .input_evaluation{
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .lettersInitial{
+    padding: 10px 5%;
+  }
+
+  .lettersInitial h1{
+    font-size: 4.5rem;
+    letter-spacing: -2px;
+  }
+  
+  .lettersInitial img{
+    width: 90px !important;
+    height: 90px !important;
+    min-width: 90px !important;
+  }
+
+  main.dashboardMain{
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow-x: visible;
+  }
+
+  .dashboardMain aside.asideDash{
+    height: auto;
+    width: 100%;
+    order: 2;
+    margin-top: 20px;
+  }
+
+  .asideDash ul{
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-x: auto;
+  }
+
+  .asideDash ul li{
+    width: 100%;
+    height: auto;
+    writing-mode: horizontal-tb;
+    rotate: 0deg;
+    padding: 14px 10px;
+    white-space: normal;
+    flex: 1 0 auto;
+    text-align: center;
+
+    &:first-of-type,
+    &:nth-of-type(2),
+    &:nth-of-type(3),
+    &:last-of-type{
+        right: 0;
+    }
+  }
+
+  .asideDash ul li a{
+    font-size: 1rem;
+    letter-spacing: normal;
+  }
+
+  .btnHomeAccount{
+    position: relative;
+    left: auto; top: auto;
+    transform: none;
+    margin: 15px auto;
+  }
+
+  .dashboard_wp{
+    order: 1;
+  }
+
+  .dashboard_top h1{
+    font-size: 3rem;
+    margin-top: 15px;
+  }
+
+  .dashboard_content .container_dash{
+    margin-top: 25px;
+  }
+
+  .dash_description h2{
+    font-size: 2.2rem;
+  }
+
+  .desc_videoWp{
+    flex-wrap: wrap;
+    flex: 300px;
+  }
+
+  .video{
+    height: 220px;
+  }
+
+  .rating_card{
+    padding: 20px;
+  }
+
+  .text_wrapper{
+    margin-top: 20px;
+  }
+
+  .text_primary{
+    font-size: 1.5rem;
+  }
+
+  .text_secondary{
+    font-size: 1rem;
+  }
+
+  .star_label svg{
+    width: 38px;
+  }
+
+  .socials_container{
+    width: 100%;
+  }
+
+  .closeModal{
+    right: 20px; top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lettersInitial h1{
+    font-size: 2.6rem;
+    letter-spacing: -1px;
+  }
+
+  .lettersInitial img{
+    width: 60px !important;
+    height: 60px !important;
+    min-width: 60px !important;
+  }
+
+  .dashboard_top h1{
+    font-size: 2.2rem;
+    margin-top: 10px;
+  }
+
+  .dash_description h2{
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .btnChat{
+    padding: 1em 2em;
+    font-size: 10px;
+  }
+
+  .video{
+    height: 180px;
+  }
+
+  p.desc_video{
+    font-size: 0.85rem;
+  }
+
+  .rating_card{
+    padding: 16px;
+  }
+
+  .text_primary{
+    font-size: 1.3rem;
+  }
+
+  .text_secondary{
+    font-size: 0.9rem;
+  }
+
+  .star_label svg{
+    width: 28px;
+  }
+
+  .input_evaluation textarea{
+    height: 140px;
+  }
+
+  .socials_container{
+    gap: 12px;
+  }
+
+  .social_button svg{
+    width: 24px;
+  }
+
+  .closeModal{
+    right: 14px; top: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .lettersInitial h1{
+    font-size: 2rem;
+  }
+
+  .lettersInitial img{
+    width: 45px !important;
+    height: 45px !important;
+    min-width: 45px !important;
+  }
+
+  .dashboard_top h1{
+    font-size: 1.8rem;
+  }
+
+  .asideDash ul li a{
+    font-size: 0.85rem;
+  }
+
+  .star_label svg{
+    width: 24px;
+  }
+}

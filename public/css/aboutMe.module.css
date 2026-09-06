@@ -21,20 +21,19 @@
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
+    display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0; top: 0;
+    object-fit: cover;
+  }
 }
 
-.pic:before{
-  content: '';
-  margin-top:-63px;
-  margin-left:-80px;
-  position: absolute;
-  width: 450px;
-  height: 450px;
-  background: url('../images/profile1.jpg') center center;
-  -ms-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
 
 .pic:hover , .box1:hover , .box2:hover , .social1:hover , .social2:hover , .social3:hover {
   box-shadow: 3px 3px 7px #888888;
@@ -52,19 +51,17 @@
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
-}
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.box1:before{
-  content: '';
-  margin-top:-25px;
-  margin-left:-31px;
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background: url('../images/artvault-bg2.jpg') center center;
-  -ms-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0; top: 0;
+    object-fit: cover;
+  }
 }
 
 .box2{
@@ -78,19 +75,17 @@
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
-}
+    display: flex;
+  justify-content: center;
+  align-items: center;
 
-.box2:before{
-  content: '';
-  margin-top:-74px;
-  margin-left:-31px;
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: url('../images/artvault-bg4.jpg') center center;
-  -ms-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0; top: 0;
+    object-fit: cover;
+  }
 }
 
 .social1 , .social2 , .social3 {
@@ -147,6 +142,7 @@
 
   p{
     font-size: 1.4rem;
+    max-width: 400px;
   }
 }
 
@@ -182,4 +178,92 @@ a.btnUpdateSelfDescription{
     }
 
     &:active {transform: translateY(-1px);}
+}
+
+@media (max-width: 1200px) {
+  .row{gap: 20px;}
+
+  .containers{
+    width: auto;
+    transform: scale(0.8);
+  }
+
+  .content{
+    width: 45%;
+
+    p{
+      font-size: 1.2rem;
+      max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .row{
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .containers{
+    width: 620px;
+    max-width: 100%;
+    transform: scale(0.75);
+    transform-origin: top center;
+    margin-left: 0;
+    margin-bottom: 30px;
+  }
+
+  .content{
+    width: 90%;
+    text-align: center;
+
+    p{
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .containers{
+    transform: scale(0.55);
+  }
+
+  .content{
+    width: 100%;
+    padding: 0 20px;
+
+    p{
+      font-size: 1.05rem;
+    }
+  }
+
+  a.btnUpdateSelfDescription{
+    padding: 1em 2.2em;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .containers{
+    transform: scale(0.4);
+  }
+
+  .content{
+    p{
+      font-size: 0.95rem;
+    }
+  }
+
+  a.btnUpdateSelfDescription{
+    padding: 0.9em 1.8em;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .containers{
+    transform: scale(0.32);
+  }
 }

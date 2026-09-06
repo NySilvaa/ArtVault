@@ -281,3 +281,212 @@ svg.pwEye{
 
     &:active {transform: translateY(-1px);}
 }
+
+@media (max-width: 1300px) {
+  :root {
+    --side: 6vw;
+  }
+
+  .contentWrapperLogIn{
+    margin-top: 150px;
+  }
+
+  .contentWrapperLogIn .welcome h1{
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .mainLogin .heroWrapperLogIn{
+    min-width: 320px;
+  }
+
+  .contentWrapperLogIn{
+    width: calc(60% - var(--side));
+    margin-top: 120px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --side: 6vw;
+    --top: 6vh;
+  }
+
+  .mainLogin{
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    flex-direction: column;
+  }
+
+  .mainLogin .heroWrapperLogIn{
+    width: 100%;
+    min-width: 0;
+    height: 260px;
+  }
+
+  .mainLogin .heroWrapperLogIn .hero{
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px !important;
+    height: 220px !important;
+  }
+
+  .contentWrapperLogIn{
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    padding: 2.5em var(--side) 3em var(--side);
+  }
+
+  .headerLogin{
+    padding: 20px var(--side);
+  }
+
+  .btnBackPage{
+    left: 20px; top: 20px;
+    width: 44px;
+    height: 44px;
+    line-height: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .registerWrapper .newUser::after{
+    width: 1.2rem;
+  }
+
+  .box_msgWp{
+    right: 10px;
+    left: 10px;
+    top: 10px;
+  }
+
+  .box_msg{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 80px;
+    padding: 12px;
+  }
+
+  .headerLogin{
+    padding: 16px 5%;
+  }
+
+  .registerWrapper .newUser{
+    margin-right: 2em;
+    margin-left: -2em;
+    font-size: 0.9rem;
+  }
+
+  .mainLogin .heroWrapperLogIn{
+    height: 200px;
+  }
+
+  .mainLogin .heroWrapperLogIn .hero{
+    width: 170px !important;
+    height: 170px !important;
+  }
+
+  .contentWrapperLogIn{
+    padding: 2em 6% 2.5em 6%;
+  }
+
+  .contentWrapperLogIn .welcome h1{
+    font-size: 2.2rem;
+  }
+
+  .contentWrapperLogIn .welcome .subtitle{
+    font-size: 1rem;
+  }
+
+  .logIn_wrapper .logIn input{
+    height: 3.5em;
+  }
+
+  .action{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .action button{
+    width: 100%;
+    justify-content: center;
+    padding: 1.2em 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .btnBackPage{
+    left: 14px; top: 14px;
+    width: 38px;
+    height: 38px;
+    line-height: 52px;
+  }
+
+  .btnBackPage svg{
+    width: 24px;
+    height: 24px;
+  }
+
+  .mainLogin .heroWrapperLogIn{
+    height: 150px;
+  }
+
+  .mainLogin .heroWrapperLogIn .hero{
+    width: 130px !important;
+    height: 130px !important;
+  }
+
+  .contentWrapperLogIn{
+    padding: 1.5em 6% 2em 6%;
+  }
+
+  .contentWrapperLogIn .welcome h1{
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+
+  .logIn_wrapper .logIn input{
+    height: 3.2em;
+    padding-left: 3em;
+    font-size: 0.9rem;
+  }
+
+  .action button{
+    font-size: 11px;
+    padding: 1em 1.5em;
+  }
+
+  .box_msg{
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .message_text{
+    font-size: 15px;
+  }
+
+  .sub_text{
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .contentWrapperLogIn .welcome h1{
+    font-size: 1.6rem;
+  }
+
+  .mainLogin .heroWrapperLogIn{
+    height: 120px;
+  }
+
+  .mainLogin .heroWrapperLogIn .hero{
+    width: 100px !important;
+    height: 100px !important;
+  }
+}

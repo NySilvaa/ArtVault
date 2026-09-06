@@ -336,3 +336,245 @@ h1.textReveal{
 .initialsPainting{
     margin-right: 10px;
 }
+
+@media (max-width: 1400px) {
+  h1.tittleTopMain{
+    font-size: 5.5rem;
+  }
+
+  .nameTittle1 .titleArtWork{ font-size: 7rem; }
+  .nameTittle2 .titleArtWork{ font-size: 5.5rem; }
+  .nameTittle3 .titleArtWork{ font-size: 7rem; }
+}
+
+@media (max-width: 1200px) {
+  .bgMainPainting{
+    padding: 40px 30px;
+  }
+
+  h3.titleTopPainting{ font-size: 2.2rem; }
+
+  h1.tittleTopMain{ font-size: 4.5rem; }
+
+  .nameTittle1{ left: -8%; }
+  .nameTittle2{ right: 0%; }
+  .nameTittle3{ right: -6%; }
+
+  .nameTittle1 .titleArtWork,
+  .nameTittle3 .titleArtWork{ font-size: 5.5rem; line-height: 90px; }
+  .nameTittle2 .titleArtWork{ font-size: 4.5rem; line-height: 90px; }
+
+  .changeArtWorker button{ left: 0; }
+
+  .modalBoxPainting{
+    min-width: 0;
+    width: 90vw;
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .bgMainPainting{
+    height: auto;
+    min-height: 100vh;
+    padding: 30px 5%;
+  }
+
+  .txtPainting1, .txtPainting2{
+    max-width: 100%;
+    float: none;
+  }
+
+  .txtPainting2{
+    margin: 30px 0;
+  }
+
+  h1.tittleTopMain{ font-size: 3.6rem; }
+
+  .lines, .wordsComplementaries{
+    display: none;
+  }
+
+  .imgsBgMainPainting{
+    display: none;
+  }
+
+  .descriptionArt{
+    margin-top: 60px;
+
+    .container{
+        flex-direction: column;
+        gap: 20px;
+    }
+  }
+
+  .descArt1 .artworkName{ font-size: 2.2rem; }
+
+  .descArt2{
+    max-width: 100%;
+  }
+
+  h1.textReveal{ font-size: 3.2rem; }
+
+  .nameTittle1, .nameTittle2, .nameTittle3{
+    position: static;
+    text-align: center;
+    margin: 0 auto 30px auto;
+  }
+
+  .nameTittle1 .titleArtWork,
+  .nameTittle2 .titleArtWork,
+  .nameTittle3 .titleArtWork{
+    font-size: 2.8rem;
+    line-height: 1.2;
+    max-width: 100%;
+    margin: 0 auto;
+    word-break: normal;
+  }
+
+  .changeArtWorker{
+    display: flex;
+    justify-content: center;
+  }
+
+  .changeArtWorker button{
+    position: static;
+  }
+
+  .slideBox{
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  nav.navigation{
+    padding: 15px 5%;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative;
+    left: auto; top: auto;
+    transform: none;
+  }
+
+  .slideComponent{
+    padding-bottom: 20px;
+  }
+
+  .btnInteractive ul.itemsMenu_btnInteractive{
+    padding: 10px;
+  }
+
+  .btnInteractive ul.itemsMenu_btnInteractive li a{
+    margin: 0 10px;
+    font-size: 0.8rem;
+  }
+
+  h3.titleTopPainting{
+    font-size: 1.6rem;
+    margin-top: 60px;
+  }
+
+  h1.tittleTopMain{ font-size: 2.6rem; }
+
+  .descArt1 .artworkName{ font-size: 1.8rem; }
+
+  p.creatorName{ font-size: 0.85rem; }
+
+  h1.textReveal{ font-size: 2.2rem; }
+
+  .titleArtWork{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .nameTittle1 .titleArtWork,
+  .nameTittle2 .titleArtWork,
+  .nameTittle3 .titleArtWork{
+    font-size: 2rem;
+  }
+
+  .autorPicture{
+    width: 48px;
+    height: 48px;
+  }
+
+  .autorName{ font-size: 1rem; }
+
+  .modalBoxPainting{
+    width: 95vw;
+    padding: 1.8rem;
+    min-height: 0;
+  }
+
+  .paintingBox input[type=text]{
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bgMainPainting{
+    padding: 20px 5%;
+  }
+
+  h1.tittleTopMain{ font-size: 2rem; letter-spacing: 1px; }
+
+  h3.titleTopPainting{ font-size: 1.3rem; }
+
+  .txtPainting1, .txtPainting2{
+    font-size: 0.85rem;
+  }
+
+  .descriptionArt{
+    margin-top: 40px;
+    padding-bottom: 20px;
+  }
+
+  .descArt1 .artworkName{ font-size: 1.5rem; }
+
+  h1.textReveal{ font-size: 1.6rem; }
+
+  .titleArtWork{
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .nameTittle1 .titleArtWork,
+  .nameTittle2 .titleArtWork,
+  .nameTittle3 .titleArtWork{
+    font-size: 1.6rem;
+  }
+
+  .changeArtWorker button{
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  .slideBox{ margin-top: 30px; }
+
+  .btnSlide{ margin-top: 40px; }
+
+  .modalBoxPainting{
+    padding: 1.4rem;
+  }
+
+  .tittleBoxPainting h2{
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  h1.tittleTopMain{ font-size: 1.7rem; }
+
+  .titleArtWork,
+  .nameTittle1 .titleArtWork,
+  .nameTittle2 .titleArtWork,
+  .nameTittle3 .titleArtWork{
+    font-size: 1.4rem;
+  }
+
+  .autorPicture{
+    width: 40px;
+    height: 40px;
+  }
+}

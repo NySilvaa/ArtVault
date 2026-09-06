@@ -647,3 +647,310 @@ footer.footer_artVault h3{
     line-height: 5rem;
   }
 }
+
+@media (max-width: 1400px) {
+  .uiLayer h1{ font-size: 3rem; }
+
+  section.singUpPlatforms h1{ font-size: 4rem; }
+}
+
+@media (max-width: 1200px) {
+  .slideContent{
+    left: 6%;
+  }
+
+  section.descText{
+    max-width: 85%;
+  }
+
+  section.brandShowed img{
+    height: 550px;
+  }
+
+  .colScroll__item{
+    margin: 0 25px 25px 25px;
+  }
+
+  .card_signUp_section{
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .uiLayer{ top: -20px; }
+
+  .uiLayer h1{ font-size: 2.4rem; }
+
+  .slideContent{
+    width: 320px;
+    top: 22%;
+  }
+
+  .description{
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .logo{
+    top: 20px; left: 20px;
+    font-size: 0.85rem;
+  }
+
+  .btnBackStart{
+    width: 56px;
+    height: 56px;
+    right: 20px; bottom: 20px;
+  }
+
+  section.insideGallery{
+    height: 500px;
+
+    p{
+        font-size: 1.2rem;
+        padding-top: 20px;
+    }
+  }
+
+  section.descText{
+    margin: 50px auto;
+
+    svg{
+        position: static;
+        display: block;
+        margin: 0 auto 20px auto;
+        rotate: 0deg;
+    }
+
+    p{
+        font-size: 1rem;
+        text-align: left;
+    }
+  }
+
+  section.brandShowed img{
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .colScroll__img{
+    width: 28vw;
+  }
+
+  section.singUpPlatforms{
+    margin: 60px auto;
+
+    h1{ font-size: 2.8rem; }
+  }
+
+  .singUpPlatforms_wp{
+    flex-direction: column;
+    gap: 30px;
+    padding: 50px 2% 80px 2%;
+  }
+
+  .card_signUp_section{
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .card_signUp_section{
+    margin-bottom: 20px;
+  }
+
+  .artBd, .footer_artVault{
+    cursor: auto;
+  }
+
+  .cursorDot, .cursorOutline{
+    display: none;
+  }
+
+  .uiLayer{
+    top: 0;
+  }
+
+  .uiLayer h1{ font-size: 1.9rem; margin: 6px 0; }
+
+  .slideContent{
+    left: 5%;
+    top: 18%;
+    width: 85%;
+    max-width: 85vw;
+  }
+
+  .catalogueNumber{
+    font-size: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .description{
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .metaGrid{
+    grid-template-columns: 65px 1fr;
+    padding-top: 1rem;
+  }
+
+  .metaValue{ font-size: 0.95rem; }
+
+  .scrollHint{
+    left: 20px; bottom: 20px;
+    font-size: 0.6rem;
+  }
+
+  .lettersSection{ margin: 35px 0; }
+
+  section.insideGallery{
+    height: 380px;
+    background-attachment: scroll;
+
+    p{
+        font-size: 1rem;
+        text-align: center;
+        padding-top: 10px;
+    }
+  }
+
+  section.description_artVault{
+    padding: 30px 0 10px 0;
+  }
+
+  section.brandShowed img{
+    height: 260px;
+  }
+
+  .colScroll__img{
+    width: 40vw;
+  }
+
+  .colScroll__item{
+    margin: 0 12px 20px 12px;
+  }
+
+  section.singUpPlatforms h1{
+    font-size: 2rem;
+  }
+
+  .contentSection{
+    padding: 24px;
+
+    h3{ font-size: 1.5rem; }
+  }
+
+  .buttonForm_section{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .buttons_mobileAppSection{
+    flex-wrap: wrap;
+  }
+
+  .footer_artVault{
+    height: 8em;
+  }
+
+  .footer_artVault .contFooter{
+    right: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer_center{
+    width: 100%;
+    float: none;
+  }
+
+  footer.footer_artVault h3{
+    font-size: 1.3rem;
+    margin-top: 25px;
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .uiLayer h1{ font-size: 1.5rem; }
+
+  .slideContent{
+    top: 16%;
+  }
+
+  section.insideGallery{
+    height: 300px;
+
+    p{ font-size: 0.85rem; }
+  }
+
+  section.descText p{
+    font-size: 0.9rem;
+  }
+
+  section.brandShowed img{
+    height: 200px;
+  }
+
+  .colScroll__img{
+    width: 60vw;
+  }
+
+  .colScroll__title{
+    margin: 8px 0 10px;
+  }
+
+  section.singUpPlatforms h1{
+    font-size: 1.6rem;
+  }
+
+  .contentSection{
+    padding: 18px;
+    gap: 14px;
+
+    h3{ font-size: 1.25rem; }
+  }
+
+  .contentSection .para{
+    font-size: 0.85rem;
+  }
+
+  .buttons_mobileAppSection{
+    flex-direction: column;
+  }
+
+  .buttons_mobileAppSection .button_maChildren{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btnBackStart{
+    width: 48px;
+    height: 48px;
+    right: 14px; bottom: 14px;
+  }
+
+  .btnBackStart svg{
+    width: 22px;
+    height: 22px;
+  }
+
+  footer.footer_artVault h3{
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .uiLayer h1{ font-size: 1.3rem; }
+
+  .colScroll__img{
+    width: 70vw;
+  }
+
+  section.singUpPlatforms h1{
+    font-size: 1.4rem;
+  }
+}

@@ -64,39 +64,29 @@ export default async function PaintersPage(){
             <section className={styles.paintersSection}>
                 <div className={`${styles.container} mAuto`}>
                     <div className={`${styles.painters_wp} d_flex w100`}>
-                {painters.map((painter: any) => (
-        <div
-            key={painter.id}
-            className={styles.painters_box}
-        >
-            <figure>
-                <Image
-                    src={painter.cover_photo}
-                    width={320}
-                    height={340}
-                    alt={painter.stage_name}
-                />
-            </figure>
+                        {painters.map((painter: any) => (
+                    
+                            <div key={painter.id} className={styles.painters_box} >
+                                <figure>
+                                    <Image
+                                        src={painter.cover_photo}
+                                        width={320}
+                                        height={340}
+                                        alt={painter.stage_name} />
+                                </figure>
 
-            <h3
-                className={`${styles.paintersName} ${leotaroFree.className}`}
-            >
-                <Link
-                    href={`/painters/${painter.id}`}
-                    className="txtGold"
-                >
-                    {painter.stage_name}
-                </Link>
-            </h3>
+                                <h3 className={`${styles.paintersName} ${leotaroFree.className}`} >
+                                    <Link href={`/painters/${painter.id}`} className="txtGold">
+                                        {painter.stage_name}
+                                    </Link>
+                                </h3>
 
-            <span
-                className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`}
-            >
-                Painted over {painter.artworks} artworks
-            </span>
-        </div>
-    ))}
-</div>
+                                <span className={`${styles.paintersDescription} ${satoshiLight.className} txtWhiteSecondary`} >
+                                    Painted over {painter.artworks} artworks
+                                </span>
+                            </div>
+                        ))}
+                    </div>
                 </div>{/* container */}
             </section>
            </main>

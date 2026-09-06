@@ -338,3 +338,220 @@
 
     &:active {transform: translateY(-1px);}
 }
+
+@media (max-width: 1300px) {
+  :root {
+    --side: 6vw;
+  }
+
+  .contentWrapperSignUp .welcome h1{
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .heroWrapperSignUp{
+    min-width: 320px;
+  }
+
+  .contentWrapperSignUp{
+    width: calc(60% - var(--side));
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --side: 6vw;
+    --top: 6vh;
+  }
+
+  .signUpMain{
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .heroWrapperSignUp{
+    width: 100%;
+    min-width: 0;
+    height: 260px;
+    position: relative;
+  }
+
+  .signUpMain .heroWrapperSignUp .hero{
+    height: 220px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .contentWrapperSignUp{
+    width: 100%;
+    height: auto;
+    padding: 2.5em var(--side) 3em var(--side);
+  }
+
+  .headerSignUp{
+    padding: 20px var(--side);
+  }
+
+  .btnBackPage{
+    left: 20px; top: 20px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .modalPw{
+    left: 0;
+    top: -290%;
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .box_msgWp{
+    right: 10px;
+    left: 10px;
+    top: 10px;
+  }
+
+  .box_msg{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 80px;
+    padding: 12px;
+  }
+
+  .headerSignUp{
+    padding: 16px 5%;
+  }
+
+  .registerWrapperSignUp .newUserSignUp{
+    margin-right: 2.2em;
+    margin-left: -2em;
+    font-size: 0.9rem;
+  }
+
+  .heroWrapperSignUp{
+    height: 200px;
+  }
+
+  .signUpMain .heroWrapperSignUp .hero{
+    height: 170px;
+  }
+
+  .contentWrapperSignUp{
+    padding: 2em 6% 2.5em 6%;
+  }
+
+  .contentWrapperSignUp .welcome h1{
+    font-size: 2.2rem;
+  }
+
+  .contentWrapperSignUp .welcome .subtitle{
+    font-size: 1rem;
+  }
+
+  .signUp_wrapper .signUp input{
+    height: 3.5em;
+  }
+
+  .modalPw{
+    top: auto;
+    position: static;
+    margin-top: 10px;
+    max-width: 100%;
+  }
+
+  .action{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .action button{
+    width: 100%;
+    justify-content: center;
+    padding: 1.2em 2em;
+  }
+
+  .registerWrapperSignUp .newUserSignUp::after{
+    right: -5%;
+    width: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .btnBackPage{
+    left: 14px; top: 14px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .btnBackPage svg{
+    width: 24px;
+    height: 24px;
+  }
+
+  .heroWrapperSignUp{
+    height: 150px;
+  }
+
+  .signUpMain .heroWrapperSignUp .hero{
+    height: 130px;
+  }
+
+  .contentWrapperSignUp{
+    padding: 1.5em 6% 2em 6%;
+  }
+
+  .contentWrapperSignUp .welcome h1{
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+
+  .signUp_wrapper .signUp input{
+    height: 3.2em;
+    padding-left: 3em;
+    font-size: 0.9rem;
+  }
+
+  .action button{
+    font-size: 11px;
+    padding: 1em 1.5em;
+  }
+
+  .box_msg{
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .message_text{
+    font-size: 15px;
+  }
+
+  .sub_text{
+    font-size: 13px;
+  }
+
+  .error_prompt_list{
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .contentWrapperSignUp .welcome h1{
+    font-size: 1.6rem;
+  }
+
+  .heroWrapperSignUp{
+    height: 120px;
+  }
+
+  .signUpMain .heroWrapperSignUp .hero{
+    height: 100px;
+  }
+}

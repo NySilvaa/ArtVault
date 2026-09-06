@@ -73,7 +73,6 @@ export default function ArtVaultBg() {
       const group = new THREE.Group();
       group.position.set(i * CONFIG.spacingX, 0, 0);
 
-      // O Three.js já gerencia o download em background automaticamente
       const mat = new THREE.MeshBasicMaterial({ map: textureLoader.load(url) });
       const mesh = new THREE.Mesh(planeGeo, mat);
 

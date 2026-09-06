@@ -1,29 +1,48 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { jwtVerify } from "jose";
 
-export async function middleware(request: NextRequest){
+const PROTECTED_PREFIX = "/Account";
+const LOGIN_PATH = "/LogIn";
+
+export async function middleware(request: NextRequest) {
+    const { pathname } = request.nextUrl;
     const token = request.cookies.get("token")?.value;
     const secretKey = process.env.JWT_SECRET;
 
-    if (!secretKey)
-        return NextResponse.json({ error: "Configuração do servidor incompleta" }, { status: 500 });
+    const isProtectedRoute = pathname.startsWith(PROTECTED_PREFIX);
+    const isLoginRoute = pathname.startsWith(LOGIN_PATH);
+
+    if (!secretKey) {
+        console.error("JWT_SECRET não configurada no ambiente do middleware!");
+        if (isProtectedRoute) {
+            return NextResponse.redirect(new URL(LOGIN_PATH, request.url));
+        }
+        return NextResponse.next();
+    }
 
     const secret = new TextEncoder().encode(secretKey);
+    let isAuthenticated = false;
 
-    if (request.nextUrl.pathname.startsWith("/Account")) {
-        if (!token)
-            return NextResponse.redirect(new URL("/LogIn", request.url));
-
+    if (token) {
         try {
             await jwtVerify(token, secret);
-            return NextResponse.next();
+            isAuthenticated = true;
         } catch (error) {
-            console.log(`O erro foi o seguinte: ${error}`);
-            return NextResponse.redirect(new URL("/LogIn", request.url));
+            console.error("Falha na verificação do JWT no middleware:", error);
         }
     }
+
+    if (isProtectedRoute && !isAuthenticated) {
+        return NextResponse.redirect(new URL(LOGIN_PATH, request.url));
+    }
+
+    if (isLoginRoute && isAuthenticated) {
+        return NextResponse.redirect(new URL(PROTECTED_PREFIX, request.url));
+    }
+
+    return NextResponse.next();
 }
 
 export const config = {
-    matcher: ["/Account/:path*", "/LogIn/:path*"]
+    matcher: ["/Account/:path*", "/LogIn/:path*"],
 };

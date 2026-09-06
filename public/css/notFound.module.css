@@ -234,3 +234,105 @@ transform: rotate(-20deg);
   transform: rotate(-20deg);
   }
 }
+
+@media (max-width: 1200px) {
+  .cont_error > h1.titleNotFound{
+    font-size: 110px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cont_error > h1.titleNotFound{
+    font-size: 90px;
+  }
+
+  .cont_error > p.descNotFound{
+    font-size: 20px;
+    letter-spacing: 3px;
+  }
+
+  .cont_aura_1{
+    width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cont_error{
+    height: 260px;
+    margin-top: -130px;
+    padding: 0 5%;
+  }
+
+  .cont_error > h1.titleNotFound{
+    font-size: 64px;
+  }
+
+  .cont_error > p.descNotFound{
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+  .cont_aura_1{
+    width: 160px;
+  }
+
+  .cont_error_active > .cont_aura_1{
+    right: -120px;
+  }
+
+  .cont_aura_2{
+    height: 220px;
+    bottom: -221px;
+  }
+
+  .linkBack{
+    font-size: 15px;
+    padding: 0.6em 1.4em;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cont_error{
+    height: 220px;
+    margin-top: -110px;
+  }
+
+  .cont_error > h1.titleNotFound{
+    font-size: 44px;
+  }
+
+  .cont_error > p.descNotFound{
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .cont_aura_1{
+    width: 110px;
+  }
+
+  .cont_error_active > .cont_aura_1{
+    right: -85px;
+  }
+
+  .cont_aura_2{
+    height: 160px;
+    bottom: -161px;
+  }
+
+  .linkBack{
+    font-size: 13px;
+    padding: 0.55em 1.2em;
+  }
+}
+
+@media (max-width: 360px) {
+  .cont_error > h1.titleNotFound{
+    font-size: 36px;
+  }
+
+  .cont_error > p.descNotFound{
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+}

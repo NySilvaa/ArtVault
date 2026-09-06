@@ -8,6 +8,14 @@
     background-repeat: no-repeat;
 }
 
+nav.navigationAboutUs{
+    padding: 20px 2%;
+}
+
+.aboutUsWp{
+    padding-bottom: 20px;
+}
+
 .aboutUsDesc{
     width: 60%;
     padding: 40px 100px;
@@ -69,4 +77,129 @@
     }
 
     &:active {transform: translateY(-1px);}
+}
+
+
+@media (max-width: 1200px) {
+  .aboutUsDesc{
+    padding: 40px 60px;
+
+    h2.presentationCreator{
+        font-size: 2.1rem;
+        max-width: 400px;
+    }
+
+    p.descriptionCreator{
+        max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .aboutUsWp{
+    flex-direction: column;
+  }
+
+  .aboutUsBg{
+    width: 100%;
+    height: 50vh;
+  }
+
+  .aboutUsDesc{
+    width: 100%;
+    padding: 30px 50px;
+
+    .nameCreator{
+        margin-top: 40px;
+    }
+  }
+
+  .aboutUsDescBox{width: 100%;}
+}
+
+@media (max-width: 768px) {
+  .aboutUsBg{
+    height: 40vh;
+  }
+
+  .aboutUsDesc{
+    padding: 25px 30px;
+
+    .nameCreator{
+        font-size: 1.5rem;
+        margin-top: 30px;
+    }
+
+    h2.presentationCreator{
+        font-size: 1.8rem;
+        margin: 15px 0 25px 0;
+        max-width: 100%;
+    }
+
+    h2.presentationCreator, p.descriptionCreator{
+        float: none;
+    }
+
+    p.descriptionCreator{
+        max-width: 100%;
+        text-align: left;
+    }
+  }
+
+  .otherProjects{
+    margin-top: 25px;
+  }
+
+  .projectsLink{
+    padding: 1.1em 2.5em;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutUsBg{
+    height: 30vh;
+  }
+
+  .aboutUsDesc{
+    padding: 20px;
+
+    .nameCreator{
+        font-size: 1.3rem;
+        margin-top: 20px;
+    }
+
+    h2.presentationCreator{
+        font-size: 1.4rem;
+        margin: 10px 0 20px 0;
+    }
+
+    p.descriptionCreator{
+        font-size: 0.85rem;
+    }
+  }
+
+  .otherProjects{
+    margin-top: 20px;
+
+    span.descriptionProjects{
+        font-size: 0.8rem;
+    }
+  }
+
+  .projectsLink{
+    padding: 1em 2em;
+    font-size: 10px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .aboutUsDesc{
+    padding: 15px;
+
+    h2.presentationCreator{
+        font-size: 1.2rem;
+    }
+  }
 }

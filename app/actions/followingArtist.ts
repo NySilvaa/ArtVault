@@ -1,107 +1,103 @@
 "use server";
 
-import { cookies } from "next/headers";
+import { graphqlRequest } from "../api/graphql/client";
 
-const getBaseUrl = () => process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-
-// Faz o fetch para o GraphQL, injeta os cookies e trata os erros padrão
-async function fetchGraphQL(query: string, variables: any = {}) {
-  try {
-    const cookieStore = await cookies();
-    
-    const response = await fetch(`${getBaseUrl()}/api/graphql`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: cookieStore.toString(), // No Next.js 13+, .toString() formata corretamente os cookies
-      },
-      cache: "no-store",
-      body: JSON.stringify({ query, variables }),
-    });
-
-    const result = await response.json();
-
-    if (result.errors) {
-      console.error("Erros retornados pelo GraphQL:", result.errors);
-      return { data: null, error: "Erro ao processar a requisição no servidor GraphQL." };
-    }
-
-    return { data: result.data, error: null };
-  } catch (error) {
-    console.error("Erro interno no fetch de comunicação:", error);
-    return { data: null, error: "Erro interno no servidor." };
-  }
+interface ToggleFollowResult {
+  toggleFollowArtist: { following: boolean };
 }
 
-// Função para SEGUIR / DEIXAR DE SEGUIR um artista
 export async function toggleFollowArtist(idArtist: string) {
-  const cookieStore = await cookies();
-  const token = cookieStore.get("token")?.value;
+  const result = await graphqlRequest<ToggleFollowResult>(
+    `
+      mutation ToggleFollowArtist($idArtist: String!) {
+        toggleFollowArtist(idArtist: $idArtist) {
+          following
+        }
+      }
+    `,
+    { idArtist },
+    { requireAuth: true }
+  );
 
-  if (!token) {
-    return { success: false, message: "Usuário não autenticado." };
+  if (!result.success) {
+    return { success: false, following: null, message: result.error };
   }
 
-  const GRAPHQL_QUERY = `
-    mutation followingArt($idArtist: String!) {
-      InsertArtist(idArtist: $idArtist)
-    }
-  `;
+  const { following } = result.data.toggleFollowArtist;
 
-  const { data, error } = await fetchGraphQL(GRAPHQL_QUERY, { idArtist });
-
-  if (error) {
-    return { success: false, message: error };
-  }
-
-  // CORREÇÃO: result.data?.InsertArtist (Com "I" maiúsculo, igual na query)
-  const isSuccess = data?.InsertArtist || false;
-
-  return { 
-    success: isSuccess, 
-    message: isSuccess ? "Ação realizada com sucesso." : "Não foi possível realizar a ação." 
+  return {
+    success: true,
+    following, // o client agora sabe exatamente o novo estado
+    message: following ? "Você está seguindo este artista." : "Você deixou de seguir este artista.",
   };
 }
 
-//  Função para buscar os artistas que o usuário JÁ SEGUE
-export async function getPaintersFollowed() {
-  const GRAPHQL_QUERY = `
-    query {
-      getArtistFollowed {
-        id
-        stage_name
-        cover_photo
-        artworks
-        followers
-      }
-    }
-  `;
-
-  const { data, error } = await fetchGraphQL(GRAPHQL_QUERY);
-
-  if (error) return []; // Retorna array vazio em caso de erro
-
-  return data?.getArtistFollowed || [];
+interface GetArtistFollowedResult {
+  getArtistFollowed: Array<{
+    id: string;
+    stage_name: string;
+    cover_photo: string;
+    artworks: number;
+    followers: number;
+  }>;
 }
 
-//  Buscar TODOS os artistas
-export async function getPaintersAll() {
-  const GRAPHQL_QUERY = `
-    query {
-      getPaintersData {
-        id
-        stage_name
-        bio
-        cover_photo
-        artworks
-        followers
+export async function getPaintersFollowed() {
+  const result = await graphqlRequest<GetArtistFollowedResult>(
+    `
+      query {
+        getArtistFollowed {
+          id
+          stage_name
+          cover_photo
+          artworks
+          followers
+        }
       }
-    }
-  `;
+    `,
+    {}
+  );
 
-  const { data, error } = await fetchGraphQL(GRAPHQL_QUERY);
+  if (!result.success) {
+    console.error("Erro ao buscar artistas seguidos:", result.error);
+    return { data: [], error: result.error };
+  }
 
-  if (error) return []; // Retorna array vazio em caso de erro
+  return { data: result.data.getArtistFollowed, error: null };
+}
 
-  return data?.getPaintersData || [];
+interface GetPaintersDataResult {
+  getPaintersData: Array<{
+    id: string;
+    stage_name: string;
+    bio: string;
+    cover_photo: string;
+    artworks: number;
+    followers: number;
+  }>;
+}
+
+export async function getPaintersAll() {
+  const result = await graphqlRequest<GetPaintersDataResult>(
+    `
+      query {
+        getPaintersData {
+          id
+          stage_name
+          bio
+          cover_photo
+          artworks
+          followers
+        }
+      }
+    `,
+    {}
+  );
+
+  if (!result.success) {
+    console.error("Erro ao buscar artistas:", result.error);
+    return { data: [], error: result.error };
+  }
+
+  return { data: result.data.getPaintersData, error: null };
 }

@@ -1,8 +1,10 @@
 // FONTS E ESTILOS
+import { getDataUser } from "@/app/actions/UpdateUser";
 import  styles from "@/public/css/aboutMe.module.css";
 
 // NEXT JS
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -10,14 +12,29 @@ export const metadata: Metadata = {
   description: "See Your Contributions With Us",
 };
 
-export default function AboutMePage(){
+const FALLBACK_IMAGE = `/images/placeholder-avatar.svg`;
+
+export default async function AboutMePage(){
+    const userData = await getDataUser() || null;
+
+    const profilePhotoSrc = userData?.profile_photo || FALLBACK_IMAGE;
+    const complementaryImg1 = userData?.complementary_img?.[0] || FALLBACK_IMAGE;
+    const complementaryImg2 = userData?.complementary_img?.[1] || FALLBACK_IMAGE;
+
     return (<>
             <div className={styles.row}>
                 <div className={styles.containers}>
-                    <div className={styles.pic}></div>{/* pic */}
+                    <div className={styles.pic}>
+                        <Image src={profilePhotoSrc} width={100} height={100} alt="Profile Image User"/>
+                    </div>{/* pic */}
                     
-                    <div className={styles.box1}></div>{/* box1 */}
-                    <div className={styles.box2}></div>{/* box2 */}
+                    <div className={styles.box1}>
+                        <Image src={complementaryImg1} width={100} height={100} alt="Complementary Image User 1"/>
+                    </div>{/* box1 */}
+
+                    <div className={styles.box2}>
+                        <Image src={complementaryImg2} width={100} height={100} alt="Complementary Image User 2"/>
+                    </div>{/* box2 */}
                     
                     <div className={styles.social1}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-drum-icon lucide-drum"><path d="m2 2 8 8"/><path d="m22 2-8 8"/><ellipse cx="12" cy="9" rx="10" ry="5"/><path d="M7 13.4v7.9"/><path d="M12 14v8"/><path d="M17 13.4v7.9"/><path d="M2 9v8a10 5 0 0 0 20 0V9"/></svg>
@@ -33,13 +50,8 @@ export default function AboutMePage(){
                 </div>{/* containers */}
 
                 <div className={styles.content}>
-                    <p className={styles.satoshiLight}>HiFolks, <br/><br/>
-                        This is Shaik Maqsood. I&apos;m a Freakin frontend developer, 
-                        jus came up with this concept of having a 45º trasformed DIV with a -45º background.<br/><br/>
-                        Can&apos;t belive that it worked.
-                        <br/><br/>
-                        Show your L<span>&hearts;</span>VE if you like my pen.
-                        <br/><br/>
+                    <p className={styles.satoshiLight}>
+                        {userData?.biography ? userData.biography : "click below and create your autobiography"}
                     </p>
 
                     <Link href={"/Account/Configuration/"} className={` ${styles.btnUpdateSelfDescription}`}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Update Self Description</Link>

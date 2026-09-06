@@ -1,86 +1,79 @@
-"use server"
+"use server";
 
-import { SignJWT } from "jose";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { createUserSession } from "./session";
+
+const FETCH_TIMEOUT_MS = 10_000;
+
+const LOGIN_MUTATION = `
+    mutation LoginUsuario($email: String!, $password: String!) {
+        checkUserLogin(email: $email, password: $password) {
+            id
+            email
+            username
+        }
+    }
+`;
 
 export async function checkUser(prevState: unknown, formData: FormData) {
-    const secretKey = process.env.JWT_SECRET;
-    if (!secretKey) {
-        console.error("JWT_SECRET não encontrada!");
-        return { error: "Erro de configuração no servidor" };
-    }
-
-    const email = formData.get('user') as string;
-    const password = formData.get('password') as string;
+    const email = formData.get("user") as string;
+    const password = formData.get("password") as string;
 
     if (!email || !password) {
         return { error: "Por favor, preencha todos os campos." };
     }
 
-    const GRAPHQL_QUERY = `
-        query LoginUsuario($email: String!, $password: String!) {
-        CheckUserLogin(email: $email, password: $password) {
-            id
-            email
-            username
-        }
-        }
-    `;
+    const endpoint = process.env.GRAPHQL_ENDPOINT;
+    if (!endpoint) {
+        console.error("GRAPHQL_ENDPOINT não configurada!");
+        return { error: "Erro de configuração no servidor." };
+    }
 
-    const secret = new TextEncoder().encode(secretKey);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
     try {
-        const response = await fetch('http://localhost:3000/api/graphql', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            query: GRAPHQL_QUERY,
-            variables: {
-            email: email,
-            password: password,
-            },
-        }),
-        cache: 'no-store',
+        const response = await fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                query: LOGIN_MUTATION,
+                variables: { email, password },
+            }),
+            cache: "no-store",
+            signal: controller.signal,
         });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+            console.error("GraphQL respondeu com status:", response.status);
+            return { error: "Erro de comunicação com o servidor." };
+        }
 
         const result = await response.json();
 
         if (result.errors && result.errors.length > 0) {
-        return { error: result.errors[0].message };
+            return { error: result.errors[0].message };
         }
 
-        const userData = result.data?.CheckUserLogin;
-        
+        const userData = result.data?.checkUserLogin;
+
         if (!userData) {
-        return { error: "Falha na autenticação dos dados." };
+            return { error: "Falha na autenticação dos dados." };
         }
 
-        console.log("Usuário autenticado com sucesso no servidor:", userData.username);
-
-        const token = await new SignJWT({ 
-            id: userData.id, 
-            email: userData.email 
-        })
-        .setProtectedHeader({ alg: 'HS256' })
-        .setIssuedAt()
-        .setExpirationTime('2h')
-        .sign(secret);
-
-        const cookieStore = await cookies();
-        cookieStore.set("token", token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            path: "/",
-            maxAge: 60 * 60 * 2, 
-            sameSite: "strict"
-        });
-
+        await createUserSession({ id: userData.id, email: userData.email });
     } catch (error) {
-        console.error("Erro ao gerar token:", error);
-        return { error: "Falha na autenticação" };
+        clearTimeout(timeoutId);
+
+        if (error instanceof Error && error.name === "AbortError") {
+            console.error("Timeout ao autenticar usuário");
+            return { error: "Tempo de resposta excedido. Tente novamente." };
+        }
+
+        console.error("Erro ao autenticar usuário:", error);
+        return { error: "Falha na autenticação." };
     }
 
     redirect("/Account");
